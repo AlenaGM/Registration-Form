@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="shortcut icon" href="assets/img/book-stack.png" type="img/png">
+    <title>Registration form</title>
+</head>
+<body>
+    <form action="#" method="post" enctype="multipart/form-data">
+        <div>
+            <p>Прикрепить фото</p>
+            <input tabindex="1" type="file"/>
+        </div>  
+        <div>
+            <p>Имя</p>
+            <input placeholder="Имя" tabindex="2" name="userFirstName" type="text"/>
+        </div>
+        <div>
+            <p>Фамилия</p>
+            <input placeholder="Фамилия" tabindex="3" name="userLastName" type="text"/>
+        </div>
+        <div>
+            <p>Адрес эл.почты</p>
+            <input placeholder="Адрес эл.почты" tabindex="4" name="userEmail" type="text"/>
+        </div>
+        <div>
+            <p>Моб.телефон</p>
+            <input tabindex="5" name="userPhone" type="tel"/>
+        </div>
+        <div>
+            <p>Адрес (улица, дом)</p>
+            <input tabindex="6" name="userAddress" type="text"/>
+        </div>
+        <div>
+            <p>Страна</p>
+            <select tabindex="7" name="userCountry">
+                <option value="RU">Россия</option>
+                <option value="FR">Франция</option>
+            </select>
+        </div>
+        <div>
+            <p>Индекс</p>
+            <input tabindex="8" name="userPostalcode" type="number"/>
+        </div>
+        <div>
+            <p>Город</p>
+            <input tabindex="9" name="userTown" type="text"/>
+        </div>
+        <div>
+            <p>Пароль</p>
+            <input tabindex="10" name="userPass" type="password"/>
+        </div>
+        <div>
+            <p>Повторите пароль</p>
+            <input tabindex="11" name="userPassConfirm" type="password"/>
+            <p>Безопасность пароля (плохая - средняя - отличная)</p>
+            <p>Мин 8 знаков из которых 1 строчная, 1 заглавная, 1 цифра и 1 спец.символ</p>
+        </div>
+        <div>
+            <p>Дополнительная информация</p>
+            <textarea tabindex="12" name="additionalInfo"></textarea>
+        </div>
+        <div>
+            <div>
+                <p>Я младше 18 лет</p>
+                <input tabindex="13" name="age" type="radio" value="child"/>
+            </div>
+            <div>
+                <p>Я старше 18 лет</p>
+                <input tabindex="13" checked checked name="age" type="radio" value="adult"/>
+            </div>
+        </div>
+        <div>
+            <p>Принимаю условия <a href="#">Пользовательского соглашения</a></p>
+            <input tabindex="14" name="termsConditions" type="checkbox" checked/>
+        </div>
+        <div>
+            <p>Подписаться на рассылку</p>
+            <input tabindex="15" name="subscribeNewsletter" type="checkbox"/>
+        </div>
+        <div>
+            <p>Действия</p>
+            <button tabindex="16" type="submit">Создать</button>
+            <button tabindex="17" type="reset">Очистить</button>
+        </div>
+    </form>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
