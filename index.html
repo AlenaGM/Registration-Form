@@ -12,85 +12,96 @@
     <link rel="shortcut icon" href="assets/img/book-stack.png" type="img/png">
     <title>Registration form</title>
 </head>
+
 <body>
-    <form action="#" method="post" enctype="multipart/form-data">
+
+    <header>
         <div>
-            <p>Прикрепить фото</p>
-            <input tabindex="1" type="file"/>
-        </div>  
-        <div>
-            <p>Имя</p>
-            <input placeholder="Имя" tabindex="2" name="userFirstName" type="text"/>
-        </div>
-        <div>
-            <p>Фамилия</p>
-            <input placeholder="Фамилия" tabindex="3" name="userLastName" type="text"/>
-        </div>
-        <div>
-            <p>Адрес эл.почты</p>
-            <input placeholder="Адрес эл.почты" tabindex="4" name="userEmail" type="text"/>
-        </div>
-        <div>
-            <p>Моб.телефон</p>
-            <input tabindex="5" name="userPhone" type="tel"/>
-        </div>
-        <div>
-            <p>Адрес (улица, дом)</p>
-            <input tabindex="6" name="userAddress" type="text"/>
-        </div>
-        <div>
-            <p>Страна</p>
-            <select tabindex="7" name="userCountry">
-                <option value="RU">Россия</option>
-                <option value="FR">Франция</option>
+            <label for="themeSelect">Theme:</label>
+            <select id="themeSelect" name="theme">
+                <option value="light" selected>Light</option>
+                <option value="dark">Dark</option>
             </select>
         </div>
-        <div>
-            <p>Индекс</p>
-            <input tabindex="8" name="userPostalcode" type="number"/>
-        </div>
-        <div>
-            <p>Город</p>
-            <input tabindex="9" name="userTown" type="text"/>
-        </div>
-        <div>
-            <p>Пароль</p>
-            <input tabindex="10" name="userPass" type="password"/>
-        </div>
-        <div>
-            <p>Повторите пароль</p>
-            <input tabindex="11" name="userPassConfirm" type="password"/>
-            <p>Безопасность пароля (плохая - средняя - отличная)</p>
-            <p>Мин 8 знаков из которых 1 строчная, 1 заглавная, 1 цифра и 1 спец.символ</p>
-        </div>
-        <div>
-            <p>Дополнительная информация</p>
-            <textarea tabindex="12" name="additionalInfo"></textarea>
-        </div>
-        <div>
+    </header>
+
+    <main>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <h1>Your Account</h1>
             <div>
-                <p>Я младше 18 лет</p>
-                <input tabindex="13" name="age" type="radio" value="child"/>
+                <h2>Login Information</h2>
+                <p>* Required fields</p>
             </div>
             <div>
-                <p>Я старше 18 лет</p>
-                <input tabindex="13" checked checked name="age" type="radio" value="adult"/>
+                <label for="userEmail">* Email:</label>
+                <input type="email" id="userEmail" name="email" placeholder="* Email" tabindex="1" required/>
             </div>
-        </div>
-        <div>
-            <p>Принимаю условия <a href="#">Пользовательского соглашения</a></p>
-            <input tabindex="14" name="termsConditions" type="checkbox" checked/>
-        </div>
-        <div>
-            <p>Подписаться на рассылку</p>
-            <input tabindex="15" name="subscribeNewsletter" type="checkbox"/>
-        </div>
-        <div>
-            <p>Действия</p>
-            <button tabindex="16" type="submit">Создать</button>
-            <button tabindex="17" type="reset">Очистить</button>
-        </div>
-    </form>
+            <div>
+                <label for="confirmEmail">* Confirm Email:</label>
+                <input type="email" id="confirmEmail" placeholder="* Confirm Email" tabindex="2" required/>
+            </div>
+            <div>
+                <label for="userPassword">* Password:</label>
+                <input type="password" id="userPassword" name="password" placeholder="* Password" tabindex="3" minlength="8" required/>
+            </div>
+            <div>
+                <label for="confirmPassword">* Confirm Password:</label>
+                <input type="password" id="confirmPassword" placeholder="* Confirm Password" tabindex="4" required/>
+                <p>Minimum 8 characters including 1 uppercase letter, 1 lowercase letter, 1 special character, alphanumeric characters</p>
+            </div>
+
+            <h2>Personal Information</h2>
+            <div>
+                <label for="userTitle">* Title</label>
+                <select  id="userTitle" name="title" tabindex="5">
+                    <option disabled selected="selected">-</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Ms">Ms</option>
+                </select>
+            </div>
+            <div>
+                <label>* First Name:<input type="text" id="userFirstName" name="firstName" value="" placeholder="* First Name" tabindex="6" required/></label>
+                <label>* Last Name:<input type="text" id="userLastName" name="lastName" value="" placeholder="* Last Name" tabindex="7" required/></label>
+            </div>
+            <div>
+                <label>* Address:<input type="text" id="userAddress" name="address" value="" placeholder="Address" tabindex="8" required/></label>
+            </div>
+            <div>
+                <label>Postcode:<input type="text" id="userPostcode" name="postcode" value="" placeholder="Postcode" tabindex="9" /></label>
+                <label>* City:<input type="text" id="userCity" name="city" value="" placeholder="* City" tabindex="10" required/></label>
+            </div>
+            <div>
+                <label for="userCountry">* Contry</label>
+                <select id="userCountry" name="country" tabindex="11">
+                    <option disabled selected="selected">-</option>
+                    <option value="RU">Russia</option>
+                    <option value="FR">France</option>
+                </select>
+            </div>
+            <div>
+                <label>* Phone<input type="tel" id="userPhone" name="phone" placeholder="* Phone" tabindex="12" required/></label>
+                <label for="userPhone"></label>
+            </div>
+            <div>
+                <label>Birthdate:<input type="date" id="userBirthdate" name="birthDate" tabindex="13"/></label>
+            </div>
+
+            <h2>Receive Our Newsletter</h2>
+            <div>
+                <input type="checkbox" id="signupNewsletter" name="signupNewsletter" value="yes" tabindex="14"  />
+                <label for="signupNewsletter">Sign up to get updates</label>
+            </div>
+            <div>
+                <input type="checkbox" id="agreeConditions" name="agreeConditions" value="yes" tabindex="15" required/>
+                <label for="agreeConditions">I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+            </div>
+            <div>
+                <button type="submit" tabindex="16">Create Account</button>
+                <button type="reset" tabindex="17">Reset</button>
+            </div>
+        </form>
+    </main>
 
     <script src="assets/js/script.js"></script>
 </body>
