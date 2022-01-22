@@ -1,23 +1,20 @@
 html,
 body {
     height: 100%;
-    line-height: 1;
+    line-height: 140%;
     font-size: 13px;
     color: #23262F;
     background-color: #FFFFFF;
-    font-family: 'Josefin Sans', sans-serif;
-}
-
-p {
-    color: #87898E;
-    margin: 10px 0px 0px;
+    font-family: 'Didact Gothic', sans-serif;
 }
 
 .wrapper {
+    min-height: 100%;
+    overflow: hidden;
 }
 
 .form {
-    max-width: 550px;
+    max-width: 560px;
     margin: 0px auto;
     padding: 30px 0;
     display: flex;
@@ -28,103 +25,82 @@ p {
     outline: none;
 }
 
-.form__body {
-}
-
 .form__title {
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 54px;
-    letter-spacing: 0em;
-    text-align: left;
-    color:#23262F;
-    margin: 0px 0px 0px 0px;
+    font-size: 20px;
+    letter-spacing: 0.1em ;
+    margin: 60px 0px 18px 0px;
     text-align: center;
     text-transform: uppercase;
 }
 
-.title_plus {
-    display: inline-flex;
+.form__box {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     width: 100%;
     align-items: center;
 }
 
 .form__subtitle {
-    font-size: 13px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    letter-spacing: 0em;
+    letter-spacing: 0.1em ;
     text-align: left;
-    color:#23262F;
     text-transform: uppercase;
-    margin: 40px 0px 16px 0px;
+    margin: 32px 0px 12px 0px;
 }
 
-.title_plus p{
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    letter-spacing: 0em;
-    text-align: right;
+.form__required{
     color:#23262F;
-    margin: 40px 0px 16px 0px;
+    margin: 32px 0px 12px 0px;
 }
 
 .form__item {
+    width: 48%;
     margin: 0px 0px 12px 0px;
+    align-self: flex-start;
+    position: relative;
 }
 
-.form__item_common {
-    display: inline-flex;
+.item_size-full {
+    width: 100%;
 }
 
 .form__label {
     z-index: 1;
     position: absolute;
-    top: 1.25rem;
-    transition: transform .32s
-        cubic-bezier(0,0,.2,1) 0ms, color .32s
-        cubic-bezier(0,0,.2,1) 0ms;
-    max-width: calc(100% - 2.5rem);
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 13px;
+    top: 18px;
+    left: 0;
+    transition: all 0.5s ease 0s;
+    background-color: transparent;
 }
 
-input.has-value label {
-    font-size: .8125rem;
-    line-height: 1.3125rem;
-    transform: translate(-1.25rem);
+.form__input:focus + .form__label{
+    transform:translate(0px, -18px);
+    font-size: 11px;
     color: #87898E;
 }
 
-.form__label:focus {
-    font-size: 13px;
-    transform: translateY(-1.25rem);
-    color: red;
-    margin: 0px 0px 10px 0px;
+p {
+    color: #87898E;
+    margin: 8px 0px;
 }
 
 .form__input {
     width: 100%;
     padding: 20px 0px 6px 0px;
-    width: 100%;
     background-color: transparent;
     border: none;
     border-bottom: solid 1px #87898E;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #23262F;
     transition: all 0.5s ease 0s;
 }
 
-.form__input:focus{
+.form__input:focus {
+    border-bottom: solid 1px #000000;
+}
+
+.form__input/*КОГДА ЗАПОЛНЕНА*/ {
     border-bottom: solid 1px #000000;
 }
 
@@ -137,13 +113,16 @@ input.has-value label {
 }
 
 .checkbox__label {
-    font-size: 13px;
-    font-style: normal;
     color: #87898E;
     display: flex;
-    align-self: center;
+    align-items: center;
     position: relative;
     cursor: pointer;
+}
+
+.checkbox__label a{
+    color: #87898E;
+    padding: 0px 5px;
 }
 
 .checkbox__input:checked + .checkbox__label::after {
@@ -157,7 +136,7 @@ input.has-value label {
     height: 8px;
     background-color: #FFFFFF;
     border: solid 1px #87898E;
-    margin: 0px 9px 0px 0px;
+    margin: 5px 9px 0px 0px;
 }
 
 .checkbox__label::after{
@@ -169,12 +148,12 @@ input.has-value label {
     left: 0px;
     background-color: #23262F;
     transform: scale(0);
-    transition: transform 0.5s ease 0s;
+    transition: all 0.3s 0s;
 }
 
-.checkbox__label a{
-    color: #87898E;
-    padding: 0px 5px;
+.checkbox__input:checked + .checkbox__label::after {
+    margin: 5px 9px 0px 0px;
+
 }
 
 .checkbox__input:checked + .checkbox__label, .checkbox__input:checked + .checkbox__label a {
@@ -184,21 +163,16 @@ input.has-value label {
 
 .form__button {
     display: flex;
-    justify-content: center;
     align-items: center;
-    justify-self: center;
-    height: 3rem;
+    height: 40px;
     background-color: #23262F;
     border: none;
     color:#FFFFFF;
     text-transform: uppercase;
     border-radius: 1.25rem;
-    padding: 0 2rem;
-    box-sizing: border-box;
+    padding: 0 3rem;
     cursor: pointer;
     transition: background-color 0.5s ease 0s;
-    position: relative;
-    top: 0;
     margin: 40px 0px 40px 0px;
 }
 
@@ -208,14 +182,14 @@ input.has-value label {
     border: solid 1px #23262F;
 }
 
-.button {
-    display: flex;
-    justify-content: center;
-}
-
 .form__button:active {
     background-color: transparent;
     top: 3px;
     color: #23262F;
     border: solid 1px #23262F;
+}
+
+.form__item_position-center {
+    display: flex;
+    justify-content: center;
 }

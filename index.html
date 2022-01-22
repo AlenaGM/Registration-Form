@@ -4,15 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic-ext" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="shortcut icon" href="assets/img/book-stack.png" type="img/png">
@@ -21,42 +15,42 @@
 
 <body>
     <div class="wrapper">
-        <!--
+    <!--
         <div>
             <label for="themeSelect">Theme:</label>
             <select id="themeSelect" name="theme">
                 <option value="light" selected>Light</option>
                 <option value="dark">Dark</option>
             </select>
-        </div>-->
+        </div>
+    -->
 
-        <div class="form">
-            <form action="#" id="form" class="form__body" method="post" enctype="multipart/form-data">
+        <form class="form">
+            <div action="#" id="form" class="form__body" method="post" enctype="multipart/form-data">
 
                 <h1 class="form__title">Your Account</h1>
-                <div class="title_plus">
+
+                <div class="form__box">
                     <h2 class="form__subtitle">Login Information</h2>
-                    <p>* Required fields</p>
+                    <p class="form__required">* Required fields</p>
                 </div>
 
-                    <div class="form__item form_item_common">
+                <div class="form__box">
+                    <div class="form__item">
                         <input type="email" id="userEmail" name="email" class="form__input" placeholder="* E-mail" tabindex="1"/>
                         <label for="userEmail" class="form__label">E-mail*</label>
-                        <input type="password" id="userPassword" name="password" class="form__input" placeholder="* Password" tabindex="3" minlength="8"/>
-                        <label for="userPassword" class="form__label">Password*</label>
-                        <p>Minimum 8 characters including 1 uppercase letter, 1 lowercase letter, 1 special character, alphanumeric characters</p>
                     </div>
-
                     <div class="form__item">
                         <input type="password" id="userPassword" name="password" class="form__input" placeholder="* Password" tabindex="3" minlength="8"/>
                         <label for="userPassword" class="form__label">Password*</label>
                         <p>Minimum 8 characters including 1 uppercase letter, 1 lowercase letter, 1 special character, alphanumeric characters</p>
                     </div>
+                </div>
 
                 <h2 class="form__subtitle">Personal Information</h2>
 
                 <div class="form__item">
-                    <label for="userTitle" class="form__label">Title*</label>
+                    <p class="form__label">Title*</p>
                     <select  id="userTitle" name="title" class="form__select" tabindex="5">
                         <option disabled selected="selected">-</option>
                         <option value="Mr">Mr</option>
@@ -65,35 +59,35 @@
                     </select>
                 </div>
 
-                <div class="form__item ">
-                    <input type="text" id="userFirstName" name="firstName" class="form__input" value="" placeholder="* First Name" tabindex="6"/>
-                    <label for="userFirstName" class="form__label">First Name*</label>
+                <div class="form__box">
+                    <div class="form__item ">
+                        <input type="text" id="userFirstName" name="firstName" class="form__input" value="" placeholder="* First Name" tabindex="6"/>
+                        <label for="userFirstName" class="form__label">First Name*</label>
+                    </div>
+                    <div class="form__item">
+                        <input type="text" id="userLastName" name="lastName" class="form__input" value="" placeholder="* Last Name" tabindex="7"/>
+                        <label for="userLastName" class="form__label">Last Name*</label>
+                    </div>
                 </div>
 
-                <div class="form__item">
-                    <input type="text" id="userLastName" name="lastName" class="form__input" value="" placeholder="* Last Name" tabindex="7"/>
-                    <label for="userLastName" class="form__label">Last Name*</label>
-                </div>
-
-
-                <div class="form__item">
-                    <input type="text" id="userAddress" name="address" class="form__input" value="" placeholder="Address" tabindex="8"/>
+                <div class="form__item item_size-full">
+                    <input type="text" id="userAddress" name="address" class="form__input" value="" placeholder="* Address" tabindex="8"/>
                     <label for="userAddress" class="form__label">Address*</label>
                 </div>
 
-                <div class="form__item">
-                    <input type="text" id="userPostcode" name="postcode" class="form__input" value="" placeholder="Postcode" tabindex="9"/>
-                    <label for="userPostcode" class="form__label">Postcode</label>
+                <div class="form__box">
+                    <div class="form__item">
+                        <input type="text" id="userPostcode" name="postcode" class="form__input" value="" placeholder="* Postcode" tabindex="9"/>
+                        <label for="userPostcode" class="form__label">Postcode</label>
+                    </div>
+                    <div class="form__item">
+                        <input type="text" id="userCity" name="city" class="form__input" value="" placeholder="* City" tabindex="10"/>
+                        <label for="userCity" class="form__label">City*</label>
+                    </div>
                 </div>
 
-                <div class="form__item">
-                    <input type="text" id="userCity" name="city" class="form__input" value="" placeholder="* City" tabindex="10"/>
-                    <label for="userCity" class="form__label">City*</label>
-                </div>
-
-
-                <div class="form__item">
-                    <label for="userCountry" class="form__label">Contry*</label>
+                <div class="form__item item_size-full">
+                    <p class="form__label">Contry*</p>
                     <select id="userCountry" name="country" class="form__select" tabindex="11">
                         <option disabled selected="selected">-</option>
                         <option value="RU">Russia</option>
@@ -107,24 +101,23 @@
                 </div>
 
                 <div class="form__item">
-
+                    <p class="form__label">Birthdate</p>
                     <input type="date" id="userBirthdate" name="birthDate" class="form__input" tabindex="13"/>
-                    <label for="userBirthdate" class="form__label">Birthdate</label>
                 </div>
 
                 <h2 class="form__subtitle">Receive Our Newsletter</h2>
 
-                <div class="form__item">
+                <div class="form__item item_size-full">
                     <input type="checkbox" id="signupNewsletter" name="signupNewsletter" class="checkbox__input" value="yes" tabindex="14"/>
                     <label for="signupNewsletter" class="checkbox__label">Sign up to get updates</label>
                 </div>
 
-                <div class="form__item">
+                <div class="form__item item_size-full">
                     <input checked type="checkbox" id="agreeConditions" name="agreeConditions" class="checkbox__input" value="yes" tabindex="15"/>
                     <label for="agreeConditions" class="checkbox__label">I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
                 </div>
 
-                <div class="form__item button">
+                <div class="form__item item_size-full form__item_position-center">
                     <button type="submit" class="form__button" tabindex="16">Create Account</button>
                 </div>
             </form>
