@@ -48,7 +48,7 @@
                 </div>
 
                 <h2 class="form__subtitle">Personal Information</h2>
-
+<!-- УБРАНО ПОКА НЕ НАУЧУСЬ СТИЛИЗОВАТЬ СЕЛЕКТЫ
                 <div class="form__item">
                     <p class="form__label">Title*</p>
                     <select  id="userTitle" name="title" class="form__select" tabindex="5">
@@ -58,7 +58,7 @@
                         <option value="Ms">Ms</option>
                     </select>
                 </div>
-
+-->
                 <div class="form__box">
                     <div class="form__item ">
                         <input type="text" id="userFirstName" name="firstName" class="form__input" value="" placeholder="* First Name" tabindex="6"/>
@@ -71,21 +71,27 @@
                 </div>
 
                 <div class="form__item item_size-full">
-                    <input type="text" id="userAddress" name="address" class="form__input" value="" placeholder="* Address" tabindex="8"/>
-                    <label for="userAddress" class="form__label">Address*</label>
+                    <input type="text" id="userAddress" name="address" class="form__input" value="" placeholder="Address" tabindex="8"/>
+                    <label for="userAddress" class="form__label">Address</label>
                 </div>
 
                 <div class="form__box">
                     <div class="form__item">
-                        <input type="text" id="userPostcode" name="postcode" class="form__input" value="" placeholder="* Postcode" tabindex="9"/>
+                        <input type="text" id="userPostcode" name="postcode" class="form__input" value="" placeholder="Postcode" tabindex="9"/>
                         <label for="userPostcode" class="form__label">Postcode</label>
                     </div>
                     <div class="form__item">
-                        <input type="text" id="userCity" name="city" class="form__input" value="" placeholder="* City" tabindex="10"/>
-                        <label for="userCity" class="form__label">City*</label>
+                        <input type="text" id="userCity" name="city" class="form__input buka" value="" placeholder="City" tabindex="10"/>
+                        <label for="userCity" class="form__label">City</label>
                     </div>
                 </div>
 
+                <div class="form__item item_size-full">
+                    <input type="text" id="userCountry" name="country" class="form__input" value="" placeholder="* Country" tabindex="11"/>
+                    <label for="userCountry" class="form__label">Country*</label>
+                </div>
+
+<!--УБРАНО ПОКА НЕ НАУЧУСЬ СТИЛИЗОВАТЬ СЕЛЕКТЫ
                 <div class="form__item item_size-full">
                     <p class="form__label">Contry*</p>
                     <select id="userCountry" name="country" class="form__select" tabindex="11">
@@ -94,22 +100,22 @@
                         <option value="FR">France</option>
                     </select>
                 </div>
-
+-->
                 <div class="form__item">
-                    <input type="tel" id="userPhone" name="phone" class="form__input" placeholder="* Phone" tabindex="12"/>
+                    <input type="tel" id="userPhone" name="phone" class="form__input"  placeholder="* Phone" tabindex="12"/>
                     <label for="userPhone" class="form__label">Phone*</label>
                 </div>
-
+<!--УБРАНО ПОКА НЕ НАУЧУСЬ СТИЛИЗОВАТЬ ДАТЫ
                 <div class="form__item">
                     <p class="form__label">Birthdate</p>
                     <input type="date" id="userBirthdate" name="birthDate" class="form__input" tabindex="13"/>
                 </div>
-
-                <h2 class="form__subtitle">Receive Our Newsletter</h2>
+-->
+                <h2 class="form__subtitle newsletter__subtitle">Receive Our Newsletter</h2>
 
                 <div class="form__item item_size-full">
                     <input type="checkbox" id="signupNewsletter" name="signupNewsletter" class="checkbox__input" value="yes" tabindex="14"/>
-                    <label for="signupNewsletter" class="checkbox__label">Sign up to get updates</label>
+                    <label for="signupNewsletter" class="checkbox__label">Subscribe to our newsletter</label>
                 </div>
 
                 <div class="form__item item_size-full">

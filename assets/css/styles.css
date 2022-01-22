@@ -11,12 +11,13 @@ body {
 .wrapper {
     min-height: 100%;
     overflow: hidden;
+    padding: 0 16px;
 }
 
 .form {
     max-width: 560px;
     margin: 0px auto;
-    padding: 30px 0;
+    padding: 16px 0;
     display: flex;
     flex-direction: column;
 }
@@ -48,12 +49,16 @@ body {
     letter-spacing: 0.1em ;
     text-align: left;
     text-transform: uppercase;
-    margin: 32px 0px 12px 0px;
+    margin: 42px 0px 12px 0px;
+}
+
+.newsletter__subtitle {
+    margin-top: 54px;
 }
 
 .form__required{
     color:#23262F;
-    margin: 32px 0px 12px 0px;
+    margin: 42px 0px 12px 0px;
 }
 
 .form__item {
@@ -73,10 +78,19 @@ body {
     top: 18px;
     left: 0;
     transition: all 0.5s ease 0s;
-    background-color: transparent;
+    background-color: #FFFFFF;
+    padding-right: 60%;
+    overflow: hidden;
 }
 
 .form__input:focus + .form__label{
+    transform:translate(0px, -18px);
+    font-size: 11px;
+    color: #87898E;
+}
+
+/*КОГДА ЗАПОЛНЕНА - добавить класс в JS*/
+.filled + .form__label{
     transform:translate(0px, -18px);
     font-size: 11px;
     color: #87898E;
@@ -89,21 +103,18 @@ p {
 
 .form__input {
     width: 100%;
-    padding: 20px 0px 6px 0px;
-    background-color: transparent;
+    padding: 24px 0px 2px 0px;
+    background-color: #FFFFFF;
     border: none;
     border-bottom: solid 1px #87898E;
     transition: all 0.5s ease 0s;
+    color: #23262F;
 }
 
 .form__input:focus {
     border-bottom: solid 1px #000000;
 }
 
-/*КОГДА ЗАПОЛНЕНА*/
-.form__input.active {
-    border-bottom: solid 1px #000000;
-}
 
 .form__select {
 
@@ -174,7 +185,7 @@ p {
     padding: 0 3rem;
     cursor: pointer;
     transition: background-color 0.5s ease 0s;
-    margin: 40px 0px 40px 0px;
+    margin: 48px 0px 48px 0px;
 }
 
 .form__button:hover {
@@ -193,4 +204,32 @@ p {
 .form__item_position-center {
     display: flex;
     justify-content: center;
+}
+
+@media screen and (max-width: 1023px) {
+    .form__box {
+        flex-direction: column;
+    }
+
+    .form__item {
+        width:100%;
+    }
+
+    .form__subtitle {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: 0.1em ;
+        text-align: left;
+        text-transform: uppercase;
+        margin: 24px 0px 6px 0px;
+    }
+
+    .form__required {
+        margin: 12px 0px 12px 0px;
+    }
+
+    .newsletter__subtitle {
+        margin-top: 44px;
+    }
 }
