@@ -16,3 +16,5 @@ font-family: 'Didact Gothic', sans-serif;
 темно-красный #E53535
 средне-красный #FF5C5C
 
+темно-зеленый #05A660
+

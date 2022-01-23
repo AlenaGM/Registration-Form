@@ -29,6 +29,8 @@
             <div action="#" id="form" class="form__body" method="post" enctype="multipart/form-data">
 
                 <h1 class="form__title">Your Account</h1>
+                <div id="errorMessage"></div>
+                <div id="successMessage"></div>
 
                 <div class="form__box">
                     <h2 class="form__subtitle">Login Information</h2>
@@ -37,11 +39,11 @@
 
                 <div class="form__box">
                     <div class="form__item">
-                        <input type="email" id="userEmail" name="email" class="form__input _req _email" placeholder="* E-mail" tabindex="1"/>
+                        <input type="email" id="userEmail" name="email" class="form__input _email" placeholder="* E-mail" tabindex="1"/>
                         <label for="userEmail" class="form__label">E-mail*</label>
                     </div>
                     <div class="form__item">
-                        <input type="password" id="userPassword" name="password" class="form__input _req" placeholder="* Password" tabindex="3" minlength="8"/>
+                        <input type="password" id="userPassword" name="password" class="form__input" placeholder="* Password" tabindex="3"/>
                         <label for="userPassword" class="form__label">Password*</label>
                         <p>Minimum 8 characters including 1 uppercase letter, 1 lowercase letter, 1 special character, alphanumeric characters</p>
                     </div>
@@ -61,12 +63,11 @@
 -->
                 <div class="form__box">
                     <div class="form__item ">
-                        <input type="text" id="userFirstName" name="firstName" class="form__input _req" value="" placeholder="* First Name" tabindex="6"/>
+                        <input type="text" id="userFirstName" name="firstName" class="form__input" value="" placeholder="* First Name" tabindex="6"/>
                         <label for="userFirstName" class="form__label">First Name*</label>
-                        <p id="comment">ХиХиХИ</p>
                     </div>
                     <div class="form__item">
-                        <input type="text" id="userLastName" name="lastName" class="form__input _req" value="" placeholder="* Last Name" tabindex="7"/>
+                        <input type="text" id="userLastName" name="lastName" class="form__input" value="" placeholder="* Last Name" tabindex="7"/>
                         <label for="userLastName" class="form__label">Last Name*</label>
                     </div>
                 </div>
@@ -82,13 +83,13 @@
                         <label for="userPostcode" class="form__label">Postcode</label>
                     </div>
                     <div class="form__item">
-                        <input type="text" id="userCity" name="city" class="form__input buka" value="" placeholder="City" tabindex="10"/>
+                        <input type="text" id="userCity" name="city" class="form__input" value="" placeholder="City" tabindex="10"/>
                         <label for="userCity" class="form__label">City</label>
                     </div>
                 </div>
 
                 <div class="form__item item_size-full">
-                    <input type="text" id="userCountry" name="country" class="form__input _req" value="" placeholder="* Country" tabindex="11"/>
+                    <input type="text" id="userCountry" name="country" class="form__input" value="" placeholder="* Country" tabindex="11"/>
                     <label for="userCountry" class="form__label">Country*</label>
                 </div>
 
@@ -103,7 +104,7 @@
                 </div>
 -->
                 <div class="form__item">
-                    <input type="tel" id="userPhone" name="phone" class="form__input _req"  placeholder="* Phone" tabindex="12"/>
+                    <input type="tel" id="userPhone" name="phone" class="form__input"  placeholder="* Phone" tabindex="12"/>
                     <label for="userPhone" class="form__label">Phone*</label>
                 </div>
 <!--УБРАНО ПОКА НЕ НАУЧУСЬ СТИЛИЗОВАТЬ ДАТЫ
@@ -120,13 +121,12 @@
                 </div>
 
                 <div class="form__item item_size-full">
-                    <input checked type="checkbox" id="agreeConditions" name="agreeConditions" class="checkbox__input _req" value="yes" tabindex="15"/>
+                    <input checked type="checkbox" id="agreeConditions" name="agreeConditions" class="checkbox__input" value="yes" tabindex="15"/>
                     <label for="agreeConditions" class="checkbox__label">I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
                 </div>
 
                 <div class="form__item item_size-full form__item_position-center">
-                    <button type="submit" class="form__button" tabindex="16" onclick="check()">Create Account</button>
-                    <div id="errorMessage"></div>
+                    <div class="form__button" tabindex="16" onclick="checkValidity()">Create Account</div>
                 </div>
             </form>
         </div>

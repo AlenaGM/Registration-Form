@@ -133,8 +133,12 @@ p {
     color: #23262F;
 }
 
-._error {
-    border-bottom: solid 1px #FF5C5C;
+.input_error {
+    border-bottom: solid 1px #E53535;
+}
+
+.input_valid {
+    border-bottom: solid 1px #05A660;
 }
 
 .form__input:focus {
@@ -228,7 +232,14 @@ p {
 }
 
 #errorMessage{
-    color: red;
+    color: #E53535;
+    text-align: center;
+}
+
+
+#successMessage{
+    color: #05A660;
+    text-align: center;
 }
 
 @media screen and (max-width: 1023px) {

@@ -1,183 +1,110 @@
-let userEmail = document.getElementById("userEmail").value;
-let userPassword = document.getElementById("userPassword").value;
-let userFirstName = document.getElementById("userFirstName").value;
-let userLastName = document.getElementById("userLastName").value;
-let userAddress = document.getElementById("userAddress").value;
-let userPostcode = document.getElementById("userPostcode").value;
-let userCity = document.getElementById("userCity").value;
-let userCountry = document.getElementById("userCountry").value;
-let userPhone = document.getElementById("userPhone").value;
+let userEmail = document.getElementById("userEmail");
+let userPassword = document.getElementById("userPassword");
+let userFirstName = document.getElementById("userFirstName");
+let userLastName = document.getElementById("userLastName");
+let userAddress = document.getElementById("userAddress");
+let userPostcode = document.getElementById("userPostcode");
+let userCity = document.getElementById("userCity");
+let userCountry = document.getElementById("userCountry");
+let userPhone = document.getElementById("userPhone");
 
-
-if (userEmail == '') {;
-    document.getElementById("userEmail").className += " filled";
-};
-
-if (userPassword == '') {;
-    document.getElementById("userPassword").className += " filled";
-};
-
-if (userFirstName == '') {;
-    document.getElementById("userFirstName").className += " filled";
-};
-
-if (userLastName == '') {;
-    document.getElementById("userLastName").className += " filled";
-};
-
-if (userAddress == '') {;
-    document.getElementById("userAddress").className += " filled";
-};
-
-if (userPostcode == '') {;
-    document.getElementById("userPostcode").className += " filled";
-};
-
-if (userCity == '') {;
-    document.getElementById("userCity").className += " filled";
-};
-
-if (userCountry == '') {;
-    document.getElementById("userCountry").className += " filled";
-};
-
-if (userPhone == '') {;
-    document.getElementById("userPhone").className += " filled";
-};
-
-
-/*document.getElementById("userPassword").className += " filled";
+/*Для оформления: при присвоении класса filled label поднимается в верхний левый угол,
+на старом месте видно placeholder. Как сделать так, чтоб он изменялся сразу, без нажатия на кнопку?*/
+document.getElementById("userEmail").className += " filled";
+document.getElementById("userPassword").className += " filled";
 document.getElementById("userFirstName").className += " filled";
 document.getElementById("userLastName").className += " filled";
 document.getElementById("userAddress").className += " filled";
 document.getElementById("userPostcode").className += " filled";
 document.getElementById("userCity").className += " filled";
 document.getElementById("userCountry").className += " filled";
-document.getElementById("userPhone").className += " filled";*/
-/*
-let userEmail = document.getElementById("userEmail").value;
-let userPassword = document.getElementById("userPassword").value;
-let userFirstName = document.getElementById("userFirstName").value;
-let userLastName = document.getElementById("userLastName").value;
-let userAddress = document.getElementById("userAddress").value;
-let userPostcode = document.getElementById("userPostcode").value;
-let userCity = document.getElementById("userCity").value;
-let userCountry = document.getElementById("userCountry").value;
-let userPhone = document.getElementById("userPhone").value;
-
-function check(){
-
-    let userEmail = document.getElementById("userEmail").value;
-let userPassword = document.getElementById("userPassword").value;
-let userFirstName = document.getElementById("userFirstName").value;
-let userLastName = document.getElementById("userLastName").value;
-let userAddress = document.getElementById("userAddress").value;
-let userPostcode = document.getElementById("userPostcode").value;
-let userCity = document.getElementById("userCity").value;
-let userCountry = document.getElementById("userCountry").value;
-let userPhone = document.getElementById("userPhone").value;
-
-if (userEmail == '' || userPassword == '' || userFirstName == '' || userLastName == '' || userAddress == '' || userPostcode == '' || userCity == '' || userCountry == ''|| userPhone == '') {
-    alert('hihihihihihi');
-};
-
-  };
+document.getElementById("userPhone").className += " filled";
+/*Конец оформления*/
 
 
-/*
-let check = () => {
-
-    let username = document.getElementById("userFirstname").value;
-    let userphone = document.getElementById("userPhone").value;
-    let usermail = document.getElementById("userEmail").value;
-    let servicetype = document.getElementById("userLastName").value;
-    let comment = document.getElementById("userPassword").value;
-    document.getElementById('errorMessage').innerHTML = '';
-
-    if (userphone == '' || username == '' || usermail == '' || servicetype == '' || comment == '') {
-        document.getElementById('errorMessage').innerHTML = "Не все поля ввода заполнены!<br>";
-    };
+let checkValidity = () =>{
+    if(userEmail.value == '' || userPassword.value == '' || userFirstName.value == '' || userLastName.value == '' || userCountry.value == '' || userPhone.value == '') {
+        document.getElementById('errorMessage').innerHTML = "The information you entered is incorrect or<br>not all required fields are filled. Please check it and try again";
+        document.getElementById('successMessage').innerHTML = "";
+    }
 
     else {
-        document.getElementById('errorMessage').innerHTML = `${username} , Ваш запрос отправлен!<br>`;
+        document.getElementById('errorMessage').innerHTML = "";
+        document.getElementById('successMessage').innerHTML = `Congratulations, ${userFirstName.value}!<br>Your new account has been successfully created!`;
     };
-}*/
 
-/*
-"use strict"
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('form');
-    form.addEventListener('submit', formSend);
-
-    async function formSend(e) {
-
-        e.preventDefault();
-
-        let error = formValidate(form);
-
-        let formData = new formData(form);
-
-        if (error===0){
-            form.classList.add('_sending');
-            let response = await fetch('sendmail.php', {
-                method: 'POST',
-                body: formData
-            });
-
-            if(response.ok){
-                let result = await response.json();
-                alert(result.message);
-                formPreview.innerHTML = '';
-                form.reset();
-                form.classList.remove('_sending');
-            }else{
-                alert("Ошибка");
-                form.classList.remove('_sending');
-            }
-        }else{
-            alert('Заполните обязательные поля');
-        }
+    /*Украшательство*/
+    if(userEmail.value == '') {
+        document.getElementById("userEmail").className += " input_error";
     }
+    else {
+        document.getElementById("userEmail").className += " input_valid";
+    };
 
-    function formValidate(form) {
-        let error = 0;
-        let formReq = document.querySelectorAll('._req');
-
-        for (let index = 0; index < formReq.length; index++) {
-            const input = formReq[index];
-            formRemoveError(input);
-
-            if(input.classList.contains('_email')) {
-                if (emailTest(input)) {
-                    formAddError(input);
-                    error++;
-                }
-
-            } else if (input.getAttribute('type') === 'checkbox' && input.checked === false) {
-                formAddError(input);
-                error++;
-            } else if (input.value === '') {
-                    formAddError(input);
-                    error++;
-                }
-            }
-        }
-
-    function formAddError(input) {
-        input.parentElement.classList.add('_error');
-        input.classList.add('_error');
+    if(userPassword.value == '') {
+        document.getElementById("userPassword").className += " input_error";
     }
+    else {
+        document.getElementById("userPassword").className += " input_valid";
+    };
 
-    function formRemoveError(input) {
-        input.parentElement.classList.remove('_error');
-        input.classList.remove('_error');
+    if(userFirstName.value == '') {
+        document.getElementById("userFirstName").className += " input_error";
     }
+    else {
+        document.getElementById("userFirstName").className += " input_valid";
+    };
 
-    function emailTest(input) {
-        return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
-        /*return /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,4}$/.test(input.value);
+    if(userLastName.value == '') {
+        document.getElementById("userLastName").className += " input_error";
     }
-});*/
+    else {
+        document.getElementById("userLastName").className += " input_valid";
+    };
+
+    if(userAddress.value == '') {
+        document.getElementById("userAddress").className += " input_error";
+    }
+    else {
+        document.getElementById("userAddress").className += " input_valid";
+    };
+
+    if(userPostcode.value == '') {
+        document.getElementById("userPostcode").className += " input_error";
+    }
+    else {
+        document.getElementById("userPostcode").className += " input_valid";
+    };
+
+    if(userCity.value == '') {
+        document.getElementById("userCity").className += " input_error";
+    }
+    else {
+        document.getElementById("userCity").className += " input_valid";
+    };
+
+    if(userCountry.value == '') {
+        document.getElementById("userCountry").className += " input_error";
+    }
+    else {
+        document.getElementById("userCountry").className += " input_valid";
+    };
+
+    if(userPhone.value == '') {
+        document.getElementById("userPhone").className += " input_error";
+    }
+    else {
+        document.getElementById("userPhone").className += " input_valid";
+    };
+    /*Конец украшательству */
+}
+
+
+
+
+
+
+
 
 
 
