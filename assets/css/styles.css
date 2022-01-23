@@ -227,6 +227,10 @@ p {
     justify-content: center;
 }
 
+#errorMessage{
+    color: red;
+}
+
 @media screen and (max-width: 1023px) {
     .form__box {
         flex-direction: column;

@@ -63,6 +63,7 @@
                     <div class="form__item ">
                         <input type="text" id="userFirstName" name="firstName" class="form__input _req" value="" placeholder="* First Name" tabindex="6"/>
                         <label for="userFirstName" class="form__label">First Name*</label>
+                        <p id="comment">ХиХиХИ</p>
                     </div>
                     <div class="form__item">
                         <input type="text" id="userLastName" name="lastName" class="form__input _req" value="" placeholder="* Last Name" tabindex="7"/>
@@ -124,7 +125,8 @@
                 </div>
 
                 <div class="form__item item_size-full form__item_position-center">
-                    <button type="submit" class="form__button" tabindex="16">Create Account</button>
+                    <button type="submit" class="form__button" tabindex="16" onclick="check()">Create Account</button>
+                    <div id="errorMessage"></div>
                 </div>
             </form>
         </div>
