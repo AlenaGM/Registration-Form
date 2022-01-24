@@ -22,6 +22,7 @@ document.getElementById("userPhone").className += " filled";
 /*Конец оформления*/
 
 
+
 let checkValidity = () =>{
     if(userEmail.value == '' || userPassword.value == '' || userFirstName.value == '' || userLastName.value == '' || userCountry.value == '' || userPhone.value == '') {
         document.getElementById('errorMessage').innerHTML = "The information you entered is incorrect or<br>not all required fields are filled. Please check it and try again";
