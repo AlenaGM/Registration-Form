@@ -26,15 +26,18 @@ let addFilledLastName = () =>{
 }
 
 let addFilledAddress = () =>{
-    document.getElementById("userAddress").classList.add ('filled');
+    document.getElementById("userAddress").classList.add ('filled input_valid');
+    document.getElementById("userAddress").classList.add ('input_valid');
 }
 
 let addFilledPostcode = () =>{
     document.getElementById("userPostcode").classList.add ('filled');
+    document.getElementById("userPostcode").classList.add ('input_valid');
 }
 
 let addFilledCity = () =>{
     document.getElementById("userCity").classList.add ('filled');
+    document.getElementById("userCity").classList.add ('input_valid');
 }
 
 let addFilledcountry = () =>{
@@ -88,19 +91,9 @@ function checkValidity() {
         document.getElementById("userLastName").className += " input_valid";
     };
 
-    if (userAddress.value == '') {
-        document.getElementById("userAddress").className += " input_error";
-    }
-    else {
-        document.getElementById("userAddress").className += " input_valid";
-    };
 
-    if (userPostcode.value == '') {
-        document.getElementById("userPostcode").className += " input_error";
-    }
-    else {
-        document.getElementById("userPostcode").className += " input_valid";
-    };
+
+
 
     if (userCity.value == '') {
         document.getElementById("userCity").className += " input_error";
