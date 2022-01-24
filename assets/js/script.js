@@ -8,23 +8,47 @@ let userCity = document.getElementById("userCity");
 let userCountry = document.getElementById("userCountry");
 let userPhone = document.getElementById("userPhone");
 
-/*Для оформления: при присвоении класса filled label поднимается в верхний левый угол,
-на старом месте видно placeholder. Как сделать так, чтоб он изменялся сразу, без нажатия на кнопку?*/
-document.getElementById("userEmail").className += " filled";
-document.getElementById("userPassword").className += " filled";
-document.getElementById("userFirstName").className += " filled";
-document.getElementById("userLastName").className += " filled";
-document.getElementById("userAddress").className += " filled";
-document.getElementById("userPostcode").className += " filled";
-document.getElementById("userCity").className += " filled";
-document.getElementById("userCountry").className += " filled";
-document.getElementById("userPhone").className += " filled";
+/*Для оформления*/
+let addFilledEmail = () =>{
+    document.getElementById("userEmail").classList.add ('filled');
+}
+
+let addFilledPassword = () =>{
+    document.getElementById("userPassword").classList.add ('filled');
+}
+
+let addFilledFirstName = () =>{
+    document.getElementById("userFirstName").classList.add ('filled');
+}
+
+let addFilledLastName = () =>{
+    document.getElementById("userLastName").classList.add ('filled');
+}
+
+let addFilledAddress = () =>{
+    document.getElementById("userAddress").classList.add ('filled');
+}
+
+let addFilledPostcode = () =>{
+    document.getElementById("userPostcode").classList.add ('filled');
+}
+
+let addFilledCity = () =>{
+    document.getElementById("userCity").classList.add ('filled');
+}
+
+let addFilledcountry = () =>{
+    document.getElementById("userCountry").classList.add ('filled');
+}
+
+let addFilledPhone = () =>{
+    document.getElementById("userPhone").classList.add ('filled');
+}
 /*Конец оформления*/
 
 
-
-let checkValidity = () =>{
-    if(userEmail.value == '' || userPassword.value == '' || userFirstName.value == '' || userLastName.value == '' || userCountry.value == '' || userPhone.value == '') {
+function checkValidity() {
+    if (userEmail.value == '' || userPassword.value == '' || userFirstName.value == '' || userLastName.value == '' || userCountry.value == '' || userPhone.value == '') {
         document.getElementById('errorMessage').innerHTML = "The information you entered is incorrect or<br>not all required fields are filled. Please check it and try again";
         document.getElementById('successMessage').innerHTML = "";
     }
@@ -34,64 +58,65 @@ let checkValidity = () =>{
         document.getElementById('successMessage').innerHTML = `Congratulations, ${userFirstName.value}!<br>Your new account has been successfully created!`;
     };
 
+
     /*Украшательство*/
-    if(userEmail.value == '') {
+    if (userEmail.value == '') {
         document.getElementById("userEmail").className += " input_error";
     }
     else {
         document.getElementById("userEmail").className += " input_valid";
     };
 
-    if(userPassword.value == '') {
+    if (userPassword.value == '') {
         document.getElementById("userPassword").className += " input_error";
     }
     else {
         document.getElementById("userPassword").className += " input_valid";
     };
 
-    if(userFirstName.value == '') {
+    if (userFirstName.value == '') {
         document.getElementById("userFirstName").className += " input_error";
     }
     else {
         document.getElementById("userFirstName").className += " input_valid";
     };
 
-    if(userLastName.value == '') {
+    if (userLastName.value == '') {
         document.getElementById("userLastName").className += " input_error";
     }
     else {
         document.getElementById("userLastName").className += " input_valid";
     };
 
-    if(userAddress.value == '') {
+    if (userAddress.value == '') {
         document.getElementById("userAddress").className += " input_error";
     }
     else {
         document.getElementById("userAddress").className += " input_valid";
     };
 
-    if(userPostcode.value == '') {
+    if (userPostcode.value == '') {
         document.getElementById("userPostcode").className += " input_error";
     }
     else {
         document.getElementById("userPostcode").className += " input_valid";
     };
 
-    if(userCity.value == '') {
+    if (userCity.value == '') {
         document.getElementById("userCity").className += " input_error";
     }
     else {
         document.getElementById("userCity").className += " input_valid";
     };
 
-    if(userCountry.value == '') {
+    if (userCountry.value == '') {
         document.getElementById("userCountry").className += " input_error";
     }
     else {
         document.getElementById("userCountry").className += " input_valid";
     };
 
-    if(userPhone.value == '') {
+    if (userPhone.value == '') {
         document.getElementById("userPhone").className += " input_error";
     }
     else {
