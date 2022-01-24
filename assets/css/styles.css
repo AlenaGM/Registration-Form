@@ -123,6 +123,11 @@ p {
     margin: 8px 0px;
 }
 
+.form__required {
+    color: #E53535;
+    margin: 8px 0px;
+}
+
 .form__input {
     width: 100%;
     padding: 24px 0px 2px 0px;

@@ -11,18 +11,26 @@ let userPhone = document.getElementById("userPhone");
 /*Для оформления*/
 let addFilledEmail = () =>{
     document.getElementById("userEmail").classList.add ('filled');
+    document.getElementById("userEmail").classList.add ('input_valid');
+    document.getElementById('emailRequired').innerHTML = '';
 }
 
 let addFilledPassword = () =>{
     document.getElementById("userPassword").classList.add ('filled');
+    document.getElementById("userPassword").classList.add ('input_valid');
+    document.getElementById('passwordRequired').innerHTML = '';
 }
 
 let addFilledFirstName = () =>{
     document.getElementById("userFirstName").classList.add ('filled');
+    document.getElementById("userFirstName").classList.add ('input_valid');
+    document.getElementById('firstNameRequired').innerHTML = '';
 }
 
 let addFilledLastName = () =>{
     document.getElementById("userLastName").classList.add ('filled');
+    document.getElementById("userLastName").classList.add ('input_valid');
+    document.getElementById('lastNameRequired').innerHTML = '';
 }
 
 let addFilledAddress = () =>{
@@ -42,10 +50,14 @@ let addFilledCity = () =>{
 
 let addFilledCountry = () =>{
     document.getElementById("userCountry").classList.add ('filled');
+    document.getElementById("userCountry").classList.add ('input_valid');
+    document.getElementById('countryRequired').innerHTML = '';
 }
 
 let addFilledPhone = () =>{
     document.getElementById("userPhone").classList.add ('filled');
+    document.getElementById("userPhone").classList.add ('input_valid');
+    document.getElementById('phoneRequired').innerHTML = '';
 }
 /*Конец оформления*/
 
@@ -64,46 +76,51 @@ function checkValidity() {
 
     /*Украшательство*/
     if (userEmail.value == '') {
-        document.getElementById("userEmail").className += " input_error";
-    }
-    else {
-        document.getElementById("userEmail").className += " input_valid";
+        document.getElementById("userEmail").classList.remove ('input_valid');
+        document.getElementById("userEmail").classList.add ('input_error');
+        document.getElementById('emailRequired').innerHTML = 'Email is required';
+    } else {
+        document.getElementById('emailRequired').innerHTML = '';
     };
 
     if (userPassword.value == '') {
-        document.getElementById("userPassword").className += " input_error";
-    }
-    else {
-        document.getElementById("userPassword").className += " input_valid";
+        document.getElementById("userPassword").classList.remove ('input_valid');
+        document.getElementById("userPassword").classList.add ('input_error');
+        document.getElementById('passwordRequired').innerHTML = 'Password is required';
+    } else {
+        document.getElementById('passwordRequired').innerHTML = '';
     };
 
     if (userFirstName.value == '') {
-        document.getElementById("userFirstName").className += " input_error";
-    }
-    else {
-        document.getElementById("userFirstName").className += " input_valid";
+        document.getElementById("userFirstName").classList.remove ('input_valid');
+        document.getElementById("userFirstName").classList.add ('input_error');
+        document.getElementById('firstNameRequired').innerHTML = 'First name is required';
+    } else {
+        document.getElementById('firstNameRequired').innerHTML = '';
     };
 
     if (userLastName.value == '') {
-        document.getElementById("userLastName").className += " input_error";
-    }
-    else {
-        document.getElementById("userLastName").className += " input_valid";
+        document.getElementById("userLastName").classList.remove ('input_valid');
+        document.getElementById("userLastName").classList.add ('input_error');
+        document.getElementById('lastNameRequired').innerHTML = 'Last name is required';
+    } else {
+        document.getElementById('lastNameRequired').innerHTML = '';
     };
 
-
     if (userCountry.value == '') {
-        document.getElementById("userCountry").className += " input_error";
-    }
-    else {
-        document.getElementById("userCountry").className += " input_valid";
+        document.getElementById("userCountry").classList.remove ('input_valid');
+        document.getElementById("userCountry").classList.add ('input_error');
+        document.getElementById('countryRequired').innerHTML = 'Country is required';
+    } else {
+        document.getElementById('countryRequired').innerHTML = '';
     };
 
     if (userPhone.value == '') {
-        document.getElementById("userPhone").className += " input_error";
-    }
-    else {
-        document.getElementById("userPhone").className += " input_valid";
+        document.getElementById("userPhone").classList.remove ('input_valid');
+        document.getElementById("userPhone").classList.add ('input_error');
+        document.getElementById('phoneRequired').innerHTML = 'Phone is required';
+    } else {
+        document.getElementById('phoneRequired').innerHTML = '';
     };
     /*Конец украшательству */
 }
