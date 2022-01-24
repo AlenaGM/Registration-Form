@@ -40,7 +40,7 @@ let addFilledCity = () =>{
     document.getElementById("userCity").classList.add ('input_valid');
 }
 
-let addFilledcountry = () =>{
+let addFilledCountry = () =>{
     document.getElementById("userCountry").classList.add ('filled');
 }
 

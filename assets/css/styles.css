@@ -97,16 +97,16 @@ body {
 .form__label {
     z-index: 1;
     position: absolute;
-    top: 18px;
+    top: 21px;
     left: 0;
     transition: all 0.5s ease 0s;
     background-color: #FFFFFF;
-    padding-right: 60%;
+    padding-right: 200px;
     overflow: hidden;
 }
 
 .form__input:focus + .form__label{
-    transform:translate(0px, -18px);
+    transform:translate(0px, -21px);
     font-size: 11px;
     color: #87898E;
 }
