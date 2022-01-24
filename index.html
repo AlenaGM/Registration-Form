@@ -32,11 +32,13 @@
                     <div class="form__item">
                         <input type="email" id="userEmail" name="email" class="form__input _email" placeholder="* E-mail" tabindex="1" onkeyup="addFilledEmail()"/>
                         <label for="userEmail" class="form__label">E-mail*</label>
+                        <div class="form__required"></div>
                     </div>
                     <div class="form__item">
                         <input type="password" id="userPassword" name="password" class="form__input" placeholder="* Password" tabindex="2" minlength="8" onkeyup="addFilledPassword()"/>
                         <label for="userPassword" class="form__label">Password*</label>
                         <p>Minimum 8 characters including 1 uppercase letter, 1 lowercase letter, 1 special character, alphanumeric characters</p>
+                        <div class="form__required"></div>
                     </div>
                 </div>
 
@@ -56,10 +58,12 @@
                     <div class="form__item ">
                         <input type="text" id="userFirstName" name="firstName" class="form__input" value="" placeholder="* First Name" tabindex="3" onkeyup="addFilledFirstName()"/>
                         <label for="userFirstName" class="form__label">First Name*</label>
+                        <div class="form__required"></div>
                     </div>
                     <div class="form__item">
                         <input type="text" id="userLastName" name="lastName" class="form__input" value="" placeholder="* Last Name" tabindex="4" onkeyup="addFilledLastName()"/>
                         <label for="userLastName" class="form__label">Last Name*</label>
+                        <div class="form__required"></div>
                     </div>
                 </div>
 
@@ -82,6 +86,7 @@
                 <div class="form__item item_size-full">
                     <input type="text" id="userCountry" name="country" class="form__input" value="" placeholder="* Country" tabindex="8" onkeyup="addFilledCountry()"/>
                     <label for="userCountry" class="form__label">Country*</label>
+                    <div class="form__required"></div>
                 </div>
 
 <!--УБРАНО ПОКА НЕ НАУЧУСЬ СТИЛИЗОВАТЬ СЕЛЕКТЫ
@@ -97,6 +102,7 @@
                 <div class="form__item">
                     <input type="tel" id="userPhone" name="phone" class="form__input"  placeholder="* Phone" tabindex="9" onkeyup="addFilledPhone()"/>
                     <label for="userPhone" class="form__label">Phone*</label>
+                    <div class="form__required"></div>
                 </div>
 <!--УБРАНО ПОКА НЕ НАУЧУСЬ СТИЛИЗОВАТЬ ДАТЫ
                 <div class="form__item">

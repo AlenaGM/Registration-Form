@@ -26,7 +26,7 @@ let addFilledLastName = () =>{
 }
 
 let addFilledAddress = () =>{
-    document.getElementById("userAddress").classList.add ('filled input_valid');
+    document.getElementById("userAddress").classList.add ('filled');
     document.getElementById("userAddress").classList.add ('input_valid');
 }
 
@@ -91,16 +91,6 @@ function checkValidity() {
         document.getElementById("userLastName").className += " input_valid";
     };
 
-
-
-
-
-    if (userCity.value == '') {
-        document.getElementById("userCity").className += " input_error";
-    }
-    else {
-        document.getElementById("userCity").className += " input_valid";
-    };
 
     if (userCountry.value == '') {
         document.getElementById("userCountry").className += " input_error";
