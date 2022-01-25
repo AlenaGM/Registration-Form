@@ -127,7 +127,7 @@ let addFilledPhone = () =>{
 /*Конец оформления*/
 
 function checkValidity() {
-    if (userEmail.value == '' || userPassword.value == '' || userFirstName.value == '' || userLastName.value == '' || userCountry.value == '' || userPhone.value == '') {
+    if (userEmail.classList.contains('input_valid') || userPassword.classList.contains('input_valid') || userFirstName.classList.contains('input_valid') || userLastName.classList.contains('input_valid') || userCountry.classList.contains('input_valid') || userPhone.classList.contains('input_valid')) {
         document.getElementById('errorMessage').innerHTML = "The information you entered is incorrect or<br>not all required fields have been entered.<br> Please check it and try again";
         document.getElementById('successMessage').innerHTML = "";
     }
