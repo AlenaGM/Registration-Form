@@ -146,6 +146,15 @@ p {
     border-bottom: solid 1px #05A660;
 }
 
+/*временно*/
+
+.input_valid {
+    background: url(/assets/img/check.svg) 100% 95%/13px no-repeat;
+    transition: all 0.4s ease 0s;
+}
+
+/*временно*/
+
 .form__input:focus {
     border-bottom: solid 1px #000000;
 }
