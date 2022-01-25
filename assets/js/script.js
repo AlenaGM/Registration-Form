@@ -128,6 +128,15 @@ let addFilledPhone = () =>{
         userPhone.classList.remove ('filled');
     };
 }
+
+let addAccept = () =>{
+    if (cb.checked == '') {
+
+    } else {
+        document.getElementById('acceptRequired').innerHTML = '';
+    };
+}
+
 /*Конец оформления*/
 
 function checkValidity() {
