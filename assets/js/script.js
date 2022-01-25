@@ -9,6 +9,7 @@ let userCountry = document.getElementById("userCountry");
 let userPhone = document.getElementById("userPhone");
 
 let emailValid = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
+let passwordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
 
 /*Для оформления*/
 let addFilledEmail = () =>{
@@ -23,8 +24,8 @@ let addFilledEmail = () =>{
         userEmail.classList.remove ('input_valid');
         document.getElementById('emailRequired').innerHTML = 'Enter a valid e-mail address';
 
-    } else {
-        userEmail.classList.add ('input_valid');
+        } else {
+            userEmail.classList.add ('input_valid');
     }
 }
 
@@ -36,9 +37,10 @@ let addFilledPassword = () =>{
         userPassword.classList.remove ('input_valid');
         userPassword.classList.remove ('filled');
 
-    } else if(userPassword.value.length <= 7){
+    } else if(!passwordValid.test(userPassword.value)){
         userPassword.classList.remove ('input_valid');
-        document.getElementById('passwordRequired').innerHTML = 'Password must be at least 8 characters long';
+        document.getElementById('passwordRequired').innerHTML = 'Enter a valid password';
+
     } else {
         userPassword.classList.add ('input_valid');
     };
