@@ -16,9 +16,8 @@
 <body>
     <div class="wrapper">
 
-        <form class="form">
-            <div action="#" id="form" class="form__body" method="post" enctype="multipart/form-data">
-
+        <form class="form" action="#" id="form" method="post" enctype="multipart/form-data" onsubmit="javascript:return checkValidity('form','userEmail'>
+            <div class="form__body" >
                 <h1 class="form__title">Your Account</h1>
                 <div id="errorMessage"></div>
                 <div id="successMessage"></div>
@@ -123,7 +122,7 @@
                 </div>
 
                 <div class="form__item item_size-full form__item_position-center">
-                    <div class="form__button" tabindex="12" onclick="checkValidity()">Create Account</div>
+                    <input class="form__button" tabindex="12" onclick="checkValidity()" type="submit" value="Submit">Create Account</input>
                 </div>
             </form>
         </div>

@@ -31,6 +31,12 @@ let addFilledPassword = () =>{
         userPassword.classList.remove ('input_valid');
         userPassword.classList.remove ('filled');
     };
+
+    if (userPassword.value.length <= 7) {
+        alert(hihihi);
+    } else {
+        alert(ok);
+    };
 }
 
 let addFilledFirstName = () =>{
@@ -177,8 +183,10 @@ function checkValidity() {
         document.getElementById('phoneRequired').innerHTML = '';
     };
     /*Конец украшательству */
-
 }
+
+
+
 
 
 
