@@ -8,17 +8,24 @@ let userCity = document.getElementById("userCity");
 let userCountry = document.getElementById("userCountry");
 let userPhone = document.getElementById("userPhone");
 
+let emailValid = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
+
 /*Для оформления*/
 let addFilledEmail = () =>{
     userEmail.classList.add ('filled');
     document.getElementById('emailRequired').innerHTML = '';
 
-    if (userEmail.value != '') {
-        userEmail.classList.add ('input_valid');
-    } else {
-        userEmail.classList.remove ('input_valid');
+    if (userEmail.value == '') {
         userEmail.classList.remove ('filled');
-    };
+        userEmail.classList.remove ('input_valid');
+
+    } else if (!emailValid.test(userEmail.value)) {
+        userEmail.classList.remove ('input_valid');
+        document.getElementById('emailRequired').innerHTML = 'Enter a valid e-mail address';
+
+    } else {
+        userEmail.classList.add ('input_valid');
+    }
 }
 
 let addFilledPassword = () =>{
@@ -133,7 +140,7 @@ function checkValidity() {
     if (userEmail.value == '') {
         userEmail.classList.remove ('input_valid');
         userEmail.classList.add ('input_error');
-        document.getElementById('emailRequired').innerHTML = 'Email is required';
+        document.getElementById('emailRequired').innerHTML = 'E-mail is required';
     } else {
         document.getElementById('emailRequired').innerHTML = '';
     };
@@ -178,20 +185,4 @@ function checkValidity() {
         document.getElementById('phoneRequired').innerHTML = '';
     };
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
