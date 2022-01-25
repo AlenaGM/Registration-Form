@@ -177,7 +177,10 @@ function checkValidity() {
         document.getElementById('phoneRequired').innerHTML = '';
     };
     /*Конец украшательству */
+
 }
+
+
 
 
 
