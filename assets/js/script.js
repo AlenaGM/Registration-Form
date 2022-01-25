@@ -11,6 +11,8 @@ let userPhone = document.getElementById("userPhone");
 let emailValid = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
 let passwordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
 
+const cb = document.querySelector('#accept');
+
 /*Для оформления*/
 let addFilledEmail = () =>{
     userEmail.classList.add ('filled');
@@ -129,7 +131,7 @@ let addFilledPhone = () =>{
 /*Конец оформления*/
 
 function checkValidity() {
-    if (userEmail.classList.contains('input_valid') && userPassword.classList.contains('input_valid') && userFirstName.classList.contains('input_valid') && userLastName.classList.contains('input_valid') && userCountry.classList.contains('input_valid') && userPhone.classList.contains('input_valid')) {
+    if (userEmail.classList.contains('input_valid') && userPassword.classList.contains('input_valid') && userFirstName.classList.contains('input_valid') && userLastName.classList.contains('input_valid') && userCountry.classList.contains('input_valid') && userPhone.classList.contains('input_valid') && cb.checked != '') {
         document.getElementById('errorMessage').innerHTML = "";
         document.getElementById('successMessage').innerHTML = `Congratulations, ${userFirstName.value}!<br>Your new account has been successfully created!`;
     } else {
@@ -184,5 +186,14 @@ function checkValidity() {
     } else {
         document.getElementById('phoneRequired').innerHTML = '';
     };
+
+    if (cb.checked == '') {
+        console.log('hihihi')
+        document.getElementById('acceptRequired').innerHTML = 'You must agree to Terms & Conditions and Privacy Policy';
+    } else {
+        console.log('ok')
+        document.getElementById('acceptRequired').innerHTML = '';
+    };
+
 }
 
