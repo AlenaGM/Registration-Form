@@ -21,7 +21,7 @@ let addFilledEmail = () =>{
 
     } else if (!emailValid.test(userEmail.value)) {
         userEmail.classList.remove ('input_valid');
-        document.getElementById('emailRequired').innerHTML = 'Enter a valid e-mail address';
+        document.getElementById('emailRequired').innerHTML += 'Enter a valid e-mail address';
 
     } else {
         userEmail.classList.add ('input_valid');
@@ -127,22 +127,20 @@ let addFilledPhone = () =>{
 /*Конец оформления*/
 
 function checkValidity() {
-    if (userEmail.classList.contains('input_valid') || userPassword.classList.contains('input_valid') || userFirstName.classList.contains('input_valid') || userLastName.classList.contains('input_valid') || userCountry.classList.contains('input_valid') || userPhone.classList.contains('input_valid')) {
-        document.getElementById('errorMessage').innerHTML = "The information you entered is incorrect or<br>not all required fields have been entered.<br> Please check it and try again";
-        document.getElementById('successMessage').innerHTML = "";
-    }
-
-    else {
+    if (userEmail.classList.contains('input_valid') && userPassword.classList.contains('input_valid') && userFirstName.classList.contains('input_valid') && userLastName.classList.contains('input_valid') && userCountry.classList.contains('input_valid') && userPhone.classList.contains('input_valid')) {
         document.getElementById('errorMessage').innerHTML = "";
         document.getElementById('successMessage').innerHTML += `Congratulations, ${userFirstName.value}!<br>Your new account has been successfully created!`;
+    } else {
+        document.getElementById('errorMessage').innerHTML = "The information you entered is incorrect or<br>not all required fields have been entered.<br> Please check it and try again";
+        document.getElementById('successMessage').innerHTML = "";
     };
 
     if (userEmail.value == '') {
         userEmail.classList.remove ('input_valid');
         userEmail.classList.add ('input_error');
-        document.getElementById('emailRequired').innerHTML = 'E-mail is required';
+        document.getElementById('emailRequired').innerHTML += 'E-mail is required';
     } else {
-        document.getElementById('emailRequired').innerHTML = '';
+        document.getElementById('emailRequired').innerHTML += '';
     };
 
     if (userPassword.value == '') {
