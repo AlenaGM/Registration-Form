@@ -11,53 +11,107 @@ let userPhone = document.getElementById("userPhone");
 /*Для оформления*/
 let addFilledEmail = () =>{
     document.getElementById("userEmail").classList.add ('filled');
-    document.getElementById("userEmail").classList.add ('input_valid');
     document.getElementById('emailRequired').innerHTML = '';
+
+    if (userEmail.value != '') {
+        document.getElementById("userEmail").classList.add ('input_valid');
+    } else {
+        document.getElementById("userEmail").classList.remove ('input_valid');
+        document.getElementById("userEmail").classList.remove ('filled');
+    };
 }
 
 let addFilledPassword = () =>{
     document.getElementById("userPassword").classList.add ('filled');
-    document.getElementById("userPassword").classList.add ('input_valid');
     document.getElementById('passwordRequired').innerHTML = '';
+
+    if (userPassword.value != '') {
+        document.getElementById("userPassword").classList.add ('input_valid');
+    } else {
+        document.getElementById("userPassword").classList.remove ('input_valid');
+        document.getElementById("userPassword").classList.remove ('filled');
+    };
 }
 
 let addFilledFirstName = () =>{
     document.getElementById("userFirstName").classList.add ('filled');
-    document.getElementById("userFirstName").classList.add ('input_valid');
     document.getElementById('firstNameRequired').innerHTML = '';
+
+    if (userFirstName.value != '') {
+        document.getElementById("userFirstName").classList.add ('input_valid');
+    } else {
+        document.getElementById("userFirstName").classList.remove ('input_valid');
+        document.getElementById("userFirstName").classList.remove ('filled');
+    };
 }
 
 let addFilledLastName = () =>{
     document.getElementById("userLastName").classList.add ('filled');
-    document.getElementById("userLastName").classList.add ('input_valid');
     document.getElementById('lastNameRequired').innerHTML = '';
+
+    if (userLastName.value != '') {
+        document.getElementById("userLastName").classList.add ('input_valid');
+    } else {
+        document.getElementById("userLastName").classList.remove ('input_valid');
+        document.getElementById("userLastName").classList.remove ('filled');
+    };
 }
 
 let addFilledAddress = () =>{
     document.getElementById("userAddress").classList.add ('filled');
-    document.getElementById("userAddress").classList.add ('input_valid');
+
+    if (userAddress.value != '') {
+        document.getElementById("userAddress").classList.add ('input_valid');
+    } else {
+        document.getElementById("userAddress").classList.remove ('input_valid');
+        document.getElementById("userAddress").classList.remove ('filled');
+    };
 }
 
 let addFilledPostcode = () =>{
     document.getElementById("userPostcode").classList.add ('filled');
-    document.getElementById("userPostcode").classList.add ('input_valid');
+
+    if (userPostcode.value != '') {
+        document.getElementById("userPostcode").classList.add ('input_valid');
+    } else {
+        document.getElementById("userPostcode").classList.remove ('input_valid');
+        document.getElementById("userPostcode").classList.remove ('filled');
+    };
 }
 
 let addFilledCity = () =>{
     document.getElementById("userCity").classList.add ('filled');
-    document.getElementById("userCity").classList.add ('input_valid');
+
+    if (userCity.value != '') {
+        document.getElementById("userCity").classList.add ('input_valid');
+    } else {
+        document.getElementById("userCity").classList.remove ('input_valid');
+        document.getElementById("userCity").classList.remove ('filled');
+    };
 }
 
 let addFilledCountry = () =>{
     document.getElementById("userCountry").classList.add ('filled');
-    document.getElementById("userCountry").classList.add ('input_valid');
     document.getElementById('countryRequired').innerHTML = '';
+
+    if (userCountry.value != '') {
+        document.getElementById("userCountry").classList.add ('input_valid');
+    } else {
+        document.getElementById("userCountry").classList.remove ('input_valid');
+        document.getElementById("userCountry").classList.remove ('filled');
+    };
 }
 
 let addFilledPhone = () =>{
     document.getElementById("userPhone").classList.add ('filled');
-    document.getElementById("userPhone").classList.add ('input_valid');
     document.getElementById('phoneRequired').innerHTML = '';
+
+    if (userPhone.value != '') {
+        document.getElementById("userPhone").classList.add ('input_valid');
+    } else {
+        document.getElementById("userPhone").classList.remove ('input_valid');
+        document.getElementById("userPhone").classList.remove ('filled');
+    };
 }
 /*Конец оформления*/
 
