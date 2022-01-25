@@ -25,17 +25,15 @@ let addFilledPassword = () =>{
     userPassword.classList.add ('filled');
     document.getElementById('passwordRequired').innerHTML = '';
 
-    if (userPassword.value != '') {
-        userPassword.classList.add ('input_valid');
-    } else {
+    if (userPassword.value == '') {
         userPassword.classList.remove ('input_valid');
         userPassword.classList.remove ('filled');
-    };
 
-    if (userPassword.value.length <= 7) {
-        alert(hihihi);
+    } else if(userPassword.value.length <= 7){
+        userPassword.classList.remove ('input_valid');
+        document.getElementById('passwordRequired').innerHTML = 'Password must be at least 8 characters long';
     } else {
-        alert(ok);
+        userPassword.classList.add ('input_valid');
     };
 }
 
@@ -121,7 +119,7 @@ let addFilledPhone = () =>{
 }
 /*Конец оформления*/
 
-
+/*
 function checkValidity() {
     if (userEmail.value == '' || userPassword.value == '' || userFirstName.value == '' || userLastName.value == '' || userCountry.value == '' || userPhone.value == '') {
         document.getElementById('errorMessage').innerHTML = "The information you entered is incorrect or<br>not all required fields are filled. Please check it and try again";
@@ -134,7 +132,7 @@ function checkValidity() {
     };
 
 
-    /*Украшательство*/
+    /*Украшательство
     if (userEmail.value == '') {
         userEmai.classList.remove ('input_valid');
         userEmail.classList.add ('input_error');
@@ -183,7 +181,7 @@ function checkValidity() {
         document.getElementById('phoneRequired').innerHTML = '';
     };
     /*Конец украшательству */
-}
+}*/
 
 
 
