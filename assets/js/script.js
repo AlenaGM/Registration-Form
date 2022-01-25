@@ -119,7 +119,6 @@ let addFilledPhone = () =>{
 }
 /*Конец оформления*/
 
-/*
 function checkValidity() {
     if (userEmail.value == '' || userPassword.value == '' || userFirstName.value == '' || userLastName.value == '' || userCountry.value == '' || userPhone.value == '') {
         document.getElementById('errorMessage').innerHTML = "The information you entered is incorrect or<br>not all required fields are filled. Please check it and try again";
@@ -128,13 +127,11 @@ function checkValidity() {
 
     else {
         document.getElementById('errorMessage').innerHTML = "";
-        document.getElementById('successMessage').innerHTML = `Congratulations, ${userFirstName.value}!<br>Your new account has been successfully created!`;
+        document.getElementById('successMessage').innerHTML += `Congratulations, ${userFirstName.value}!<br>Your new account has been successfully created!`;
     };
 
-
-    /*Украшательство
     if (userEmail.value == '') {
-        userEmai.classList.remove ('input_valid');
+        userEmail.classList.remove ('input_valid');
         userEmail.classList.add ('input_error');
         document.getElementById('emailRequired').innerHTML = 'Email is required';
     } else {
@@ -180,8 +177,7 @@ function checkValidity() {
     } else {
         document.getElementById('phoneRequired').innerHTML = '';
     };
-    /*Конец украшательству */
-}*/
+}
 
 
 
