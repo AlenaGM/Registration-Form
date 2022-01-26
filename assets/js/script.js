@@ -10,6 +10,7 @@ let userPhone = document.getElementById("userPhone");
 
 let emailValid = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
 let passwordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+let nameValid = /^[a-z ,.'-]+$/i;
 
 const cb = document.querySelector('#accept');
 
@@ -52,11 +53,16 @@ let addFilledFirstName = () =>{
     userFirstName.classList.add ('filled');
     document.getElementById('firstNameRequired').innerHTML = '';
 
-    if (userFirstName.value != '') {
-        userFirstName.classList.add ('input_valid');
-    } else {
+    if (userFirstName.value == '') {
         userFirstName.classList.remove ('input_valid');
         userFirstName.classList.remove ('filled');
+
+    } else if(!nameValid.test(userFirstName.value)){
+        userFirstName.classList.remove ('input_valid');
+        document.getElementById('firstNameRequired').innerHTML = 'Enter a valid first name';
+
+    } else {
+        userFirstName.classList.add ('input_valid');
     };
 }
 
@@ -64,11 +70,16 @@ let addFilledLastName = () =>{
     userLastName.classList.add ('filled');
     document.getElementById('lastNameRequired').innerHTML = '';
 
-    if (userLastName.value != '') {
-        userLastName.classList.add ('input_valid');
-    } else {
+    if (userLastName.value == '') {
         userLastName.classList.remove ('input_valid');
         userLastName.classList.remove ('filled');
+
+    } else if(!nameValid.test(userLastName.value)){
+        userLastName.classList.remove ('input_valid');
+        document.getElementById('lastNameRequired').innerHTML = 'Enter a valid last name';
+
+    } else {
+        userLastName.classList.add ('input_valid');
     };
 }
 
@@ -109,11 +120,16 @@ let addFilledCountry = () =>{
     userCountry.classList.add ('filled');
     document.getElementById('countryRequired').innerHTML = '';
 
-    if (userCountry.value != '') {
-        userCountry.classList.add ('input_valid');
-    } else {
+    if (userCountry.value == '') {
         userCountry.classList.remove ('input_valid');
         userCountry.classList.remove ('filled');
+
+    } else if(!nameValid.test(usercountry.value)){
+        userCountry.classList.remove ('input_valid');
+        document.getElementById('countryRequired').innerHTML = 'Enter a valid country';
+
+    } else {
+        userCountry.classList.add ('input_valid');
     };
 }
 
