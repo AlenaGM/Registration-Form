@@ -124,7 +124,7 @@ let addFilledCountry = () =>{
         userCountry.classList.remove ('input_valid');
         userCountry.classList.remove ('filled');
 
-    } else if(!nameValid.test(usercountry.value)){
+    } else if(!nameValid.test(userCountry.value)){
         userCountry.classList.remove ('input_valid');
         document.getElementById('countryRequired').innerHTML = 'Enter a valid country';
 
