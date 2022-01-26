@@ -19,8 +19,6 @@
         <form class="form" action="#" id="form" method="post" enctype="multipart/form-data">
             <div class="form__body">
                 <h1 class="form__title">Your Account</h1>
-                <div id="errorMessage"></div>
-                <div id="successMessage"></div>
 
                 <div class="form__box">
                     <h2 class="form__subtitle">Login Information</h2>
@@ -121,6 +119,9 @@
                     <label for="accept" class="checkbox__label">I agree to <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
                     <div class="form__required" id='acceptRequired'></div>
                 </div>
+
+                <div id="errorMessage"></div>
+                <div id="successMessage"></div>
 
                 <div class="form__item item_size-full form__item_position-center">
                     <div class="form__button" tabindex="12" onclick="checkValidity()">Create Your Account</div>

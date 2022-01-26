@@ -241,12 +241,14 @@ p {
 #errorMessage{
     color: #E53535;
     text-align: center;
+    margin-top: 48px;
 }
 
 
 #successMessage{
     color: #05A660;
     text-align: center;
+    margin-top: 48px;
 }
 
 @media screen and (max-width: 1023px) {
