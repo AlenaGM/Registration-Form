@@ -1,3 +1,4 @@
+//Ниже переменные из 15-й недели
 let userEmail = document.getElementById("userEmail");
 let userPassword = document.getElementById("userPassword");
 let userFirstName = document.getElementById("userFirstName");
@@ -13,8 +14,69 @@ let passwordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{
 let nameValid = /^[a-z ,.'-]+$/i;
 
 const cb = document.querySelector('#accept');
+//Конец переменных из 15-й недели
 
-/*Для оформления*/
+//Алисин код
+let errors = [];
+
+function checkValidity (input) {
+
+    let validity = input.validity;//input.validity - встроенный
+
+    if(validity.valueMissing) {
+        errors.push('Поле ' + input.placeholder + ' не заполнено');
+    }
+
+    /*
+    if(validity.patternMismatch) {
+        errors.push('Неверный формат заполнения');
+    }
+
+    if(validity.rangeOverflow) {
+        let max = getAttributeValue(input, 'max');
+        errors.push('Максимальное значение не может быть больше, чем ' + max);
+    }
+
+    if(validity.rangeUnderflow) {
+        let min = getAttributeValue(input, 'min');
+        errors.push('Минимальное значение не может быть больше, чем ' + min);
+    }*/
+    console.log(errors);
+}
+
+function checkAll() {
+
+    errors = [];
+
+    let inputs = document.querySelectorAll('input');
+
+    for (let input of inputs) {
+        checkValidity(input);
+    }
+
+    document.getElementById('errorsInfo').innerHTML = errors.join('. <br>');
+}
+
+/*
+document.querySelector('#userEmail').addEventListener('change', function validateEmail(emailField){
+
+    let emailValid = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
+
+    if (emailField.value.match(emailValid)){
+        console.log('адрес эл.почты введен верно');
+        return true;
+
+    } else {
+        console.log ('адрес эл.почты введен неверно');
+        return false;
+    }
+});*/
+
+
+//Конец Алисин код
+
+//Ниже старый код из 15-й недели
+//Для оформления
 let addFilledEmail = () =>{
     userEmail.classList.add ('filled');
     document.getElementById('emailRequired').innerHTML = '';
@@ -153,9 +215,9 @@ let addAccept = () =>{
     };
 }
 
-/*Конец оформления*/
+//Конец оформления
 
-function checkValidity() {
+function checkValid() {
     if (userEmail.classList.contains('input_valid') && userPassword.classList.contains('input_valid') && userFirstName.classList.contains('input_valid') && userLastName.classList.contains('input_valid') && userCountry.classList.contains('input_valid') && userPhone.classList.contains('input_valid') && cb.checked != '') {
         document.getElementById('errorMessage').innerHTML = "";
         document.getElementById('successMessage').innerHTML = `Congratulations, ${userFirstName.value}!<br>Your new account has been successfully created!`;
@@ -213,10 +275,8 @@ function checkValidity() {
     };
 
     if (cb.checked == '') {
-        console.log('hihihi')
         document.getElementById('acceptRequired').innerHTML = 'You must agree to Terms & Conditions and Privacy Policy';
     } else {
-        console.log('ok')
         document.getElementById('acceptRequired').innerHTML = '';
     };
 

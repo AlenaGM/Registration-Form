@@ -22,3 +22,16 @@ font-family: 'Didact Gothic', sans-serif;
 5/ оформить и открыть селекты
 6/ привести в порядок бэм
 7/ привести в порядок стили
+8/ добавила город и индекс в обязательные поля - проверить в старом коде
+
+badInput
+customError
+patternMismatch
+rangeOverflow - max
+rangeUnderflow - min
+stepMismatch
+tooLong
+tooShort
+typeMismatch
+valid
+valueMissing OK
