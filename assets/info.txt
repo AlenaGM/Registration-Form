@@ -24,14 +24,14 @@ font-family: 'Didact Gothic', sans-serif;
 7/ привести в порядок стили
 8/ добавила город и индекс в обязательные поля - проверить в старом коде
 
-badInput
-customError
-patternMismatch
-rangeOverflow - max
-rangeUnderflow - min
-stepMismatch
-tooLong
-tooShort
-typeMismatch
+badInput - не проверить
+customError - некуда
+patternMismatch - OK
+rangeOverflow - max некуда
+rangeUnderflow - min некуда
+stepMismatch - некуда
+tooLong - OK - некуда
+tooShort  - некуда
+typeMismatch - - некуда
 valid
-valueMissing OK
+valueMissing reauired - OK
