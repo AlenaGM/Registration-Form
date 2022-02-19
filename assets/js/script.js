@@ -13,6 +13,7 @@ const userPhone = document.getElementById("userPhone");
 let emailValid = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,2})$/;
 let passwordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;//8-15 знаков, вкл. как минимум, 1 заглавную и 1 прописную букву, 1 цифру и 1 спецсимвол
 let nameValid = /^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$/;//Латиница, дефисы, пробелы, апострофы, необычные буквы
+let addressValid =  /^[-a-zA-Z0-9\s]+$/;//Латиница, цифры, пробелы, дефисы
 let postcodeValid = /^[-A-Za-z0-9 ]{4,9}$/;//Латиница, цифры, пробелы, дефисы, от 4 до 9 знаков
 let countryValid = /^[-a-zA-Z\s]+$/;//Латиница, пробелы, дефисы
 let phoneValid = /^[- ()+.0-9\s]{6,15}$/;//Цифры, пробелы, дефисы, круглые скобки, от 6 до 15 знаков
@@ -20,10 +21,10 @@ let phoneValid = /^[- ()+.0-9\s]{6,15}$/;//Цифры, пробелы, дефи�
 const cb = document.querySelector('#accept');
 
 
-//Для меня, на всякий случай, тест regex
-let text = "123"; let pattern = /^[-A-Za-z0-9 ]{4,9}$/;
+/*/Для меня, на всякий случай, тест regex
+let text = "kk 4-+"; let pattern = /^[-a-zA-Z0-9\s]+$/;
 let result = pattern.test(text);
-console.log(result);
+console.log(result);*/
 
 
 
@@ -170,16 +171,21 @@ document.querySelector('#userLastName').addEventListener('change', function addF
 });
 
 
-document.querySelector('#userAddress').addEventListener('change', function addFilledAddress(){//Адрес
+document.querySelector('#userAddress').addEventListener('change', function addFilledAddress(){//Адрес(необязательный)
 
     userAddress.classList.add ('filled');
+    document.getElementById('addressRequired').innerHTML = '';
 
-    if (userAddress.value != '') {
-        userAddress.classList.add ('input_valid');
-
-    } else {
+    if (userAddress.value == '') {
         userAddress.classList.remove ('input_valid');
         userAddress.classList.remove ('filled');
+
+    } else if(!addressValid.test(userAddress.value)){
+        userAddress.classList.remove ('input_valid');
+        document.getElementById('addressRequired').innerHTML = 'Please check, if address is correct';
+
+    } else {
+        userAddress.classList.add ('input_valid');
     };
 
     document.querySelector('#userAddress').value = userAddress.value.trim().toUpperCase();
