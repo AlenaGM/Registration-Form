@@ -215,11 +215,11 @@ p {
     justify-content: center;
 }
 
-#errorMessage{
+#errorsInfo{
     color: #E53535;
     text-align: center;
     margin-top: 48px;
-    margin-bottom: -48px;
+    margin-bottom: 12px;
 }
 
 #successMessage{

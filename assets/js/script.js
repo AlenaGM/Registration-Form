@@ -1,42 +1,49 @@
-//Ниже переменные из 15-й недели
-let userEmail = document.getElementById("userEmail");
-let userPassword = document.getElementById("userPassword");
-let userFirstName = document.getElementById("userFirstName");
-let userLastName = document.getElementById("userLastName");
-let userAddress = document.getElementById("userAddress");
-let userPostcode = document.getElementById("userPostcode");
-let userCity = document.getElementById("userCity");
-let userCountry = document.getElementById("userCountry");
-let userPhone = document.getElementById("userPhone");
+const userEmail = document.getElementById("userEmail");
+const userPassword = document.getElementById("userPassword");
+const userFirstName = document.getElementById("userFirstName");
+const userLastName = document.getElementById("userLastName");
+const userAddress = document.getElementById("userAddress");
+const userPostcode = document.getElementById("userPostcode");
+const userCity = document.getElementById("userCity");
+const userCountry = document.getElementById("userCountry");
+const userPhone = document.getElementById("userPhone");
 
-let emailValid = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
+let emailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+.+.[a-zA-Z]{2,4}$/i;
 let passwordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-let nameValid = /^[a-z ,.'-]+$/i;
+let nameValid = /^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$/;
+let postcodeValid = /^[-a-zA-Z0-9\s]+$/;
+let countryValid = /^[-a-zA-Z\s]+$/;
+let phoneValid = /^[- ()+.0-9\s]+$/;
 
 const cb = document.querySelector('#accept');
-//Конец переменных из 15-й недели
 
-//Алисин код
+//Ниже код, в основном, из лекции: перебирает инпуты и собирает коллекцию ошибок, которую выводит списком в конце
+
 let errors = [];
 
 function checkValidity (input) {
 
-    let validity = input.validity;//input.validity - встроенный
-/*
+    let validity = input.validity;
+
     if(validity.valueMissing) {
-        errors.push('Поле ' + input.placeholder + ' не заполнено');
+        errors.push(input.placeholder + ' is required!');
     }
 
     if(validity.patternMismatch) {
-        errors.push('Неверный формат заполнения ' + input.placeholder);
-    }*/
+        errors.push(input.placeholder + ' format is not valid');
+    }
 
     if(validity.tooLong) {
         let maxlength = getAttributeValue(input, 'maxlength');
-        errors.push('Максимальное количество символов ' + maxlength);
+        errors.push('Maximum number of symbols is ' + maxlength);
     }
 
-    console.log(errors);
+    if(errors.length!=0 && cb.checked == ''){
+        document.getElementById('errorsInfo').innerHTML = '';
+    }else{
+        document.getElementById('successMessage').innerHTML = '';
+    }
+
 }
 
 function checkAll() {
@@ -50,29 +57,21 @@ function checkAll() {
     }
 
     document.getElementById('errorsInfo').innerHTML = errors.join('. <br>');
+
 }
 
-/*
-document.querySelector('#userEmail').addEventListener('change', function validateEmail(emailField){
+document.querySelector('#fullSteamAhead').addEventListener('click', function(event){
+    event.preventDefault();
+    checkAll();
+});
 
-    let emailValid = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
+//Ниже чуть доработанный код из 15-й недели
+//Нужен для оформления: каждое поле проходит валидацию по мере заполнения формы и радует пользователя галочкой
+// и жизнерадостным зеленым цветом, в отличие от красного, который появляется только в конце после нажатия на кнопку
+//(Ну и жалко было столько кода выкидывать)
 
-    if (emailField.value.match(emailValid)){
-        console.log('адрес эл.почты введен верно');
-        return true;
+document.querySelector('#userEmail').addEventListener('change', function addFilledEmail(){//Эл.почта
 
-    } else {
-        console.log ('адрес эл.почты введен неверно');
-        return false;
-    }
-});*/
-
-
-//Конец Алисин код
-
-//Ниже старый код из 15-й недели
-//Для оформления
-let addFilledEmail = () =>{
     userEmail.classList.add ('filled');
     document.getElementById('emailRequired').innerHTML = '';
 
@@ -87,9 +86,15 @@ let addFilledEmail = () =>{
         } else {
             userEmail.classList.add ('input_valid');
     }
-}
 
-let addFilledPassword = () =>{
+    document.querySelector('#userEmail').value = userEmail.value.trim().toLowerCase();//чтобы лучше смотрелось
+
+    checkAll();
+});
+
+
+document.querySelector('#userPassword').addEventListener('change', function addFilledPassword(){//Пароль
+
     userPassword.classList.add ('filled');
     document.getElementById('passwordRequired').innerHTML = '';
 
@@ -104,9 +109,13 @@ let addFilledPassword = () =>{
     } else {
         userPassword.classList.add ('input_valid');
     };
-}
 
-let addFilledFirstName = () =>{
+    checkAll();
+});
+
+
+document.querySelector('#userFirstName').addEventListener('change', function addFilledFirstName(){//Имя
+
     userFirstName.classList.add ('filled');
     document.getElementById('firstNameRequired').innerHTML = '';
 
@@ -121,9 +130,15 @@ let addFilledFirstName = () =>{
     } else {
         userFirstName.classList.add ('input_valid');
     };
-}
 
-let addFilledLastName = () =>{
+    document.querySelector('#userFirstName').value = userFirstName.value.trim().toUpperCase();//чтобы везде было одинаково и много кода не писать
+
+    checkAll();
+});
+
+
+document.querySelector('#userLastName').addEventListener('change', function addFilledLastName(){//Фамилия
+
     userLastName.classList.add ('filled');
     document.getElementById('lastNameRequired').innerHTML = '';
 
@@ -138,42 +153,79 @@ let addFilledLastName = () =>{
     } else {
         userLastName.classList.add ('input_valid');
     };
-}
 
-let addFilledAddress = () =>{
+    document.querySelector('#userLastName').value = userLastName.value.trim().toUpperCase();
+
+    checkAll();
+});
+
+
+document.querySelector('#userAddress').addEventListener('change', function addFilledAddress(){//Адрес
+
     userAddress.classList.add ('filled');
 
     if (userAddress.value != '') {
         userAddress.classList.add ('input_valid');
+
     } else {
         userAddress.classList.remove ('input_valid');
         userAddress.classList.remove ('filled');
     };
-}
 
-let addFilledPostcode = () =>{
+    document.querySelector('#userAddress').value = userAddress.value.trim().toUpperCase();
+
+    checkAll();
+});
+
+
+document.querySelector('#userPostcode').addEventListener('change', function addFilledPostcode(){//Индекс
+
     userPostcode.classList.add ('filled');
+    document.getElementById('postcodeRequired').innerHTML = '';
 
-    if (userPostcode.value != '') {
-        userPostcode.classList.add ('input_valid');
-    } else {
+    if (userPostcode.value == '') {
         userPostcode.classList.remove ('input_valid');
         userPostcode.classList.remove ('filled');
-    };
-}
 
-let addFilledCity = () =>{
-    userCity.classList.add ('filled');
+    } else if(!postcodeValid.test(userPostcode.value)){
+        userPostcode.classList.remove ('input_valid');
+        document.getElementById('postcodeRequired').innerHTML = 'Enter a valid postcode';
 
-    if (userCity.value != '') {
-        userCity.classList.add ('input_valid');
     } else {
+        userPostcode.classList.add ('input_valid');
+    };
+
+    document.querySelector('#userPostcode').value = userPostcode.value.trim().toUpperCase();
+
+    checkAll();
+});
+
+
+document.querySelector('#userCity').addEventListener('change', function addFilledCity(){//Город
+
+    userCity.classList.add ('filled');
+    document.getElementById('cityRequired').innerHTML = '';
+
+    if (userCity.value == '') {
         userCity.classList.remove ('input_valid');
         userCity.classList.remove ('filled');
-    };
-}
 
-let addFilledCountry = () =>{
+    } else if(!nameValid.test(userCity.value)){
+        userCity.classList.remove ('input_valid');
+        document.getElementById('cityRequired').innerHTML = 'Enter a valid city';
+
+    } else {
+        userCity.classList.add ('input_valid');
+    };
+
+    document.querySelector('#userCity').value = userCity.value.trim().toUpperCase();
+
+    checkAll();
+});
+
+
+document.querySelector('#userCountry').addEventListener('change', function addFilledCountry(){//Страна
+
     userCountry.classList.add ('filled');
     document.getElementById('countryRequired').innerHTML = '';
 
@@ -181,47 +233,64 @@ let addFilledCountry = () =>{
         userCountry.classList.remove ('input_valid');
         userCountry.classList.remove ('filled');
 
-    } else if(!nameValid.test(userCountry.value)){
+    } else if(!countryValid.test(userCountry.value)){
         userCountry.classList.remove ('input_valid');
         document.getElementById('countryRequired').innerHTML = 'Enter a valid country';
 
     } else {
         userCountry.classList.add ('input_valid');
     };
-}
 
-let addFilledPhone = () =>{
+    document.querySelector('#userCountry').value = userCountry.value.trim().toUpperCase();
+
+    checkAll();
+});
+
+
+document.querySelector('#userPhone').addEventListener('change', function addFilledPhone(){//Тел.
+
     userPhone.classList.add ('filled');
     document.getElementById('phoneRequired').innerHTML = '';
 
-    if (userPhone.value != '') {
-        userPhone.classList.add ('input_valid');
-    } else {
+    if (userPhone.value == '') {
         userPhone.classList.remove ('input_valid');
         userPhone.classList.remove ('filled');
+
+    } else if(!phoneValid.test(userPhone.value)){
+        userPhone.classList.remove ('input_valid');
+        document.getElementById('phoneRequired').innerHTML = 'Enter a valid phone';
+
+    } else {
+        userPhone.classList.add ('input_valid');
     };
-}
 
-let addAccept = () =>{
-    if (cb.checked == '') {
+    checkAll();
+});
 
+
+document.querySelector('#accept').addEventListener('change', function addAccept(){//Согласие с условиями
+
+    if (cb.checked == ''){
+        document.getElementById('acceptRequired').innerHTML = 'You must agree to Terms & Conditions and Privacy Policy';
     } else {
         document.getElementById('acceptRequired').innerHTML = '';
     };
-}
 
-//Конец оформления
+    checkAll();
+});
 
-function checkValid() {
-    if (userEmail.classList.contains('input_valid') && userPassword.classList.contains('input_valid') && userFirstName.classList.contains('input_valid') && userLastName.classList.contains('input_valid') && userCountry.classList.contains('input_valid') && userPhone.classList.contains('input_valid') && cb.checked != '') {
-        document.getElementById('errorMessage').innerHTML = "";
+
+//Еще немного остатков предыдущего кода, главным образом нужного для оформительских целей.
+//При нажатии "Создать аккаунт" либо выводит поздравление либо подчеркивает красным и ругается под каждым конкретным полем
+//Сделала "на изменение", а не "на клик", чтобы не пугать пользователя большим количеством красного с места в карьер
+
+document.querySelector('#fullSteamAhead').addEventListener('click', function addRequired() {
+
+    if(errors.length==0 && cb.checked != ''){//Все ОК, аккаунт создан
         document.getElementById('successMessage').innerHTML = `Congratulations, ${userFirstName.value}!<br>Your new account has been successfully created!`;
-    } else {
-        document.getElementById('errorMessage').innerHTML = "The information you entered is incorrect or<br>not all required fields have been entered.<br> Please check it and try again";
-        document.getElementById('successMessage').innerHTML = "";
-    };
+    }
 
-    if (userEmail.value == '') {
+    if (userEmail.value == '') {//Нужна эл.почта
         userEmail.classList.remove ('input_valid');
         userEmail.classList.add ('input_error');
         document.getElementById('emailRequired').innerHTML = 'E-mail is required';
@@ -229,7 +298,7 @@ function checkValid() {
         document.getElementById('emailRequired').innerHTML = '';
     };
 
-    if (userPassword.value == '') {
+    if (userPassword.value == '') {//Нужен пароль
         userPassword.classList.remove ('input_valid');
         userPassword.classList.add ('input_error');
         document.getElementById('passwordRequired').innerHTML = 'Password is required';
@@ -237,7 +306,7 @@ function checkValid() {
         document.getElementById('passwordRequired').innerHTML = '';
     };
 
-    if (userFirstName.value == '') {
+    if (userFirstName.value == '') {//Нужно имя
         userFirstName.classList.remove ('input_valid');
         userFirstName.classList.add ('input_error');
         document.getElementById('firstNameRequired').innerHTML = 'First name is required';
@@ -245,7 +314,7 @@ function checkValid() {
         document.getElementById('firstNameRequired').innerHTML = '';
     };
 
-    if (userLastName.value == '') {
+    if (userLastName.value == '') {//Нужна фамилия
         userLastName.classList.remove ('input_valid');
         userLastName.classList.add ('input_error');
         document.getElementById('lastNameRequired').innerHTML = 'Last name is required';
@@ -253,7 +322,23 @@ function checkValid() {
         document.getElementById('lastNameRequired').innerHTML = '';
     };
 
-    if (userCountry.value == '') {
+    if (userPostcode.value == '') {//Нужен индекс
+        userPostcode.classList.remove ('input_valid');
+        userPostcode.classList.add ('input_error');
+        document.getElementById('postcodeRequired').innerHTML = 'Postcode is required';
+    } else {
+        document.getElementById('postcodeRequired').innerHTML = '';
+    };
+
+    if (userCity.value == '') {//Нужен город
+        userCity.classList.remove ('input_valid');
+        userCity.classList.add ('input_error');
+        document.getElementById('cityRequired').innerHTML = 'City name is required';
+    } else {
+        document.getElementById('cityRequired').innerHTML = '';
+    };
+
+    if (userCountry.value == '') {//Нужна страна
         userCountry.classList.remove ('input_valid');
         userCountry.classList.add ('input_error');
         document.getElementById('countryRequired').innerHTML = 'Country is required';
@@ -261,7 +346,7 @@ function checkValid() {
         document.getElementById('countryRequired').innerHTML = '';
     };
 
-    if (userPhone.value == '') {
+    if (userPhone.value == '') {//Нужен тел.
         userPhone.classList.remove ('input_valid');
         userPhone.classList.add ('input_error');
         document.getElementById('phoneRequired').innerHTML = 'Phone is required';
@@ -269,18 +354,16 @@ function checkValid() {
         document.getElementById('phoneRequired').innerHTML = '';
     };
 
-    if (cb.checked == '') {
+    if (cb.checked == '') {//Нужно согласие с условиями
         document.getElementById('acceptRequired').innerHTML = 'You must agree to Terms & Conditions and Privacy Policy';
     } else {
         document.getElementById('acceptRequired').innerHTML = '';
     };
 
-}
+});
 
-
+/* Для меня, на всякий случай, тест regex
 let text = "06.11.12.12.12"; let pattern = /^[- ()+.0-9\s]+$/;
 let result = pattern.test(text);
 console.log(result)
-
-
-//^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s]+$
+*/
