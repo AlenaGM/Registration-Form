@@ -8,14 +8,24 @@ const userCity = document.getElementById("userCity");
 const userCountry = document.getElementById("userCountry");
 const userPhone = document.getElementById("userPhone");
 
-let emailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+.+.[a-zA-Z]{2,4}$/i;
-let passwordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-let nameValid = /^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$/;
-let postcodeValid = /^[-a-zA-Z0-9\s]+$/;
-let countryValid = /^[-a-zA-Z\s]+$/;
-let phoneValid = /^[- ()+.0-9\s]+$/;
+//Регулярки где-то стащила, но проверяла и отлаживала сама
+//Так как нет конкретной страны все, кроме эл.почты и пароля очень лайтово - лишь бы совсем посторонних символов не было
+let emailValid = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,2})$/;
+let passwordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;//8-15 знаков, вкл. как минимум, 1 заглавную и 1 прописную букву, 1 цифру и 1 спецсимвол
+let nameValid = /^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$/;//Латиница, дефисы, пробелы, апострофы, необычные буквы
+let postcodeValid = /^[-A-Za-z0-9 ]{4,9}$/;//Латиница, цифры, пробелы, дефисы, от 4 до 9 знаков
+let countryValid = /^[-a-zA-Z\s]+$/;//Латиница, пробелы, дефисы
+let phoneValid = /^[- ()+.0-9\s]{6,15}$/;//Цифры, пробелы, дефисы, круглые скобки, от 6 до 15 знаков
 
 const cb = document.querySelector('#accept');
+
+
+//Для меня, на всякий случай, тест regex
+let text = "123"; let pattern = /^[-A-Za-z0-9 ]{4,9}$/;
+let result = pattern.test(text);
+console.log(result);
+
+
 
 //Ниже код, в основном, из лекции: перебирает инпуты и собирает коллекцию ошибок, которую выводит списком в конце
 
@@ -362,8 +372,4 @@ document.querySelector('#fullSteamAhead').addEventListener('click', function add
 
 });
 
-/* Для меня, на всякий случай, тест regex
-let text = "06.11.12.12.12"; let pattern = /^[- ()+.0-9\s]+$/;
-let result = pattern.test(text);
-console.log(result)
-*/
+

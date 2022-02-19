@@ -27,12 +27,12 @@
 
                 <div class="form__box">
                     <div class="form__item">
-                        <input type="email" id="userEmail" name="email" class="form__input _email" placeholder="E-mail" value="" tabindex="1" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+.+.[a-zA-Z]{2,4}$" required/>
+                        <input type="email" id="userEmail" name="email" class="form__input _email" placeholder="E-mail" value="" tabindex="1" pattern="^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,2})$" required/>
                         <label for="userEmail" class="form__label">E-mail*</label>
                         <div class="form__required" id="emailRequired"></div>
                     </div>
                     <div class="form__item">
-                        <input type="password" id="userPassword" name="password" class="form__input" placeholder="Password" tabindex="2" minlength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$" required/>
+                        <input type="password" id="userPassword" name="password" class="form__input" placeholder="Password" tabindex="2" minlength="8" maxlength="15" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$" required/>
                         <label for="userPassword" class="form__label">Password*</label>
                         <p>8 to 15 characters including one uppercase letter, one lowercase letter, one numeric digit, and one special character</p>
                         <div class="form__required" id="passwordRequired"></div>
@@ -71,7 +71,7 @@
 
                 <div class="form__box">
                     <div class="form__item">
-                        <input type="text" id="userPostcode" name="postcode" class="form__input" value="" placeholder="Postcode" tabindex="6" maxlength="9" pattern="^[-a-zA-Z0-9\s]+$" required/>
+                        <input type="text" id="userPostcode" name="postcode" class="form__input" value="" placeholder="Postcode" tabindex="6" maxlength="9" pattern="^[-A-Za-z0-9 ]{4,9}$" required/>
                         <label for="userPostcode" class="form__label">Postcode*</label>
                         <div class="form__required" id="postcodeRequired"></div>
                     </div>
@@ -99,10 +99,11 @@
                 </div>
 -->
                 <div class="form__item">
-                    <input type="tel" id="userPhone" name="phone" class="form__input"  placeholder="Phone" tabindex="9" pattern="^[- ()+.0-9\s]+$" required/>
+                    <input type="tel" id="userPhone" name="phone" class="form__input"  placeholder="Phone" tabindex="9" pattern="^[- ()+.0-9\s]{6,15}$" required/>
                     <label for="userPhone" class="form__label">Phone*</label>
                     <div class="form__required" id="phoneRequired"></div>
                 </div>
+
 <!--УБРАНО ПОКА НЕ НАУЧУСЬ СТИЛИЗОВАТЬ ДАТЫ
                 <div class="form__item">
                     <p class="form__label">Birthdate</p>
@@ -128,9 +129,8 @@
                 <div class="form__item item_size-full form__item_position-center">
                     <button type="submit" class="form__button" id="fullSteamAhead" tabindex="12">Create Your Account</button>
                 </div>
-            </form>
-        </div>
-
+            </div>
+        </form>
     </div>
     <script src="assets/js/script.js"></script>
 </body>

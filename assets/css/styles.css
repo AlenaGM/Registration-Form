@@ -16,6 +16,7 @@ body {
 
 .form {
     max-width: 560px;
+    min-width: 300px;
     margin: 0px auto;
     padding: 16px 0;
     display: flex;
@@ -255,3 +256,4 @@ p {
         margin-top: 44px;
     }
 }
+
