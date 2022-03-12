@@ -10,7 +10,7 @@ const userPhone = document.getElementById("userPhone");
 
 //Регулярки где-то стащила, но проверяла и отлаживала сама
 //Так как нет конкретной страны все, кроме эл.почты и пароля очень лайтово - лишь бы совсем посторонних символов не было
-let emailValid = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,2})$/;
+let emailValid = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$/;
 let passwordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;//8-15 знаков, вкл. как минимум, 1 заглавную и 1 прописную букву, 1 цифру и 1 спецсимвол
 let nameValid = /^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$/;//Латиница, дефисы, пробелы, апострофы, необычные буквы
 let addressValid =  /^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ0-9\s']+$/;//Латиница, цифры, пробелы, дефисы, апострофы, необычные буквы
@@ -22,7 +22,7 @@ const cb = document.querySelector('#accept');
 
 
 /*/Для меня, на всякий случай, тест regex
-let text = "kk 4-+"; let pattern = /^[-a-zA-Z0-9\s]+$/;
+let text = "alena@mail.rue"; let pattern = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$/;
 let result = pattern.test(text);
 console.log(result);*/
 
@@ -68,13 +68,37 @@ function checkAll() {
     }
 
     document.getElementById('errorsInfo').innerHTML = errors.join('. <br>');
-
 }
 
 document.querySelector('#fullSteamAhead').addEventListener('click', function(event){
     event.preventDefault();
     checkAll();
+
+    //НОВЫЙ КОД 21-Й НЕДЕЛИ ОТПРАВКА ФОРМЫ
+let user = {
+    "first name": userFirstName.value,
+    "last name": userLastName.value,
+    "e-mail": userEmail.value,
+    "password": userPassword.value,
+    "address": userAddress.value,
+    "postcode": userPostcode.value,
+    "city": userCity.value,
+    "country": userCountry.value,
+    "phone": userPhone.value,
+}
+
+    fetch("https://httpbin.org/post",
+    {
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+            'Content-Type':'application/json; charset=utf-8'
+        },
+    })
+    .then(response => response.json())
+    .catch(error => console.log(error))
 });
+//КОНЕЦ НОВОГО КОДА 21-Й НЕДЕЛИ ОТПРАВКА ФОРМЫ
 
 //Ниже чуть доработанный код из 15-й недели
 //Нужен для оформления: каждое поле проходит валидацию по мере заполнения формы и радует пользователя галочкой
