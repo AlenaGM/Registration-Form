@@ -22,7 +22,7 @@ const cb = document.querySelector('#accept');
 
 
 /*/Для меня, на всякий случай, тест regex
-let text = "alena@mail.rue"; let pattern = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$/;
+let text = "alena@mail.rupp"; let pattern = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$/;
 let result = pattern.test(text);
 console.log(result);*/
 
@@ -51,6 +51,7 @@ function checkValidity (input) {
 
     if(errors.length!=0 && cb.checked == ''){
         document.getElementById('errorsInfo').innerHTML = '';
+
     }else{
         document.getElementById('successMessage').innerHTML = '';
     }
@@ -88,16 +89,19 @@ let user = {
     "phone": userPhone.value,
 }
 
-    fetch("https://httpbin.org/post",
-    {
-        method: 'POST',
-        body: JSON.stringify(user),
-        headers: {
-            'Content-Type':'application/json; charset=utf-8'
-        },
-    })
-    .then(response => response.json())
-    .catch(error => console.log(error))
+    if (errors == 0){
+        fetch("https://httpbin.org/post",
+        {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type':'application/json; charset=utf-8'
+            },
+        })
+        .then(response => response.json())
+        .catch(error => console.log(error))
+    }
+
 });
 //КОНЕЦ НОВОГО КОДА 21-Й НЕДЕЛИ ОТПРАВКА ФОРМЫ
 
