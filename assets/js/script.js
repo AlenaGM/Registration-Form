@@ -72,6 +72,7 @@ function checkAll() {
 
 document.querySelector('#fullSteamAhead').addEventListener('click', function(event){
     event.preventDefault();
+
     checkAll();
 
     //НОВЫЙ КОД 21-Й НЕДЕЛИ ОТПРАВКА ФОРМЫ
