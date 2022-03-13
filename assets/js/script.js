@@ -405,7 +405,7 @@ document.querySelector('#fullSteamAhead').addEventListener('click', function add
         document.getElementById('acceptRequired').innerHTML = '';
     };
 
-    //Очищаем форму после отправки
+    /*/Очищаем форму после отправки
     userEmail.value = ''; userEmail.classList.remove ('input_valid'); userEmail.classList.remove ('filled');
     userPassword.value = ''; userPassword.classList.remove ('input_valid'); userPassword.classList.remove ('filled');
     userFirstName.value = ''; userFirstName.classList.remove ('input_valid'); userFirstName.classList.remove ('filled');
@@ -414,7 +414,7 @@ document.querySelector('#fullSteamAhead').addEventListener('click', function add
     userCity.value = ''; userCity.classList.remove ('input_valid'); userCity.classList.remove ('filled');
     userCountry.value = ''; userCountry.classList.remove ('input_valid'); userCountry.classList.remove ('filled');
     userPostcode.value = ''; userPostcode.classList.remove ('input_valid'); userPostcode.classList.remove ('filled');
-    userPhone.value = ''; userPhone.classList.remove ('input_valid'); userPhone.classList.remove ('filled');
+    userPhone.value = ''; userPhone.classList.remove ('input_valid'); userPhone.classList.remove ('filled');*/
 });
 
 
