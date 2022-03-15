@@ -20,15 +20,13 @@ let phoneValid = /^[- ()+.0-9\s]{6,15}$/;//Цифры, пробелы, дефи�
 
 const cb = document.querySelector('#accept');
 
-
 /*/Для меня, на всякий случай, тест regex
 let text = "alena@mail.rupp"; let pattern = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$/;
 let result = pattern.test(text);
 console.log(result);*/
 
 
-
-//Ниже код, в основном, из лекции: перебирает инпуты и собирает коллекцию ошибок, которую выводит списком в конце
+//Ниже код, который перебирает инпуты и собирает количество ошибок (УБРАНО В //: коллекцию ошибок, которую выводит списком в конце)
 
 let errors = [];
 
@@ -77,9 +75,7 @@ function checkAll() {
         checkValidity(input);
     }
 
-    if(errors.length!=0 || cb.checked == ''){
-        document.getElementById('errorsInfo').innerHTML = 'Please make sure all fields are filled in correctly';
-    }else{
+    if(errors.length==0 || cb.checked != ''){
         document.getElementById('successMessage').innerHTML = '';
         document.getElementById('errorsInfo').innerHTML = '';
     }
@@ -90,6 +86,13 @@ document.querySelector('#fullSteamAhead').addEventListener('click', function(eve
     event.preventDefault();
 
     checkAll();
+
+    if(errors.length!=0 || cb.checked == ''){
+        document.getElementById('errorsInfo').innerHTML = 'Please make sure all fields are filled in correctly';
+    }else{
+        document.getElementById('successMessage').innerHTML = '';
+        document.getElementById('errorsInfo').innerHTML = '';
+    }
 
     //НОВЫЙ КОД 21-Й НЕДЕЛИ ОТПРАВКА ФОРМЫ
 let user = {
