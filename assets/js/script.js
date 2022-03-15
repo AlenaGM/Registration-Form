@@ -262,8 +262,8 @@ document.querySelector('#accept').addEventListener('change', function addAccept(
 });
 
 
-//ФУНКЦИИ, КОТОРЫЕ ПОДСЧИТЫВАЮТ КОЛИЧЕСТВО ОШИБОК
-//Ниже код, который перебирает конкретный инпут и собирает количество ошибок в нем
+//2 ФУНКЦИИ, КОТОРЫЕ ПОДСЧИТЫВАЮТ КОЛИЧЕСТВО ОШИБОК
+//Ниже код, который перебирает конкретный инпут и считает ошибки в нем
 //(УБРАНО В //: коллекция ошибок выводится общим списком в конце после отправки)
 //Сама не работает, включается в другие функции по мере надобности связана с ф-ей checkAll()
 
@@ -289,8 +289,9 @@ function checkValidity (input) {
     }
 }
 
+//Ниже код, который перебирает все инпуты и ищет ошибки функцией checkValidity()
 function checkAll() {
-    //Ниже код, который перебирает все инпуты и ищет ошибки функцией checkValidity
+
     errors = [];
 
     let inputs = document.querySelectorAll('input');
@@ -306,6 +307,7 @@ function checkAll() {
     //document.getElementById('errorsInfo').innerHTML = errors.join('. <br>');
 }
 
+
 //ФУНКЦИИ КОТОРЫЕ РАБОТАЮТ ПО КЛИКУ НА КНОПКУ "ОТПРАВИТЬ"
 
 function addSuccess() {
@@ -318,7 +320,7 @@ function addSuccess() {
 }
 
 function addFailure(){
-    //Если все поля заролнены c ошибками или с условиями не согласны, выдает сообщение "Проверьте, все ли верно заполнено"
+    //Если все поля заполнены c ошибками или с условиями не согласны, выдает сообщение "Проверьте, все ли верно заполнено"
     //Оформительская функция
     if(errors.length!=0 || agreePP.checked == ''){
         document.getElementById('errorsInfo').innerHTML = 'Please make sure all fields are filled in correctly';
@@ -333,13 +335,13 @@ function addRequired() {
     //Если поле заполненят, очищает эту подпись
     //Оформительская функция
 
-    let arr = document.querySelectorAll('input');
+    let inputs = document.querySelectorAll('input');
 
-    arr.forEach(function(element) {
-        if (element.value == '') {//Нужна xxx
-            element.classList.remove ('input_valid');
-            element.classList.add ('input_error');
-            document.getElementById(`${element.id}__Required`).innerHTML = element.placeholder + ` is required`;
+    inputs.forEach(function(input) {
+        if (input.value == '') {//Нужна xxx
+            input.classList.remove ('input_valid');
+            input.classList.add ('input_error');
+            document.getElementById(`${input.id}__Required`).innerHTML = input.placeholder + ` is required`;
         }
     });
 
@@ -393,15 +395,15 @@ function sendForm(){
     }
 }
 
+//Очищаем форму после отправки
 function clearForm () {
-    //Очищаем форму после отправки
-    //Работает строго после отправки формы
-    let arr = document.querySelectorAll('input');
 
-    arr.forEach(function(element) {
-        element.value == '';
-        element.classList.remove ('input_valid');
-        element.classList.remove ('filled');
-        element.classList.remove ('input_error');
+    let inputs = document.querySelectorAll('input');
+
+    inputs.forEach(function(input) {
+        input.value == '';
+        input.classList.remove ('input_valid');
+        input.classList.remove ('filled');
+        input.classList.remove ('input_error');
     });
 }
