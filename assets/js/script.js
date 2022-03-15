@@ -392,20 +392,16 @@ function sendForm(){
     }
 }
 
-function clearForm() {
+function clearForm () {
     //Очищаем форму после отправки
     //Работает по клику
     //Работает строго после отправки формы
-    userEmail.value = ''; userEmail.classList.remove ('input_valid'); userEmail.classList.remove ('filled'); userEmail.classList.remove ('input_error');
-    userPassword.value = ''; userPassword.classList.remove ('input_valid'); userPassword.classList.remove ('filled'); userPassword.classList.remove ('input_error');
-    userFirstName.value = ''; userFirstName.classList.remove ('input_valid'); userFirstName.classList.remove ('filled'); userFirstName.classList.remove ('input_error');
-    userLastName.value = ''; userLastName.classList.remove ('input_valid'); userLastName.classList.remove ('filled'); userLastName.classList.remove ('input_error');
-    userAddress.value = ''; userAddress.classList.remove ('input_valid'); userAddress.classList.remove ('filled'); userAddress.classList.remove ('input_error');
-    userCity.value = ''; userCity.classList.remove ('input_valid'); userCity.classList.remove ('filled'); userCity.classList.remove ('input_error');
-    userCountry.value = ''; userCountry.classList.remove ('input_valid'); userCountry.classList.remove ('filled'); userCountry.classList.remove ('input_error');
-    userPostcode.value = ''; userPostcode.classList.remove ('input_valid'); userPostcode.classList.remove ('filled'); userPostcode.classList.remove ('input_error');
-    userPhone.value = ''; userPhone.classList.remove ('input_valid'); userPhone.classList.remove ('filled');  userPhone.classList.remove ('input_error');
+    let arr = document.querySelectorAll('input');
+
+    arr.forEach(function(element) {
+        element.value == '';
+        element.classList.remove ('input_valid');
+        element.classList.remove ('filled');
+        element.classList.remove ('input_error');
+    });
 }
-
-
-
