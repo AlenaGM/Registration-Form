@@ -31,21 +31,20 @@ document.querySelector('#fullSteamAhead').addEventListener('click', function(eve
 
     event.preventDefault();
 
-    checkAll();
+    checkAll();//Ищем и считаем ошибки в полях формы
 
-    addRequired();
-    addFailure();
-    addSuccess();
-    sendForm();
+    addRequired();//Если поля не заполнены -> выделяем красным и делаем замечание
+    addFailure();//Сообщение в конце с просьбой все проверить
+    addSuccess();//Сообщение в конце с сообщением, что все ОК
 
+    sendForm();//Отправка формы и очищение ее полей после
+    //Все эти ф-ии со стр.271 и ниже
 });
 
 
-
 //ФУНКЦИИ КОТОРЫЕ РАБОТАЮТ ПРИ ИЗМЕНЕНИИ ИМПУТОВ
-//Нужен для оформления: каждое поле проходит валидацию по мере заполнения формы и радует пользователя галочкой
+//Нужны для оформления: каждое поле проходит валидацию по мере заполнения формы и радует пользователя галочкой
 // и жизнерадостным зеленым цветом, в отличие от красного, который появляется только в конце после нажатия на кнопку
-//(Ну и жалко было столько кода выкидывать)
 
 document.querySelector('#userEmail').addEventListener('change', function addFilledEmail(){//Эл.почта
 
@@ -287,17 +286,10 @@ function checkValidity (input) {
         document.getElementById('acceptRequired').innerHTML = 'You must agree to Terms & Conditions and Privacy Policy';
         errors++
     }
-
-    if(errors.length!=0 || cb.checked == ''){
-        document.getElementById('errorsInfo').innerHTML = '';
-    }else{
-        document.getElementById('successMessage').innerHTML = '';
-    }
 }
 
 function checkAll() {
     //Ниже код, который перебирает все инпуты и ишет ошибки функцией checkValidity
-
     errors = [];
 
     let inputs = document.querySelectorAll('input');
@@ -307,9 +299,9 @@ function checkAll() {
     }
 
     if(errors.length==0 || cb.checked != ''){
-        document.getElementById('successMessage').innerHTML = '';
         document.getElementById('errorsInfo').innerHTML = '';
     }
+    //Коллекция ошибок в конце
     //document.getElementById('errorsInfo').innerHTML = errors.join('. <br>');
 }
 
