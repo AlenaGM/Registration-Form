@@ -107,6 +107,8 @@ let user = {
     "phone": userPhone.value,
 }
 
+    //НОВЫЙ КОД 21-Й НЕДЕЛИ ОТПРАВКА ФОРМЫ
+
     if (errors == 0){
         fetch("https://httpbin.org/post",
         {
