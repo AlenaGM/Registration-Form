@@ -430,8 +430,7 @@ function sendForm(){
     "country": userCountry.value,
     "phone": userPhone.value,
     "newsletter": agreeNL.value,
-}
-
+    }
 
     if (errors == 0){
         fetch("https://httpbin.org/post",
