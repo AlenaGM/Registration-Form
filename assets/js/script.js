@@ -361,8 +361,9 @@ document.querySelector('#signupNewsletter').addEventListener('click', function()
         };
 });
 
+//Отправляем форму
 function sendForm(){
-    //Отправляем форму
+
     let user = {
     "first name": userFirstName.value,
     "last name": userLastName.value,
@@ -394,7 +395,6 @@ function sendForm(){
 
 function clearForm () {
     //Очищаем форму после отправки
-    //Работает по клику
     //Работает строго после отправки формы
     let arr = document.querySelectorAll('input');
 
