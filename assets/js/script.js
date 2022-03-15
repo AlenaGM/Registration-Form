@@ -38,7 +38,7 @@ document.querySelector('#fullSteamAhead').addEventListener('click', function(eve
     addFailure();//Сообщение в конце с просьбой все проверить
     addSuccess();//Сообщение в конце с сообщением, что все ОК
 
-    //sendForm();//Отправка формы и очищение ее полей после
+    sendForm();//Отправка формы и очищение ее полей после
     //Все эти ф-ии со стр.271 и ниже
 });
 
@@ -307,6 +307,7 @@ function checkAll() {
 }
 
 //ФУНКЦИИ КОТОРЫЕ РАБОТАЮТ ПО КЛИКУ НА КНОПКУ "ОТПРАВИТЬ"
+
 function addSuccess() {
     //Если все поля заролнены верно и с условиями согласны, выдает сообщение "Поздравляю, аккаунт создан"
     //Работает по клику
@@ -338,7 +339,7 @@ function addRequired() {
     let arr = document.querySelectorAll('input');
 
     arr.forEach(function(element) {
-        if (element.value == '') {//Нужна страна
+        if (element.value == '') {//Нужна xxx
             element.classList.remove ('input_valid');
             element.classList.add ('input_error');
             document.getElementById(`${element.id}__Required`).innerHTML = element.placeholder + ` is required`;
