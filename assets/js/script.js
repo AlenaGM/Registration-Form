@@ -20,112 +20,29 @@ let phoneValid = /^[- ()+.0-9\s]{6,15}$/;//Цифры, пробелы, дефи�
 
 const cb = document.querySelector('#accept');
 
+let errors = [];
+
 /*/Для меня, на всякий случай, тест regex
 let text = "alena@mail.rupp"; let pattern = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$/;
 let result = pattern.test(text);
 console.log(result);*/
 
-
-//Ниже код, который перебирает инпуты и собирает количество ошибок (УБРАНО В //: коллекцию ошибок, которую выводит списком в конце)
-
-let errors = [];
-
-function checkValidity (input) {
-
-    document.getElementById('successMessage').innerHTML = '';
-
-    let validity = input.validity;
-
-    if(validity.valueMissing) {
-        //errors.push(input.placeholder + ' is required!');
-        errors++
-    }
-
-    if(validity.patternMismatch) {
-        //errors.push(input.placeholder + ' format is not valid');
-        errors++
-    }
-
-    if(validity.tooLong) {
-        let maxlength = getAttributeValue(input, 'maxlength');
-        //errors.push('Maximum number of symbols is ' + maxlength);
-        errors++
-    }
-
-    if (cb.checked == '') {//Нужно согласие с условиями
-        document.getElementById('acceptRequired').innerHTML = 'You must agree to Terms & Conditions and Privacy Policy';
-        errors++
-    }
-
-    if(errors.length!=0 || cb.checked == ''){
-        document.getElementById('errorsInfo').innerHTML = '';
-    }else{
-        document.getElementById('successMessage').innerHTML = '';
-    }
-}
-
-
-function checkAll() {
-
-    errors = [];
-
-    let inputs = document.querySelectorAll('input');
-
-    for (let input of inputs) {
-        checkValidity(input);
-    }
-
-    if(errors.length==0 || cb.checked != ''){
-        document.getElementById('successMessage').innerHTML = '';
-        document.getElementById('errorsInfo').innerHTML = '';
-    }
-    //document.getElementById('errorsInfo').innerHTML = errors.join('. <br>');
-}
-
 document.querySelector('#fullSteamAhead').addEventListener('click', function(event){
+
     event.preventDefault();
 
     checkAll();
 
-    if(errors.length!=0 || cb.checked == ''){
-        document.getElementById('errorsInfo').innerHTML = 'Please make sure all fields are filled in correctly';
-    }else{
-        document.getElementById('successMessage').innerHTML = '';
-        document.getElementById('errorsInfo').innerHTML = '';
-    }
-
-    //НОВЫЙ КОД 21-Й НЕДЕЛИ ОТПРАВКА ФОРМЫ
-let user = {
-    "first name": userFirstName.value,
-    "last name": userLastName.value,
-    "e-mail": userEmail.value,
-    "password": userPassword.value,
-    "address": userAddress.value,
-    "postcode": userPostcode.value,
-    "city": userCity.value,
-    "country": userCountry.value,
-    "phone": userPhone.value,
-}
-
-    //НОВЫЙ КОД 21-Й НЕДЕЛИ ОТПРАВКА ФОРМЫ
-
-    if (errors == 0){
-        fetch("https://httpbin.org/post",
-        {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers: {
-                'Content-Type':'application/json; charset=utf-8'
-            },
-        })
-        .then(response => response.json())
-        .catch(error => console.log(error))
-    }
+    addRequired();
+    addFailure();
+    addSuccess();
+    sendForm();
 
 });
-//КОНЕЦ НОВОГО КОДА 21-Й НЕДЕЛИ ОТПРАВКА ФОРМЫ
 
-//Ниже чуть доработанный код из 15-й недели
+
+
+//ФУНКЦИИ КОТОРЫЕ РАБОТАЮТ ПРИ ИЗМЕНЕНИИ ИМПУТОВ
 //Нужен для оформления: каждое поле проходит валидацию по мере заполнения формы и радует пользователя галочкой
 // и жизнерадостным зеленым цветом, в отличие от красного, который появляется только в конце после нажатия на кнопку
 //(Ну и жалко было столько кода выкидывать)
@@ -345,15 +262,85 @@ document.querySelector('#accept').addEventListener('change', function addAccept(
 });
 
 
-//ОФОРМЛЕНИЕ:
-//При нажатии "Создать аккаунт" либо выводит поздравление "Аккаунт создан",
-// либо подчеркивает красным и ругается под каждым конкретным плохо заполненным полем
+//ФУНКЦИИ, КОТОРЫЕ ПОДСЧИТЫВАЮТ КОЛИЧЕСТВО ОШИБОК
+//Ниже код, который перебирает конкретный инпут и собирает количество ошибок в нем
+//(УБРАНО В //: коллекция ошибок выводится общим списком в конце после отправки)
+//Сама не работает, включается в другие функции по мере надобности связана с ф-ей checkAll()
 
-document.querySelector('#fullSteamAhead').addEventListener('click', function addRequired() {
+function checkValidity (input) {
+
+    document.getElementById('successMessage').innerHTML = '';
+
+    let validity = input.validity;
+
+    if(validity.valueMissing) {
+        //errors.push(input.placeholder + ' is required!');
+        errors++
+    }
+
+    if(validity.patternMismatch) {
+        //errors.push(input.placeholder + ' format is not valid');
+        errors++
+    }
+
+    if (cb.checked == '') {//Нужно согласие с условиями
+        document.getElementById('acceptRequired').innerHTML = 'You must agree to Terms & Conditions and Privacy Policy';
+        errors++
+    }
+
+    if(errors.length!=0 || cb.checked == ''){
+        document.getElementById('errorsInfo').innerHTML = '';
+    }else{
+        document.getElementById('successMessage').innerHTML = '';
+    }
+}
+
+function checkAll() {
+    //Ниже код, который перебирает все инпуты и ишет ошибки функцией checkValidity
+
+    errors = [];
+
+    let inputs = document.querySelectorAll('input');
+
+    for (let input of inputs) {
+        checkValidity(input);
+    }
+
+    if(errors.length==0 || cb.checked != ''){
+        document.getElementById('successMessage').innerHTML = '';
+        document.getElementById('errorsInfo').innerHTML = '';
+    }
+    //document.getElementById('errorsInfo').innerHTML = errors.join('. <br>');
+}
+
+//ФУНКЦИИ КОТОРЫЕ РАБОТАЮТ ПО КЛИКУ НА КНОПКУ "ОТПРАВИТЬ"
+function addSuccess() {
+    //Если все поля заролнены верно и с условиями согласны, выдает сообщение "Поздравляю, аккаунт создан"
+    //Работает по клику
+    //Оформительская функция
 
     if(errors.length==0 && cb.checked != ''){//Все ОК, аккаунт создан
         document.getElementById('successMessage').innerHTML = `Congratulations, ${userFirstName.value}!<br>Your new account has been successfully created!`;
     }
+}
+
+function addFailure(){
+    //Если все поля заролнены c ошибками или с условиями не согласны, выдает сообщение "Проверьте, все ли верно заполнено"
+    //Работает по клику
+    //Оформительская функция
+    if(errors.length!=0 || cb.checked == ''){
+        document.getElementById('errorsInfo').innerHTML = 'Please make sure all fields are filled in correctly';
+    }else{
+        document.getElementById('successMessage').innerHTML = '';
+        document.getElementById('errorsInfo').innerHTML = '';
+    }
+}
+
+function addRequired() {
+    //Если поле не заполнено, удаляет класс valid, добавляет класс error, пишет прямо под полем, чего не хватает
+    //Если поле заполнено, очищает надпись под полем
+    //Работает по клику
+    //Оформительская функция
 
     if (userEmail.value == '') {//Нужна эл.почта
         userEmail.classList.remove ('input_valid');
@@ -424,17 +411,53 @@ document.querySelector('#fullSteamAhead').addEventListener('click', function add
     } else {
         document.getElementById('acceptRequired').innerHTML = '';
     };
-});
+};
 
-    /*/Очищаем форму после отправки
-    userEmail.value = ''; userEmail.classList.remove ('input_valid'); userEmail.classList.remove ('filled');
-    userPassword.value = ''; userPassword.classList.remove ('input_valid'); userPassword.classList.remove ('filled');
-    userFirstName.value = ''; userFirstName.classList.remove ('input_valid'); userFirstName.classList.remove ('filled');
-    userLastName.value = ''; userLastName.classList.remove ('input_valid'); userLastName.classList.remove ('filled');
-    userAddress.value = ''; userAddress.classList.remove ('input_valid'); userAddress.classList.remove ('filled');
-    userCity.value = ''; userCity.classList.remove ('input_valid'); userCity.classList.remove ('filled');
-    userCountry.value = ''; userCountry.classList.remove ('input_valid'); userCountry.classList.remove ('filled');
-    userPostcode.value = ''; userPostcode.classList.remove ('input_valid'); userPostcode.classList.remove ('filled');
-    userPhone.value = ''; userPhone.classList.remove ('input_valid'); userPhone.classList.remove ('filled');*/
+function sendForm(){
+    //НОВЫЙ КОД 21-Й НЕДЕЛИ ОТПРАВКА ФОРМЫ
+    //Отправляем форму
+    //Работает по клику
+    let user = {
+    "first name": userFirstName.value,
+    "last name": userLastName.value,
+    "e-mail": userEmail.value,
+    "password": userPassword.value,
+    "address": userAddress.value,
+    "postcode": userPostcode.value,
+    "city": userCity.value,
+    "country": userCountry.value,
+    "phone": userPhone.value,
+}
 
+
+    if (errors == 0){
+        fetch("https://httpbin.org/post",
+        {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type':'application/json; charset=utf-8'
+            },
+        })
+        .then(response => response.json())
+        .catch(error => console.log(error))
+
+        clearForm();
+    }
+}
+
+function clearForm() {
+    //Очищаем форму после отправки
+    //Работает по клику
+    //Работает строго после отправки формы
+    userEmail.value = ''; userEmail.classList.remove ('input_valid'); userEmail.classList.remove ('filled'); userEmail.classList.remove ('input_error');
+    userPassword.value = ''; userPassword.classList.remove ('input_valid'); userPassword.classList.remove ('filled'); userPassword.classList.remove ('input_error');
+    userFirstName.value = ''; userFirstName.classList.remove ('input_valid'); userFirstName.classList.remove ('filled'); userFirstName.classList.remove ('input_error');
+    userLastName.value = ''; userLastName.classList.remove ('input_valid'); userLastName.classList.remove ('filled'); userLastName.classList.remove ('input_error');
+    userAddress.value = ''; userAddress.classList.remove ('input_valid'); userAddress.classList.remove ('filled'); userAddress.classList.remove ('input_error');
+    userCity.value = ''; userCity.classList.remove ('input_valid'); userCity.classList.remove ('filled'); userCity.classList.remove ('input_error');
+    userCountry.value = ''; userCountry.classList.remove ('input_valid'); userCountry.classList.remove ('filled'); userCountry.classList.remove ('input_error');
+    userPostcode.value = ''; userPostcode.classList.remove ('input_valid'); userPostcode.classList.remove ('filled'); userPostcode.classList.remove ('input_error');
+    userPhone.value = ''; userPhone.classList.remove ('input_valid'); userPhone.classList.remove ('filled');  userPhone.classList.remove ('input_error');
+}
 
