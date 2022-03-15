@@ -39,7 +39,7 @@ document.querySelector('#fullSteamAhead').addEventListener('click', function(eve
     addSuccess();//Сообщение в конце с сообщением, что все ОК
 
     sendForm();//Отправка формы и очищение ее полей после
-    //Все эти ф-ии со стр.271 и ниже
+    //Все эти ф-ии со стр.353 и ниже
 });
 
 
@@ -290,7 +290,7 @@ function checkValidity (input) {
 }
 
 function checkAll() {
-    //Ниже код, который перебирает все инпуты и ишет ошибки функцией checkValidity
+    //Ниже код, который перебирает все инпуты и ищет ошибки функцией checkValidity
     errors = [];
 
     let inputs = document.querySelectorAll('input');
@@ -310,7 +310,6 @@ function checkAll() {
 
 function addSuccess() {
     //Если все поля заролнены верно и с условиями согласны, выдает сообщение "Поздравляю, аккаунт создан"
-    //Работает по клику
     //Оформительская функция
 
     if(errors.length==0 && agreePP.checked != ''){//Все ОК, аккаунт создан
@@ -320,7 +319,6 @@ function addSuccess() {
 
 function addFailure(){
     //Если все поля заролнены c ошибками или с условиями не согласны, выдает сообщение "Проверьте, все ли верно заполнено"
-    //Работает по клику
     //Оформительская функция
     if(errors.length!=0 || agreePP.checked == ''){
         document.getElementById('errorsInfo').innerHTML = 'Please make sure all fields are filled in correctly';
@@ -331,9 +329,8 @@ function addFailure(){
 }
 
 function addRequired() {
-    //Если поле не заполнено, удаляет класс valid, добавляет класс error, пишет прямо под полем, чего не хватает
-    //Если поле заполнено, очищает надпись под полем
-    //Работает по клику
+    //Если поле не заполнено, удаляет класс valid, добавляет класс error, пишет прямо под полем, что оно обязательно
+    //Если поле заполненят, очищает эту подпись
     //Оформительская функция
 
     let arr = document.querySelectorAll('input');
@@ -353,7 +350,9 @@ function addRequired() {
     };
 };
 
-document.querySelector('#signupNewsletter').addEventListener('click', function(){//Проверяем, есть ли подписка на рассылку
+//НОВЫЙ КОД 21-Й НЕДЕЛИ ОТПРАВКА ФОРМЫ
+//Проверяем, есть ли подписка на рассылку
+document.querySelector('#signupNewsletter').addEventListener('click', function(){
     if (agreeNL.checked=='')
         {
             agreeNL.value="no"
@@ -363,9 +362,7 @@ document.querySelector('#signupNewsletter').addEventListener('click', function()
 });
 
 function sendForm(){
-    //НОВЫЙ КОД 21-Й НЕДЕЛИ ОТПРАВКА ФОРМЫ
     //Отправляем форму
-    //Работает по клику
     let user = {
     "first name": userFirstName.value,
     "last name": userLastName.value,
@@ -410,6 +407,5 @@ function clearForm() {
     userPhone.value = ''; userPhone.classList.remove ('input_valid'); userPhone.classList.remove ('filled');  userPhone.classList.remove ('input_error');
 }
 
-/// TEST TEST TEST
 
 
