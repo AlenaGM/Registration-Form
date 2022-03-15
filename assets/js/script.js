@@ -18,7 +18,8 @@ let postcodeValid = /^[-A-Za-z0-9 ]{4,9}$/;//Латиница, цифры, пр�
 let countryValid = /^[-a-zA-Z\s]+$/;//Латиница, пробелы, дефисы
 let phoneValid = /^[- ()+.0-9\s]{6,15}$/;//Цифры, пробелы, дефисы, круглые скобки, от 6 до 15 знаков
 
-const cb = document.querySelector('#accept');
+const agreePP = document.querySelector('#accept');
+const agreeNL = document.querySelector('#signupNewsletter');
 
 let errors = [];
 
@@ -251,7 +252,7 @@ document.querySelector('#userPhone').addEventListener('change', function addFill
 
 document.querySelector('#accept').addEventListener('change', function addAccept(){//Согласие с условиями
 
-    if (cb.checked == ''){
+    if (agreePP.checked == ''){
         document.getElementById('acceptRequired').innerHTML = 'You must agree to Terms & Conditions and Privacy Policy';
     } else {
         document.getElementById('acceptRequired').innerHTML = '';
@@ -282,7 +283,7 @@ function checkValidity (input) {
         errors++
     }
 
-    if (cb.checked == '') {//Нужно согласие с условиями
+    if (agreePP.checked == '') {//Нужно согласие с условиями
         document.getElementById('acceptRequired').innerHTML = 'You must agree to Terms & Conditions and Privacy Policy';
         errors++
     }
@@ -298,7 +299,7 @@ function checkAll() {
         checkValidity(input);
     }
 
-    if(errors.length==0 || cb.checked != ''){
+    if(errors.length==0 || agreePP.checked != ''){
         document.getElementById('errorsInfo').innerHTML = '';
     }
     //Коллекция ошибок в конце
@@ -311,7 +312,7 @@ function addSuccess() {
     //Работает по клику
     //Оформительская функция
 
-    if(errors.length==0 && cb.checked != ''){//Все ОК, аккаунт создан
+    if(errors.length==0 && agreePP.checked != ''){//Все ОК, аккаунт создан
         document.getElementById('successMessage').innerHTML = `Congratulations, ${userFirstName.value}!<br>Your new account has been successfully created!`;
     }
 }
@@ -320,7 +321,7 @@ function addFailure(){
     //Если все поля заролнены c ошибками или с условиями не согласны, выдает сообщение "Проверьте, все ли верно заполнено"
     //Работает по клику
     //Оформительская функция
-    if(errors.length!=0 || cb.checked == ''){
+    if(errors.length!=0 || agreePP.checked == ''){
         document.getElementById('errorsInfo').innerHTML = 'Please make sure all fields are filled in correctly';
     }else{
         document.getElementById('successMessage').innerHTML = '';
@@ -398,12 +399,21 @@ function addRequired() {
         document.getElementById('phoneRequired').innerHTML = '';
     };
 
-    if (cb.checked == '') {//Нужно согласие с условиями
+    if (agreePP.checked == '') {//Нужно согласие с условиями
         document.getElementById('acceptRequired').innerHTML = 'You must agree to Terms & Conditions and Privacy Policy';
     } else {
         document.getElementById('acceptRequired').innerHTML = '';
     };
 };
+
+document.querySelector('#signupNewsletter').addEventListener('click', function(){//Проверяем, есть ли подписка на рассылку
+    if (agreeNL.checked=='')
+        {
+            agreeNL.value="no"
+        } else {
+            agreeNL.value="yes"
+        };
+});
 
 function sendForm(){
     //НОВЫЙ КОД 21-Й НЕДЕЛИ ОТПРАВКА ФОРМЫ
@@ -419,6 +429,7 @@ function sendForm(){
     "city": userCity.value,
     "country": userCountry.value,
     "phone": userPhone.value,
+    "newsletter": agreeNL.value,
 }
 
 
