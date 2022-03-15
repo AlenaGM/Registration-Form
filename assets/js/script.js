@@ -38,7 +38,7 @@ document.querySelector('#fullSteamAhead').addEventListener('click', function(eve
     addFailure();//Сообщение в конце с просьбой все проверить
     addSuccess();//Сообщение в конце с сообщением, что все ОК
 
-    sendForm();//Отправка формы и очищение ее полей после
+    //sendForm();//Отправка формы и очищение ее полей после
     //Все эти ф-ии со стр.271 и ниже
 });
 
@@ -50,7 +50,7 @@ document.querySelector('#fullSteamAhead').addEventListener('click', function(eve
 document.querySelector('#userEmail').addEventListener('change', function addFilledEmail(){//Эл.почта
 
     userEmail.classList.add ('filled');
-    document.getElementById('emailRequired').innerHTML = '';
+    document.getElementById('userEmail__Required').innerHTML = '';
 
     if (userEmail.value == '') {
         userEmail.classList.remove ('filled');
@@ -58,7 +58,7 @@ document.querySelector('#userEmail').addEventListener('change', function addFill
 
     } else if (!emailValid.test(userEmail.value)) {
         userEmail.classList.remove ('input_valid');
-        document.getElementById('emailRequired').innerHTML = 'Enter a valid e-mail address';
+        document.getElementById('userEmail__Required').innerHTML = 'Enter a valid e-mail address';
 
         } else {
             userEmail.classList.add ('input_valid');
@@ -73,7 +73,7 @@ document.querySelector('#userEmail').addEventListener('change', function addFill
 document.querySelector('#userPassword').addEventListener('change', function addFilledPassword(){//Пароль
 
     userPassword.classList.add ('filled');
-    document.getElementById('passwordRequired').innerHTML = '';
+    document.getElementById('userPassword__Required').innerHTML = '';
 
     if (userPassword.value == '') {
         userPassword.classList.remove ('input_valid');
@@ -81,7 +81,7 @@ document.querySelector('#userPassword').addEventListener('change', function addF
 
     } else if(!passwordValid.test(userPassword.value)){
         userPassword.classList.remove ('input_valid');
-        document.getElementById('passwordRequired').innerHTML = 'Enter a valid password';
+        document.getElementById('userPassword__Required').innerHTML = 'Enter a valid password';
 
     } else {
         userPassword.classList.add ('input_valid');
@@ -94,7 +94,7 @@ document.querySelector('#userPassword').addEventListener('change', function addF
 document.querySelector('#userFirstName').addEventListener('change', function addFilledFirstName(){//Имя
 
     userFirstName.classList.add ('filled');
-    document.getElementById('firstNameRequired').innerHTML = '';
+    document.getElementById('userFirstName__Required').innerHTML = '';
 
     if (userFirstName.value == '') {
         userFirstName.classList.remove ('input_valid');
@@ -102,7 +102,7 @@ document.querySelector('#userFirstName').addEventListener('change', function add
 
     } else if(!nameValid.test(userFirstName.value)){
         userFirstName.classList.remove ('input_valid');
-        document.getElementById('firstNameRequired').innerHTML = 'Enter a valid first name';
+        document.getElementById('userFirstName__Required').innerHTML = 'Enter a valid first name';
 
     } else {
         userFirstName.classList.add ('input_valid');
@@ -117,7 +117,7 @@ document.querySelector('#userFirstName').addEventListener('change', function add
 document.querySelector('#userLastName').addEventListener('change', function addFilledLastName(){//Фамилия
 
     userLastName.classList.add ('filled');
-    document.getElementById('lastNameRequired').innerHTML = '';
+    document.getElementById('userLastName__Required').innerHTML = '';
 
     if (userLastName.value == '') {
         userLastName.classList.remove ('input_valid');
@@ -125,7 +125,7 @@ document.querySelector('#userLastName').addEventListener('change', function addF
 
     } else if(!nameValid.test(userLastName.value)){
         userLastName.classList.remove ('input_valid');
-        document.getElementById('lastNameRequired').innerHTML = 'Enter a valid last name';
+        document.getElementById('userLastName__Required').innerHTML = 'Enter a valid last name';
 
     } else {
         userLastName.classList.add ('input_valid');
@@ -140,7 +140,7 @@ document.querySelector('#userLastName').addEventListener('change', function addF
 document.querySelector('#userAddress').addEventListener('change', function addFilledAddress(){//Адрес(необязательный)
 
     userAddress.classList.add ('filled');
-    document.getElementById('addressRequired').innerHTML = '';
+    document.getElementById('userAddress__Required').innerHTML = '';
 
     if (userAddress.value == '') {
         userAddress.classList.remove ('input_valid');
@@ -148,7 +148,7 @@ document.querySelector('#userAddress').addEventListener('change', function addFi
 
     } else if(!addressValid.test(userAddress.value)){
         userAddress.classList.remove ('input_valid');
-        document.getElementById('addressRequired').innerHTML = 'Please check, if address is correct';
+        document.getElementById('userAddress__Required').innerHTML = 'Please check, if address is correct';
 
     } else {
         userAddress.classList.add ('input_valid');
@@ -163,7 +163,7 @@ document.querySelector('#userAddress').addEventListener('change', function addFi
 document.querySelector('#userPostcode').addEventListener('change', function addFilledPostcode(){//Индекс
 
     userPostcode.classList.add ('filled');
-    document.getElementById('postcodeRequired').innerHTML = '';
+    document.getElementById('userPostcode__Required').innerHTML = '';
 
     if (userPostcode.value == '') {
         userPostcode.classList.remove ('input_valid');
@@ -171,7 +171,7 @@ document.querySelector('#userPostcode').addEventListener('change', function addF
 
     } else if(!postcodeValid.test(userPostcode.value)){
         userPostcode.classList.remove ('input_valid');
-        document.getElementById('postcodeRequired').innerHTML = 'Enter a valid postcode';
+        document.getElementById('userPostcode__Required').innerHTML = 'Enter a valid postcode';
 
     } else {
         userPostcode.classList.add ('input_valid');
@@ -186,7 +186,7 @@ document.querySelector('#userPostcode').addEventListener('change', function addF
 document.querySelector('#userCity').addEventListener('change', function addFilledCity(){//Город
 
     userCity.classList.add ('filled');
-    document.getElementById('cityRequired').innerHTML = '';
+    document.getElementById('userCity__Required').innerHTML = '';
 
     if (userCity.value == '') {
         userCity.classList.remove ('input_valid');
@@ -194,7 +194,7 @@ document.querySelector('#userCity').addEventListener('change', function addFille
 
     } else if(!nameValid.test(userCity.value)){
         userCity.classList.remove ('input_valid');
-        document.getElementById('cityRequired').innerHTML = 'Enter a valid city';
+        document.getElementById('userCity__Required').innerHTML = 'Enter a valid city';
 
     } else {
         userCity.classList.add ('input_valid');
@@ -209,7 +209,7 @@ document.querySelector('#userCity').addEventListener('change', function addFille
 document.querySelector('#userCountry').addEventListener('change', function addFilledCountry(){//Страна
 
     userCountry.classList.add ('filled');
-    document.getElementById('countryRequired').innerHTML = '';
+    document.getElementById('userCountry__Required').innerHTML = '';
 
     if (userCountry.value == '') {
         userCountry.classList.remove ('input_valid');
@@ -217,7 +217,7 @@ document.querySelector('#userCountry').addEventListener('change', function addFi
 
     } else if(!countryValid.test(userCountry.value)){
         userCountry.classList.remove ('input_valid');
-        document.getElementById('countryRequired').innerHTML = 'Enter a valid country';
+        document.getElementById('userCountry__Required').innerHTML = 'Enter a valid country';
 
     } else {
         userCountry.classList.add ('input_valid');
@@ -232,7 +232,7 @@ document.querySelector('#userCountry').addEventListener('change', function addFi
 document.querySelector('#userPhone').addEventListener('change', function addFilledPhone(){//Тел.
 
     userPhone.classList.add ('filled');
-    document.getElementById('phoneRequired').innerHTML = '';
+    document.getElementById('userPhone__Required').innerHTML = '';
 
     if (userPhone.value == '') {
         userPhone.classList.remove ('input_valid');
@@ -240,7 +240,7 @@ document.querySelector('#userPhone').addEventListener('change', function addFill
 
     } else if(!phoneValid.test(userPhone.value)){
         userPhone.classList.remove ('input_valid');
-        document.getElementById('phoneRequired').innerHTML = 'Enter a valid phone';
+        document.getElementById('userPhone__Required').innerHTML = 'Enter a valid phone';
 
     } else {
         userPhone.classList.add ('input_valid');
@@ -335,69 +335,15 @@ function addRequired() {
     //Работает по клику
     //Оформительская функция
 
-    if (userEmail.value == '') {//Нужна эл.почта
-        userEmail.classList.remove ('input_valid');
-        userEmail.classList.add ('input_error');
-        document.getElementById('emailRequired').innerHTML = 'E-mail is required';
-    } else {
-        document.getElementById('emailRequired').innerHTML = '';
-    };
+    let arr = document.querySelectorAll('input');
 
-    if (userPassword.value == '') {//Нужен пароль
-        userPassword.classList.remove ('input_valid');
-        userPassword.classList.add ('input_error');
-        document.getElementById('passwordRequired').innerHTML = 'Password is required';
-    } else {
-        document.getElementById('passwordRequired').innerHTML = '';
-    };
-
-    if (userFirstName.value == '') {//Нужно имя
-        userFirstName.classList.remove ('input_valid');
-        userFirstName.classList.add ('input_error');
-        document.getElementById('firstNameRequired').innerHTML = 'First name is required';
-    } else {
-        document.getElementById('firstNameRequired').innerHTML = '';
-    };
-
-    if (userLastName.value == '') {//Нужна фамилия
-        userLastName.classList.remove ('input_valid');
-        userLastName.classList.add ('input_error');
-        document.getElementById('lastNameRequired').innerHTML = 'Last name is required';
-    } else {
-        document.getElementById('lastNameRequired').innerHTML = '';
-    };
-
-    if (userPostcode.value == '') {//Нужен индекс
-        userPostcode.classList.remove ('input_valid');
-        userPostcode.classList.add ('input_error');
-        document.getElementById('postcodeRequired').innerHTML = 'Postcode is required';
-    } else {
-        document.getElementById('postcodeRequired').innerHTML = '';
-    };
-
-    if (userCity.value == '') {//Нужен город
-        userCity.classList.remove ('input_valid');
-        userCity.classList.add ('input_error');
-        document.getElementById('cityRequired').innerHTML = 'City name is required';
-    } else {
-        document.getElementById('cityRequired').innerHTML = '';
-    };
-
-    if (userCountry.value == '') {//Нужна страна
-        userCountry.classList.remove ('input_valid');
-        userCountry.classList.add ('input_error');
-        document.getElementById('countryRequired').innerHTML = 'Country is required';
-    } else {
-        document.getElementById('countryRequired').innerHTML = '';
-    };
-
-    if (userPhone.value == '') {//Нужен тел.
-        userPhone.classList.remove ('input_valid');
-        userPhone.classList.add ('input_error');
-        document.getElementById('phoneRequired').innerHTML = 'Phone is required';
-    } else {
-        document.getElementById('phoneRequired').innerHTML = '';
-    };
+    arr.forEach(function(element) {
+        if (element.value == '') {//Нужна страна
+            element.classList.remove ('input_valid');
+            element.classList.add ('input_error');
+            document.getElementById(`${element.id}__Required`).innerHTML = element.placeholder + ` is required`;
+        }
+    });
 
     if (agreePP.checked == '') {//Нужно согласие с условиями
         document.getElementById('acceptRequired').innerHTML = 'You must agree to Terms & Conditions and Privacy Policy';
@@ -462,4 +408,7 @@ function clearForm() {
     userPostcode.value = ''; userPostcode.classList.remove ('input_valid'); userPostcode.classList.remove ('filled'); userPostcode.classList.remove ('input_error');
     userPhone.value = ''; userPhone.classList.remove ('input_valid'); userPhone.classList.remove ('filled');  userPhone.classList.remove ('input_error');
 }
+
+/// TEST TEST TEST
+
 
