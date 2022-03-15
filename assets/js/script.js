@@ -8,7 +8,7 @@ const userCity = document.getElementById("userCity");
 const userCountry = document.getElementById("userCountry");
 const userPhone = document.getElementById("userPhone");
 
-//Регулярки где-то стащила, но проверяла и отлаживала сама
+//Регулярки
 //Так как нет конкретной страны все, кроме эл.почты и пароля очень лайтово - лишь бы совсем посторонних символов не было
 let emailValid = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$/;
 let passwordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;//8-15 знаков, вкл. как минимум, 1 заглавную и 1 прописную букву, 1 цифру и 1 спецсимвол
@@ -345,9 +345,9 @@ document.querySelector('#accept').addEventListener('change', function addAccept(
 });
 
 
-//Еще немного остатков предыдущего кода, главным образом нужного для оформительских целей.
-//При нажатии "Создать аккаунт" либо выводит поздравление либо подчеркивает красным и ругается под каждым конкретным полем
-//Сделала "на изменение", а не "на клик", чтобы не пугать пользователя большим количеством красного с места в карьер
+//ОФОРМЛЕНИЕ:
+//При нажатии "Создать аккаунт" либо выводит поздравление "Аккаунт создан",
+// либо подчеркивает красным и ругается под каждым конкретным плохо заполненным полем
 
 document.querySelector('#fullSteamAhead').addEventListener('click', function addRequired() {
 
@@ -424,6 +424,7 @@ document.querySelector('#fullSteamAhead').addEventListener('click', function add
     } else {
         document.getElementById('acceptRequired').innerHTML = '';
     };
+});
 
     /*/Очищаем форму после отправки
     userEmail.value = ''; userEmail.classList.remove ('input_valid'); userEmail.classList.remove ('filled');
@@ -435,6 +436,5 @@ document.querySelector('#fullSteamAhead').addEventListener('click', function add
     userCountry.value = ''; userCountry.classList.remove ('input_valid'); userCountry.classList.remove ('filled');
     userPostcode.value = ''; userPostcode.classList.remove ('input_valid'); userPostcode.classList.remove ('filled');
     userPhone.value = ''; userPhone.classList.remove ('input_valid'); userPhone.classList.remove ('filled');*/
-});
 
 
