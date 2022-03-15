@@ -34,29 +34,38 @@ let errors = [];
 
 function checkValidity (input) {
 
+    document.getElementById('successMessage').innerHTML = '';
+
     let validity = input.validity;
 
     if(validity.valueMissing) {
-        errors.push(input.placeholder + ' is required!');
+        //errors.push(input.placeholder + ' is required!');
+        errors++
     }
 
     if(validity.patternMismatch) {
-        errors.push(input.placeholder + ' format is not valid');
+        //errors.push(input.placeholder + ' format is not valid');
+        errors++
     }
 
     if(validity.tooLong) {
         let maxlength = getAttributeValue(input, 'maxlength');
-        errors.push('Maximum number of symbols is ' + maxlength);
+        //errors.push('Maximum number of symbols is ' + maxlength);
+        errors++
     }
 
-    if(errors.length!=0 && cb.checked == ''){
-        document.getElementById('errorsInfo').innerHTML = '';
+    if (cb.checked == '') {//Нужно согласие с условиями
+        document.getElementById('acceptRequired').innerHTML = 'You must agree to Terms & Conditions and Privacy Policy';
+        errors++
+    }
 
+    if(errors.length!=0 || cb.checked == ''){
+        document.getElementById('errorsInfo').innerHTML = '';
     }else{
         document.getElementById('successMessage').innerHTML = '';
     }
-
 }
+
 
 function checkAll() {
 
@@ -68,7 +77,13 @@ function checkAll() {
         checkValidity(input);
     }
 
-    document.getElementById('errorsInfo').innerHTML = errors.join('. <br>');
+    if(errors.length!=0 || cb.checked == ''){
+        document.getElementById('errorsInfo').innerHTML = 'Please make sure all fields are filled in correctly';
+    }else{
+        document.getElementById('successMessage').innerHTML = '';
+        document.getElementById('errorsInfo').innerHTML = '';
+    }
+    //document.getElementById('errorsInfo').innerHTML = errors.join('. <br>');
 }
 
 document.querySelector('#fullSteamAhead').addEventListener('click', function(event){
