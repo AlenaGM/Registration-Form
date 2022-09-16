@@ -10,7 +10,7 @@ const userPhone = document.getElementById("userPhone");
 
 //REGEX
 // As soon as we do not have an exact country,
-//all validation besides password and e-mail is in light mode:
+//all validation besides password and e-mail is in "light mode":
 //I just check that there are no some extraordinary symbols in there
 let emailValid =
   /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$/;
@@ -320,7 +320,6 @@ function checkAll() {
 //FUNCTIONS WORKING WHEN WE PRESS "CREATE ACCOUNT" BUTTON (lines 320-368)
 
 //All fields are filled correctly, terms&conditions acceptedЕ -> messages "Congrats, account created"
-//Used for decoration purposes
 function addSuccess() {
   if (errors.length == 0 && agreePP.checked != "") {
     document.getElementById(
@@ -330,7 +329,6 @@ function addSuccess() {
 }
 
 //Not all fields are filled correctly, terms&conditions not acceptedЕ -> messages "Check if everything is filled correctly"
-//Used for decoration purposes
 function addFailure() {
   if (errors.length != 0 || agreePP.checked == "") {
     document.getElementById("errorsInfo").innerHTML =
@@ -343,7 +341,6 @@ function addFailure() {
 
 //Field is not filled correctly -> delete class 'valid', add class 'error', message under 'field is required'
 //Field is OK -> clear warning message
-//Used for decoration purposes
 function addRequired() {
   let inputs = document.querySelectorAll("input");
 
@@ -366,7 +363,7 @@ function addRequired() {
 }
 
 //FORM SENDING
-//Check if subscribed to newsletter
+//1-Check if subscribed to newsletter
 document
   .querySelector("#signupNewsletter")
   .addEventListener("click", function () {
@@ -377,12 +374,12 @@ document
     }
   });
 
-//form sending
+//2-form sending
 function sendForm() {
   let user = {
-    "first name": userFirstName.value,
-    "last name": userLastName.value,
-    "e-mail": userEmail.value,
+    firstname: userFirstName.value,
+    lastname: userLastName.value,
+    email: userEmail.value,
     password: userPassword.value,
     address: userAddress.value,
     postcode: userPostcode.value,
@@ -407,7 +404,7 @@ function sendForm() {
   }
 }
 
-//form clearing after sending
+//3-form clearing after sending
 function clearForm() {
   let inputs = document.querySelectorAll("input");
 
