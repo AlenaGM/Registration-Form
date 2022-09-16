@@ -145,7 +145,7 @@ document
     checkAll();
   });
 
-//*Address(not required field)
+//*Address
 document
   .querySelector("#userAddress")
   .addEventListener("change", function addFilledAddress() {

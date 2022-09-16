@@ -1,138 +1,244 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="shortcut icon" href="assets/img/book-stack.png" type="img/png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/normalize.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="shortcut icon" href="assets/img/book-stack.png" type="img/png" />
     <title>Registration form</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="wrapper">
+      <form
+        class="form"
+        action="/post"
+        method="post"
+        id="form"
+        enctype="multipart/form-data"
+        novalidate
+      >
+        <div class="form__body">
+          <h1 class="form__title">Your Account</h1>
 
-        <form class="form" action="/post" method="post" id="form" enctype="multipart/form-data" novalidate>
-            <div class="form__body">
-                <h1 class="form__title">Your Account</h1>
+          <div class="form__box">
+            <h2 class="form__subtitle">Login Information</h2>
+            <p class="form__info">* Required fields</p>
+          </div>
 
-                <div class="form__box">
-                    <h2 class="form__subtitle">Login Information</h2>
-                    <p class="form__info">* Required fields</p>
-                </div>
-
-                <div class="form__box">
-                    <div class="form__item">
-                        <input type="email" id="userEmail" name="email" class="form__input _email" placeholder="E-mail" value="" tabindex="1" pattern="^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$" required/>
-                        <label for="userEmail" class="form__label">E-mail*</label>
-                        <div class="form__required" id="userEmail__Required"></div>
-                    </div>
-                    <div class="form__item">
-                        <input type="password" id="userPassword" name="password" class="form__input" placeholder="Password" tabindex="2" minlength="8" maxlength="15" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$" required/>
-                        <label for="userPassword" class="form__label">Password*</label>
-                        <p>8 to 15 characters including one uppercase letter, one lowercase letter, one numeric digit, and one special character</p>
-                        <div class="form__required" id="userPassword__Required"></div>
-                    </div>
-                </div>
-
-                <h2 class="form__subtitle">Personal Information</h2>
-<!-- УБРАНО ПОКА НЕ НАУЧУСЬ СТИЛИЗОВАТЬ СЕЛЕКТЫ
-                <div class="form__item">
-                    <p class="form__label">Title*</p>
-                    <select  id="userTitle" name="title" class="form__select" tabindex="5">
-                        <option disabled selected="selected">-</option>
-                        <option value="Mr">Mr</option>
-                        <option value="Mrs">Mrs</option>
-                        <option value="Ms">Ms</option>
-                    </select>
-                </div>
--->
-                <div class="form__box">
-                    <div class="form__item ">
-                        <input type="text" id="userFirstName" name="firstName" class="form__input" value="" placeholder="First Name" tabindex="3" pattern="^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$" maxlength="40" required/>
-                        <label for="userFirstName" class="form__label">First Name*</label>
-                        <div class="form__required" id="userFirstName__Required"></div>
-                    </div>
-                    <div class="form__item">
-                        <input type="text" id="userLastName" name="lastName" class="form__input" value="" placeholder="Last Name" tabindex="4" pattern="^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$" maxlength="40" required/>
-                        <label for="userLastName" class="form__label">Last Name*</label>
-                        <div class="form__required" id="userLastName__Required"></div>
-                    </div>
-                </div>
-
-                <div class="form__item item_size-full">
-                    <input type="text" id="userAddress" name="address" class="form__input" value="" placeholder="Address" tabindex="5"/>
-                    <label for="userAddress" class="form__label">Address</label>
-                    <div class="form__required" id="userAddress__Required"></div>
-                </div>
-
-                <div class="form__box">
-                    <div class="form__item">
-                        <input type="text" id="userPostcode" name="postcode" class="form__input" value="" placeholder="Postcode" tabindex="6" maxlength="9" pattern="^[-A-Za-z0-9 ]{4,9}$" required/>
-                        <label for="userPostcode" class="form__label">Postcode*</label>
-                        <div class="form__required" id="userPostcode__Required"></div>
-                    </div>
-                    <div class="form__item">
-                        <input type="text" id="userCity" name="city" class="form__input" value="" placeholder="City" tabindex="7" pattern="^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$" required/>
-                        <label for="userCity" class="form__label">City*</label>
-                        <div class="form__required" id="userCity__Required"></div>
-                    </div>
-                </div>
-
-                <div class="form__item item_size-full">
-                    <input type="text" id="userCountry" name="country" class="form__input" value="" placeholder="Country" tabindex="8" pattern="^[-a-zA-Z\s]+$" required/>
-                    <label for="userCountry" class="form__label">Country*</label>
-                    <div class="form__required" id="userCountry__Required"></div>
-                </div>
-
-<!--УБРАНО ПОКА НЕ НАУЧУСЬ СТИЛИЗОВАТЬ СЕЛЕКТЫ
-                <div class="form__item item_size-full">
-                    <p class="form__label">Contry*</p>
-                    <select id="userCountry" name="country" class="form__select" tabindex="11">
-                        <option disabled selected="selected">-</option>
-                        <option value="RU">Russia</option>
-                        <option value="FR">France</option>
-                    </select>
-                </div>
--->
-                <div class="form__item">
-                    <input type="tel" id="userPhone" name="phone" class="form__input"  placeholder="Phone" tabindex="9" pattern="^[- ()+.0-9\s]{6,15}$" required/>
-                    <label for="userPhone" class="form__label">Phone*</label>
-                    <div class="form__required" id="userPhone__Required"></div>
-                </div>
-
-<!--УБРАНО ПОКА НЕ НАУЧУСЬ СТИЛИЗОВАТЬ ДАТЫ
-                <div class="form__item">
-                    <p class="form__label">Birthdate</p>
-                    <input type="date" id="userBirthdate" name="birthDate" class="form__input" tabindex="13"/>
-                </div>
--->
-                <h2 class="form__subtitle newsletter__subtitle">Receive Our Newsletter</h2>
-
-                <div class="form__item item_size-full">
-                    <input type="checkbox" id="signupNewsletter" name="signupNewsletter" class="checkbox__input" value="no" tabindex="10"/>
-                    <label for="signupNewsletter" class="checkbox__label">Subscribe to our newsletter</label>
-                </div>
-
-                <div class="form__item item_size-full">
-                    <input checked type="checkbox" id="accept" name="accept" class="checkbox__input" value="yes" tabindex="11"/>
-                    <label for="accept" class="checkbox__label">I agree to <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
-                    <div class="form__required" id='acceptRequired'></div>
-                </div>
-
-                <div id="successMessage"></div>
-                <div id="errorsInfo"></div>
-
-                <div class="form__item item_size-full form__item_position-center">
-                    <button type="submit" class="form__button" id="fullSteamAhead" tabindex="12">Create Your Account</button>
-                </div>
+          <div class="form__box">
+            <div class="form__item">
+              <input
+                type="email"
+                id="userEmail"
+                name="email"
+                class="form__input _email"
+                placeholder="E-mail"
+                value=""
+                tabindex="1"
+                pattern="^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$"
+                required
+              />
+              <label for="userEmail" class="form__label">E-mail*</label>
+              <div class="form__required" id="userEmail__Required"></div>
             </div>
-        </form>
+            <div class="form__item">
+              <input
+                type="password"
+                id="userPassword"
+                name="password"
+                class="form__input"
+                placeholder="Password"
+                tabindex="2"
+                minlength="8"
+                maxlength="15"
+                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$"
+                required
+              />
+              <label for="userPassword" class="form__label">Password*</label>
+              <p>
+                8 to 15 characters including one uppercase letter, one lowercase
+                letter, one numeric digit, and one special character
+              </p>
+              <div class="form__required" id="userPassword__Required"></div>
+            </div>
+          </div>
+
+          <h2 class="form__subtitle">Personal Information</h2>
+
+          <div class="form__box">
+            <div class="form__item">
+              <input
+                type="text"
+                id="userFirstName"
+                name="firstName"
+                class="form__input"
+                value=""
+                placeholder="First Name"
+                tabindex="3"
+                pattern="^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$"
+                maxlength="40"
+                required
+              />
+              <label for="userFirstName" class="form__label">First Name*</label>
+              <div class="form__required" id="userFirstName__Required"></div>
+            </div>
+            <div class="form__item">
+              <input
+                type="text"
+                id="userLastName"
+                name="lastName"
+                class="form__input"
+                value=""
+                placeholder="Last Name"
+                tabindex="4"
+                pattern="^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$"
+                maxlength="40"
+                required
+              />
+              <label for="userLastName" class="form__label">Last Name*</label>
+              <div class="form__required" id="userLastName__Required"></div>
+            </div>
+          </div>
+
+          <div class="form__item item_size-full">
+            <input
+              type="text"
+              id="userAddress"
+              name="address"
+              class="form__input"
+              value=""
+              placeholder="Address"
+              tabindex="5"
+            />
+            <label for="userAddress" class="form__label">Address*</label>
+            <div class="form__required" id="userAddress__Required"></div>
+          </div>
+
+          <div class="form__box">
+            <div class="form__item">
+              <input
+                type="text"
+                id="userPostcode"
+                name="postcode"
+                class="form__input"
+                value=""
+                placeholder="Postcode"
+                tabindex="6"
+                maxlength="9"
+                pattern="^[-A-Za-z0-9 ]{4,9}$"
+                required
+              />
+              <label for="userPostcode" class="form__label">Postcode*</label>
+              <div class="form__required" id="userPostcode__Required"></div>
+            </div>
+            <div class="form__item">
+              <input
+                type="text"
+                id="userCity"
+                name="city"
+                class="form__input"
+                value=""
+                placeholder="City"
+                tabindex="7"
+                pattern="^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$"
+                required
+              />
+              <label for="userCity" class="form__label">City*</label>
+              <div class="form__required" id="userCity__Required"></div>
+            </div>
+          </div>
+
+          <div class="form__item item_size-full">
+            <input
+              type="text"
+              id="userCountry"
+              name="country"
+              class="form__input"
+              value=""
+              placeholder="Country"
+              tabindex="8"
+              pattern="^[-a-zA-Z\s]+$"
+              required
+            />
+            <label for="userCountry" class="form__label">Country*</label>
+            <div class="form__required" id="userCountry__Required"></div>
+          </div>
+
+          <div class="form__item">
+            <input
+              type="tel"
+              id="userPhone"
+              name="phone"
+              class="form__input"
+              placeholder="Phone"
+              tabindex="9"
+              pattern="^[- ()+.0-9\s]{6,15}$"
+              required
+            />
+            <label for="userPhone" class="form__label">Phone*</label>
+            <div class="form__required" id="userPhone__Required"></div>
+          </div>
+
+          <h2 class="form__subtitle newsletter__subtitle">
+            Receive Our Newsletter
+          </h2>
+
+          <div class="form__item item_size-full">
+            <input
+              type="checkbox"
+              id="signupNewsletter"
+              name="signupNewsletter"
+              class="checkbox__input"
+              value="no"
+              tabindex="10"
+            />
+            <label for="signupNewsletter" class="checkbox__label"
+              >Subscribe to our newsletter</label
+            >
+          </div>
+
+          <div class="form__item item_size-full">
+            <input
+              checked
+              type="checkbox"
+              id="accept"
+              name="accept"
+              class="checkbox__input"
+              value="yes"
+              tabindex="11"
+            />
+            <label for="accept" class="checkbox__label"
+              >I agree to <a href="#">Terms & Conditions</a> and
+              <a href="#">Privacy Policy</a></label
+            >
+            <div class="form__required" id="acceptRequired"></div>
+          </div>
+
+          <div id="successMessage"></div>
+          <div id="errorsInfo"></div>
+
+          <div class="form__item item_size-full form__item_position-center">
+            <button
+              type="submit"
+              class="form__button"
+              id="fullSteamAhead"
+              tabindex="12"
+            >
+              Create Your Account
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
     <script src="assets/js/script.js"></script>
-</body>
+  </body>
 </html>
