@@ -1,4 +1,3 @@
-Форма регистрации (15 неделя), валидация через JS (18 неделя). 
 # Registration-Form
 
 _What is the first thing to build when you start learning JavaScript? A calculator - evidently!<br>
