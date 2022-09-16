@@ -29,7 +29,7 @@ const agreeNL = document.querySelector("#signupNewsletter");
 
 let errors = [];
 
-//FUNCTION WORKING WHEN WE PRESS "CREATE ACCOUNT" BUTTON
+//FUNCTION ON "CREATE ACCOUNT" BUTTON CLICK
 document
   .querySelector("#fullSteamAhead")
   .addEventListener("click", function (event) {
@@ -44,12 +44,12 @@ document
     sendForm(); //sends form and clears inputs after
   });
 
-//FUNCTIONS WORKING ON INPUT CHANGE (lines 48-282)
-//Used for decoration purposes: inputs are validated on as-fill-in basis
-//If input is OK -> make User happy with check mark and nice green color
-//We do not want to stress our User -> red color appears only after "create account" button is pressed
+//FUNCTIONS ON INPUT CHANGE (lines 48-282)
+//* Used for decoration purposes: inputs are validated on as-fill-in basis
+//* If input is OK -> we make User happy with check mark and nice green color
+//* We do not want to upset our User -> red color appears only after "create account" button is pressed
 
-//*E-mail*
+//*E-mail
 document
   .querySelector("#userEmail")
   .addEventListener("change", function addFilledEmail() {
@@ -74,7 +74,7 @@ document
     checkAll();
   });
 
-//*Password*
+//*Password
 document
   .querySelector("#userPassword")
   .addEventListener("change", function addFilledPassword() {
@@ -95,7 +95,7 @@ document
     checkAll();
   });
 
-//*First Name*
+//*First Name
 document
   .querySelector("#userFirstName")
   .addEventListener("change", function addFilledFirstName() {
@@ -120,7 +120,7 @@ document
     checkAll();
   });
 
-//*Last Name*
+//*Last Name
 document
   .querySelector("#userLastName")
   .addEventListener("change", function addFilledLastName() {
@@ -145,7 +145,7 @@ document
     checkAll();
   });
 
-//*Address(not required field)*
+//*Address(not required field)
 document
   .querySelector("#userAddress")
   .addEventListener("change", function addFilledAddress() {
@@ -170,7 +170,7 @@ document
     checkAll();
   });
 
-//*Postcode*
+//*Postcode
 document
   .querySelector("#userPostcode")
   .addEventListener("change", function addFilledPostcode() {
@@ -195,7 +195,7 @@ document
     checkAll();
   });
 
-//*City*
+//*City
 document
   .querySelector("#userCity")
   .addEventListener("change", function addFilledCity() {
@@ -220,7 +220,7 @@ document
     checkAll();
   });
 
-//*Country*
+//*Country
 document
   .querySelector("#userCountry")
   .addEventListener("change", function addFilledCountry() {
@@ -245,7 +245,7 @@ document
     checkAll();
   });
 
-//*Phone number*
+//*Phone number
 document
   .querySelector("#userPhone")
   .addEventListener("change", function addFilledPhone() {
@@ -266,7 +266,7 @@ document
     checkAll();
   });
 
-//*agree to Terms & Conditions*
+//*agree to Terms & Conditions
 document
   .querySelector("#accept")
   .addEventListener("change", function addAccept() {
@@ -317,9 +317,8 @@ function checkAll() {
   }
 }
 
-//FUNCTIONS WORKING WHEN WE PRESS "CREATE ACCOUNT" BUTTON (lines 320-368)
-
-//All fields are filled correctly, terms&conditions acceptedЕ -> messages "Congrats, account created"
+//FUNCTIONS ON "CREATE ACCOUNT" BUTTON CLICK (lines 320-362)
+//*All fields are filled correctly, terms&conditions acceptedЕ -> messages "Congrats, account created"
 function addSuccess() {
   if (errors.length == 0 && agreePP.checked != "") {
     document.getElementById(
@@ -328,7 +327,7 @@ function addSuccess() {
   }
 }
 
-//Not all fields are filled correctly, terms&conditions not acceptedЕ -> messages "Check if everything is filled correctly"
+//*Not all fields are filled correctly, terms&conditions not acceptedЕ -> messages "Check if everything is filled correctly"
 function addFailure() {
   if (errors.length != 0 || agreePP.checked == "") {
     document.getElementById("errorsInfo").innerHTML =
@@ -339,8 +338,8 @@ function addFailure() {
   }
 }
 
-//Field is not filled correctly -> delete class 'valid', add class 'error', message under 'field is required'
-//Field is OK -> clear warning message
+//*Field is not filled correctly -> delete class 'valid', add class 'error', message under 'field is required'
+//*Field is OK -> clear warning message
 function addRequired() {
   let inputs = document.querySelectorAll("input");
 
@@ -353,7 +352,7 @@ function addRequired() {
     }
   });
 
-  //'you need to agree with terms&conditions' message
+  //*'you need to agree with terms&conditions' message
   if (agreePP.checked == "") {
     document.getElementById("acceptRequired").innerHTML =
       "You must agree to Terms & Conditions and Privacy Policy";
