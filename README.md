@@ -26,4 +26,4 @@ The task was to make a page that:
   
 
    [ITGirlSchool]: <https://itgirlschool.com/en>
-   [Registration-Form]: <https://alenagm.github.io/registration-form/>
+   [Registration-Form]: <https://alenagm.github.io/Registration-Form/>
