@@ -15,7 +15,7 @@ Minimalist Sign-Up Form with JavaScript validation
 &nbsp;&nbsp;&nbsp;&nbsp;&check;&nbsp;&nbsp; CSS3<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&check;&nbsp;&nbsp; JavaScript<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&check;&nbsp;&nbsp; Form validation<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&check;&nbsp;&nbsp; POST request<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&check;&nbsp;&nbsp; POST-request<br> 
 
 
 
