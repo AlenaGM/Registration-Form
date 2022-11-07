@@ -9,7 +9,7 @@ Minimalist Sign-Up Form with JavaScript validation
 ## Demo
 [Registration-Form]
 
-## Tech stack
+## Tech stack 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&check;&nbsp;&nbsp; HTML5<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&check;&nbsp;&nbsp; CSS3<br>
