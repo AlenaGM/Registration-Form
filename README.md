@@ -1,6 +1,6 @@
 # Registration-Form
 
-Minimalist Sign-Up Form with JavaScript validation
+Minimalist sign-up form with JavaScript validation
 <br><br>
 
 ## Result
