@@ -1,4 +1,4 @@
-# Registration-Form
+# Registration Form
 
 Minimalist sign-up form with JavaScript validation
 <br><br>
@@ -7,7 +7,7 @@ Minimalist sign-up form with JavaScript validation
 <img width="35%" alt="screen capture" src="../main/assets/img/captureweb.jpeg">
 
 ## Demo
-[Registration-Form]
+[Registration Form]
 
 ## Tech stack 
 
@@ -25,4 +25,4 @@ Minimalist sign-up form with JavaScript validation
   
 
    [ITGirlSchool]: <https://itgirlschool.com/en>
-   [Registration-Form]: <https://alenagm.github.io/Registration-Form/>
+   [Registration Form]: <https://alenagm.github.io/registration-form/>
