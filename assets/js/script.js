@@ -3,7 +3,7 @@ const userPassword = document.getElementById("userPassword");
 const userFirstName = document.getElementById("userFirstName");
 const userLastName = document.getElementById("userLastName");
 const userAddress = document.getElementById("userAddress");
-const userPostcode = document.getElementById("userPostcode");
+const userPostalCode = document.getElementById("userPostalCode");
 const userCity = document.getElementById("userCity");
 const userCountry = document.getElementById("userCountry");
 const userPhone = document.getElementById("userPhone");
@@ -13,14 +13,14 @@ const userPhone = document.getElementById("userPhone");
 //all validation besides password and e-mail is in "light mode":
 //I just check that there are no some extraordinary symbols in there
 let emailValid =
-  /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$/;
+  /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$/;
 let passwordValid =
   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/; //8-15 characters, one uppercase letter, one lowercase letter, one numeric digit, and one special character
 let nameValid =
   /^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$/; //latin characters, hyphens, spaces, single quotes, uncommon letters
 let addressValid =
   /^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ0-9\s']+$/; //latin characters, digits, spaces, hyphens,  single quotes, uncommon letters
-let postcodeValid = /^[-A-Za-z0-9 ]{4,9}$/; //latin characters, digits, spaces, hyphens, 4-9 characters
+let postalCodeValid = /^[-A-Za-z0-9 ]{4,9}$/; //latin characters, digits, spaces, hyphens, 4-9 characters
 let countryValid = /^[-a-zA-Z\s]+$/; //latin characters, spaces, hyphens
 let phoneValid = /^[- ()+.0-9\s]{6,15}$/; //digits, spaces, hyphens, parentheses, 6-15 characters
 
@@ -170,25 +170,25 @@ document
     checkAll();
   });
 
-//*Postcode
+//*Postal code
 document
-  .querySelector("#userPostcode")
-  .addEventListener("change", function addFilledPostcode() {
-    userPostcode.classList.add("filled");
-    document.getElementById("userPostcode__Required").innerHTML = "";
+  .querySelector("#userPostalCode")
+  .addEventListener("change", function addFilledPostalCode() {
+    userPostalCode.classList.add("filled");
+    document.getElementById("userPostalCode__Required").innerHTML = "";
 
-    if (userPostcode.value == "") {
-      userPostcode.classList.remove("input_valid");
-      userPostcode.classList.remove("filled");
-    } else if (!postcodeValid.test(userPostcode.value)) {
-      userPostcode.classList.remove("input_valid");
-      document.getElementById("userPostcode__Required").innerHTML =
-        "Enter a valid postcode";
+    if (userPostalCode.value == "") {
+      userPostalCode.classList.remove("input_valid");
+      userPostalCode.classList.remove("filled");
+    } else if (!postalCodeValid.test(userPostalCode.value)) {
+      userPostalCode.classList.remove("input_valid");
+      document.getElementById("userPostalCode__Required").innerHTML =
+        "Enter a valid postal code";
     } else {
-      userPostcode.classList.add("input_valid");
+      userPostalCode.classList.add("input_valid");
     }
 
-    document.querySelector("#userPostcode").value = userPostcode.value
+    document.querySelector("#userPostalCode").value = userPostalCode.value
       .trim()
       .toUpperCase();
 
@@ -381,7 +381,7 @@ function sendForm() {
     email: userEmail.value,
     password: userPassword.value,
     address: userAddress.value,
-    postcode: userPostcode.value,
+    postalCode: userPostalCode.value,
     city: userCity.value,
     country: userCountry.value,
     phone: userPhone.value,
@@ -393,7 +393,8 @@ function sendForm() {
       method: "POST",
       body: JSON.stringify(user),
       headers: {
-        "Content-Type": "application/json; charset=utf-8",
+        "Content-Type": "application/json; charset=UTF-8",
+        "X-Content-Type-Options": "nosniff",
       },
     })
       .then((response) => response.json())

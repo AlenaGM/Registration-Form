@@ -1,18 +1,28 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Registration form with JavaScript validation"
     />
     <link rel="stylesheet" href="assets/css/normalize.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="shortcut icon" href="assets/img/book-stack.png" type="img/png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/img/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/img/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/img/favicon/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
     <title>Registration Form</title>
   </head>
 
@@ -20,9 +30,10 @@
     <div class="wrapper">
       <form
         class="form"
-        action="/post"
         method="post"
-        id="form"
+        action="https://itgirlschool.com/form-handler"
+        id="regForm"
+        name="regForm"
         enctype="multipart/form-data"
         novalidate
       >
@@ -41,13 +52,13 @@
                 id="userEmail"
                 name="email"
                 class="form__input _email"
-                placeholder="E-mail"
+                placeholder="Email"
                 value=""
-                tabindex="1"
                 pattern="^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$"
+                autocomplete="email"
                 required
               />
-              <label for="userEmail" class="form__label">E-mail*</label>
+              <label for="userEmail" class="form__label">Email*</label>
               <div class="form__required" id="userEmail__Required"></div>
             </div>
             <div class="form__item">
@@ -57,16 +68,16 @@
                 name="password"
                 class="form__input"
                 placeholder="Password"
-                tabindex="2"
                 minlength="8"
                 maxlength="15"
                 pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$"
+                autocomplete="current-password"
                 required
               />
               <label for="userPassword" class="form__label">Password*</label>
               <p>
-                8 to 15 characters including one uppercase letter, one lowercase
-                letter, one numeric digit, and one special character
+                8 to 15 characters, including at least one uppercase letter, one
+                lowercase letter, one numeric digit, and one special character.
               </p>
               <div class="form__required" id="userPassword__Required"></div>
             </div>
@@ -83,9 +94,10 @@
                 class="form__input"
                 value=""
                 placeholder="First Name"
-                tabindex="3"
-                pattern="^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$"
+                minlength="1"
                 maxlength="40"
+                pattern="[a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\- ]+"
+                autocomplete="given-name"
                 required
               />
               <label for="userFirstName" class="form__label">First Name*</label>
@@ -99,9 +111,10 @@
                 class="form__input"
                 value=""
                 placeholder="Last Name"
-                tabindex="4"
-                pattern="^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$"
+                minlength="1"
                 maxlength="40"
+                pattern="[a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\- ]+"
+                autocomplete="family-name"
                 required
               />
               <label for="userLastName" class="form__label">Last Name*</label>
@@ -117,7 +130,11 @@
               class="form__input"
               value=""
               placeholder="Address"
-              tabindex="5"
+              minlength="1"
+              maxlength="132"
+              pattern="[a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ0-9\- ]+"
+              autocomplete="address-line1"
+              required
             />
             <label for="userAddress" class="form__label">Address*</label>
             <div class="form__required" id="userAddress__Required"></div>
@@ -127,18 +144,21 @@
             <div class="form__item">
               <input
                 type="text"
-                id="userPostcode"
-                name="postcode"
+                id="userPostalCode"
+                name="postalCode"
                 class="form__input"
                 value=""
-                placeholder="Postcode"
-                tabindex="6"
+                placeholder="Postal Code"
+                minlength="1"
                 maxlength="9"
-                pattern="^[-A-Za-z0-9 ]{4,9}$"
+                pattern="[A-Za-z0-9\- ]{4,9}"
+                autocomplete="postal-code"
                 required
               />
-              <label for="userPostcode" class="form__label">Postcode*</label>
-              <div class="form__required" id="userPostcode__Required"></div>
+              <label for="userPostalCode" class="form__label"
+                >Postal Code*</label
+              >
+              <div class="form__required" id="userPostalCode__Required"></div>
             </div>
             <div class="form__item">
               <input
@@ -148,8 +168,10 @@
                 class="form__input"
                 value=""
                 placeholder="City"
-                tabindex="7"
-                pattern="^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$"
+                minlength="1"
+                maxlength="80"
+                pattern="[a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ0-9\- ]+"
+                autocomplete="address-level2"
                 required
               />
               <label for="userCity" class="form__label">City*</label>
@@ -165,8 +187,10 @@
               class="form__input"
               value=""
               placeholder="Country"
-              tabindex="8"
-              pattern="^[-a-zA-Z\s]+$"
+              minlength="1"
+              maxlength="80"
+              pattern="[-a-zA-Z\- ]+"
+              autocomplete="country-name"
               required
             />
             <label for="userCountry" class="form__label">Country*</label>
@@ -179,12 +203,14 @@
               id="userPhone"
               name="phone"
               class="form__input"
-              placeholder="Phone"
-              tabindex="9"
-              pattern="^[- ()+.0-9\s]{6,15}$"
+              placeholder="Phone Number"
+              minlength="6"
+              maxlength="15"
+              pattern="[- ()+.0-9\s]{6,15}"
+              autocomplete="tel"
               required
             />
-            <label for="userPhone" class="form__label">Phone*</label>
+            <label for="userPhone" class="form__label">Phone Number*</label>
             <div class="form__required" id="userPhone__Required"></div>
           </div>
 
@@ -199,7 +225,6 @@
               name="signupNewsletter"
               class="checkbox__input"
               value="no"
-              tabindex="10"
             />
             <label for="signupNewsletter" class="checkbox__label"
               >Subscribe to our newsletter</label
@@ -214,10 +239,9 @@
               name="accept"
               class="checkbox__input"
               value="yes"
-              tabindex="11"
             />
             <label for="accept" class="checkbox__label"
-              >I agree to <a href="#">Terms & Conditions</a> and
+              >I agree to the <a href="#">Terms & Conditions</a> and the
               <a href="#">Privacy Policy</a></label
             >
             <div class="form__required" id="acceptRequired"></div>
@@ -227,12 +251,7 @@
           <div id="errorsInfo"></div>
 
           <div class="form__item item_size-full form__item_position-center">
-            <button
-              type="submit"
-              class="form__button"
-              id="fullSteamAhead"
-              tabindex="12"
-            >
+            <button type="submit" class="form__button" id="fullSteamAhead">
               Create Your Account
             </button>
           </div>
