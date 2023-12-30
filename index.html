@@ -40,21 +40,20 @@
         <div class="form__body">
           <h1 class="form__title">Your Account</h1>
 
-          <div class="form__box">
-            <h2 class="form__subtitle">Login Information</h2>
-            <p class="form__info">* Required fields</p>
-          </div>
-
+          <h2 class="form__subtitle">Login Information</h2>
+          <p class="form__info">* Required fields</p>
           <div class="form__box">
             <div class="form__item">
               <input
                 type="email"
                 id="userEmail"
                 name="email"
-                class="form__input _email"
+                class="form__input"
                 placeholder="Email"
+                minlength="7"
+                maxlength="254"
+                pattern="^((([0-9A-Za-z]{1}[\-0-9A-z.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[\-0-9А-я.]{0,30}[0-9А-Яа-я]?))@([\-A-Za-z]{1,}\.){1,}[\-A-Za-z]{2,14})$"
                 value=""
-                pattern="^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$"
                 autocomplete="email"
                 required
               />
@@ -95,8 +94,8 @@
                 value=""
                 placeholder="First Name"
                 minlength="1"
-                maxlength="40"
-                pattern="[a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\- ]+"
+                maxlength="254"
+                pattern="^[\-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ0-9'\s]+$"
                 autocomplete="given-name"
                 required
               />
@@ -112,8 +111,8 @@
                 value=""
                 placeholder="Last Name"
                 minlength="1"
-                maxlength="40"
-                pattern="[a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\- ]+"
+                maxlength="254"
+                pattern="^[\-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ0-9'\s]+$"
                 autocomplete="family-name"
                 required
               />
@@ -131,8 +130,8 @@
               value=""
               placeholder="Address"
               minlength="1"
-              maxlength="132"
-              pattern="[a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ0-9\- ]+"
+              maxlength="150"
+              pattern="^[\-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ0-9.'\s]+$"
               autocomplete="address-line1"
               required
             />
@@ -149,9 +148,9 @@
                 class="form__input"
                 value=""
                 placeholder="Postal Code"
-                minlength="1"
-                maxlength="9"
-                pattern="[A-Za-z0-9\- ]{4,9}"
+                minlength="3"
+                maxlength="10"
+                pattern="^[\-A-Za-z0-9\s]+$"
                 autocomplete="postal-code"
                 required
               />
@@ -169,8 +168,8 @@
                 value=""
                 placeholder="City"
                 minlength="1"
-                maxlength="80"
-                pattern="[a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ0-9\- ]+"
+                maxlength="180"
+                pattern="^[\-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ0-9'\s]+$"
                 autocomplete="address-level2"
                 required
               />
@@ -187,9 +186,9 @@
               class="form__input"
               value=""
               placeholder="Country"
-              minlength="1"
-              maxlength="80"
-              pattern="[-a-zA-Z\- ]+"
+              minlength="4"
+              maxlength="60"
+              pattern="^[\-a-zA-Z\s]+$"
               autocomplete="country-name"
               required
             />
@@ -204,9 +203,9 @@
               name="phone"
               class="form__input"
               placeholder="Phone Number"
-              minlength="6"
-              maxlength="15"
-              pattern="[- ()+.0-9\s]{6,15}"
+              minlength="3"
+              maxlength="30"
+              pattern="^[0-9\+]{1,}[0-9\-.\(\)\s]{3,29}$"
               autocomplete="tel"
               required
             />
@@ -214,7 +213,7 @@
             <div class="form__required" id="userPhone__Required"></div>
           </div>
 
-          <h2 class="form__subtitle newsletter__subtitle">
+          <h2 class="form__subtitle form__subtitle_newsletter">
             Receive Our Newsletter
           </h2>
 
@@ -235,12 +234,12 @@
             <input
               checked
               type="checkbox"
-              id="accept"
-              name="accept"
+              id="acceptConditions"
+              name="acceptConditions"
               class="checkbox__input"
               value="yes"
             />
-            <label for="accept" class="checkbox__label"
+            <label for="acceptConditions" class="checkbox__label"
               >I agree to the <a href="#">Terms & Conditions</a> and the
               <a href="#">Privacy Policy</a></label
             >
@@ -250,9 +249,12 @@
           <div id="successMessage"></div>
           <div id="errorsInfo"></div>
 
-          <div class="form__item item_size-full form__item_position-center">
+          <div
+            class="form__buttons form__item_size-full form__item_position-center"
+          >
+            <button type="reset" class="form__button">Clear Form</button>
             <button type="submit" class="form__button" id="fullSteamAhead">
-              Create Your Account
+              Create Account
             </button>
           </div>
         </div>

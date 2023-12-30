@@ -1,417 +1,239 @@
-const userEmail = document.getElementById("userEmail");
-const userPassword = document.getElementById("userPassword");
-const userFirstName = document.getElementById("userFirstName");
-const userLastName = document.getElementById("userLastName");
-const userAddress = document.getElementById("userAddress");
-const userPostalCode = document.getElementById("userPostalCode");
-const userCity = document.getElementById("userCity");
-const userCountry = document.getElementById("userCountry");
-const userPhone = document.getElementById("userPhone");
+const form = document.forms.regForm;
 
-//REGEX
-// As soon as we do not have an exact country,
-//all validation besides password and e-mail is in "light mode":
-//I just check that there are no some extraordinary symbols in there
-let emailValid =
-  /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,3})$/;
-let passwordValid =
-  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/; //8-15 characters, one uppercase letter, one lowercase letter, one numeric digit, and one special character
-let nameValid =
-  /^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ\s']+$/; //latin characters, hyphens, spaces, single quotes, uncommon letters
-let addressValid =
-  /^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ0-9\s']+$/; //latin characters, digits, spaces, hyphens,  single quotes, uncommon letters
-let postalCodeValid = /^[-A-Za-z0-9 ]{4,9}$/; //latin characters, digits, spaces, hyphens, 4-9 characters
-let countryValid = /^[-a-zA-Z\s]+$/; //latin characters, spaces, hyphens
-let phoneValid = /^[- ()+.0-9\s]{6,15}$/; //digits, spaces, hyphens, parentheses, 6-15 characters
-
-const agreePP = document.querySelector("#accept");
-const agreeNL = document.querySelector("#signupNewsletter");
-
+let inputs = document.querySelectorAll("input");
 let errors = [];
 
-//FUNCTION ON "CREATE ACCOUNT" BUTTON CLICK
-document
-  .querySelector("#fullSteamAhead")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
-
-    checkAll(); //count errors
-
-    addRequired(); //blank inputs -> red color and warning
-    addFailure(); //warning message at the end
-    addSuccess(); //ОК message at the end
-
-    sendForm(); //sends form and clears inputs after
-  });
-
-//FUNCTIONS ON INPUT CHANGE (lines 48-282)
-//* Used for decoration purposes: inputs are validated on as-fill-in basis
-//* If input is OK -> we make User happy with check mark and nice green color
-//* We do not want to upset our User -> red color appears only after "create account" button is pressed
-
-//*E-mail
-document
-  .querySelector("#userEmail")
-  .addEventListener("change", function addFilledEmail() {
-    userEmail.classList.add("filled");
-    document.getElementById("userEmail__Required").innerHTML = "";
-
-    if (userEmail.value == "") {
-      userEmail.classList.remove("filled");
-      userEmail.classList.remove("input_valid");
-    } else if (!emailValid.test(userEmail.value)) {
-      userEmail.classList.remove("input_valid");
-      document.getElementById("userEmail__Required").innerHTML =
-        "Enter a valid e-mail address";
-    } else {
-      userEmail.classList.add("input_valid");
-    }
-
-    document.querySelector("#userEmail").value = userEmail.value
-      .trim()
-      .toLowerCase();
-
-    checkAll();
-  });
-
-//*Password
-document
-  .querySelector("#userPassword")
-  .addEventListener("change", function addFilledPassword() {
-    userPassword.classList.add("filled");
-    document.getElementById("userPassword__Required").innerHTML = "";
-
-    if (userPassword.value == "") {
-      userPassword.classList.remove("input_valid");
-      userPassword.classList.remove("filled");
-    } else if (!passwordValid.test(userPassword.value)) {
-      userPassword.classList.remove("input_valid");
-      document.getElementById("userPassword__Required").innerHTML =
-        "Enter a valid password";
-    } else {
-      userPassword.classList.add("input_valid");
-    }
-
-    checkAll();
-  });
-
-//*First Name
-document
-  .querySelector("#userFirstName")
-  .addEventListener("change", function addFilledFirstName() {
-    userFirstName.classList.add("filled");
-    document.getElementById("userFirstName__Required").innerHTML = "";
-
-    if (userFirstName.value == "") {
-      userFirstName.classList.remove("input_valid");
-      userFirstName.classList.remove("filled");
-    } else if (!nameValid.test(userFirstName.value)) {
-      userFirstName.classList.remove("input_valid");
-      document.getElementById("userFirstName__Required").innerHTML =
-        "Enter a valid first name";
-    } else {
-      userFirstName.classList.add("input_valid");
-    }
-
-    document.querySelector("#userFirstName").value = userFirstName.value
-      .trim()
-      .toUpperCase();
-
-    checkAll();
-  });
-
-//*Last Name
-document
-  .querySelector("#userLastName")
-  .addEventListener("change", function addFilledLastName() {
-    userLastName.classList.add("filled");
-    document.getElementById("userLastName__Required").innerHTML = "";
-
-    if (userLastName.value == "") {
-      userLastName.classList.remove("input_valid");
-      userLastName.classList.remove("filled");
-    } else if (!nameValid.test(userLastName.value)) {
-      userLastName.classList.remove("input_valid");
-      document.getElementById("userLastName__Required").innerHTML =
-        "Enter a valid last name";
-    } else {
-      userLastName.classList.add("input_valid");
-    }
-
-    document.querySelector("#userLastName").value = userLastName.value
-      .trim()
-      .toUpperCase();
-
-    checkAll();
-  });
-
-//*Address
-document
-  .querySelector("#userAddress")
-  .addEventListener("change", function addFilledAddress() {
-    userAddress.classList.add("filled");
-    document.getElementById("userAddress__Required").innerHTML = "";
-
-    if (userAddress.value == "") {
-      userAddress.classList.remove("input_valid");
-      userAddress.classList.remove("filled");
-    } else if (!addressValid.test(userAddress.value)) {
-      userAddress.classList.remove("input_valid");
-      document.getElementById("userAddress__Required").innerHTML =
-        "Please check, if address is correct";
-    } else {
-      userAddress.classList.add("input_valid");
-    }
-
-    document.querySelector("#userAddress").value = userAddress.value
-      .trim()
-      .toUpperCase();
-
-    checkAll();
-  });
-
-//*Postal code
-document
-  .querySelector("#userPostalCode")
-  .addEventListener("change", function addFilledPostalCode() {
-    userPostalCode.classList.add("filled");
-    document.getElementById("userPostalCode__Required").innerHTML = "";
-
-    if (userPostalCode.value == "") {
-      userPostalCode.classList.remove("input_valid");
-      userPostalCode.classList.remove("filled");
-    } else if (!postalCodeValid.test(userPostalCode.value)) {
-      userPostalCode.classList.remove("input_valid");
-      document.getElementById("userPostalCode__Required").innerHTML =
-        "Enter a valid postal code";
-    } else {
-      userPostalCode.classList.add("input_valid");
-    }
-
-    document.querySelector("#userPostalCode").value = userPostalCode.value
-      .trim()
-      .toUpperCase();
-
-    checkAll();
-  });
-
-//*City
-document
-  .querySelector("#userCity")
-  .addEventListener("change", function addFilledCity() {
-    userCity.classList.add("filled");
-    document.getElementById("userCity__Required").innerHTML = "";
-
-    if (userCity.value == "") {
-      userCity.classList.remove("input_valid");
-      userCity.classList.remove("filled");
-    } else if (!nameValid.test(userCity.value)) {
-      userCity.classList.remove("input_valid");
-      document.getElementById("userCity__Required").innerHTML =
-        "Enter a valid city";
-    } else {
-      userCity.classList.add("input_valid");
-    }
-
-    document.querySelector("#userCity").value = userCity.value
-      .trim()
-      .toUpperCase();
-
-    checkAll();
-  });
-
-//*Country
-document
-  .querySelector("#userCountry")
-  .addEventListener("change", function addFilledCountry() {
-    userCountry.classList.add("filled");
-    document.getElementById("userCountry__Required").innerHTML = "";
-
-    if (userCountry.value == "") {
-      userCountry.classList.remove("input_valid");
-      userCountry.classList.remove("filled");
-    } else if (!countryValid.test(userCountry.value)) {
-      userCountry.classList.remove("input_valid");
-      document.getElementById("userCountry__Required").innerHTML =
-        "Enter a valid country";
-    } else {
-      userCountry.classList.add("input_valid");
-    }
-
-    document.querySelector("#userCountry").value = userCountry.value
-      .trim()
-      .toUpperCase();
-
-    checkAll();
-  });
-
-//*Phone number
-document
-  .querySelector("#userPhone")
-  .addEventListener("change", function addFilledPhone() {
-    userPhone.classList.add("filled");
-    document.getElementById("userPhone__Required").innerHTML = "";
-
-    if (userPhone.value == "") {
-      userPhone.classList.remove("input_valid");
-      userPhone.classList.remove("filled");
-    } else if (!phoneValid.test(userPhone.value)) {
-      userPhone.classList.remove("input_valid");
-      document.getElementById("userPhone__Required").innerHTML =
-        "Enter a valid phone";
-    } else {
-      userPhone.classList.add("input_valid");
-    }
-
-    checkAll();
-  });
-
-//*agree to Terms & Conditions
-document
-  .querySelector("#accept")
-  .addEventListener("change", function addAccept() {
-    if (agreePP.checked == "") {
-      document.getElementById("acceptRequired").innerHTML =
-        "You must agree to Terms & Conditions and Privacy Policy";
-    } else {
-      document.getElementById("acceptRequired").innerHTML = "";
-    }
-
-    checkAll();
-  });
-
-//ERRORS-COUNT FUNCTIONS (lines 284-318)
-function checkValidity(input) {
-  document.getElementById("successMessage").innerHTML = "";
-
+// 1 - FORM VALIDATION
+function checkInputValidity(input) {
   let validity = input.validity;
 
   if (validity.valueMissing) {
     errors++;
+    document.getElementById(
+      `${input.id}__Required`
+    ).innerHTML = `${input.placeholder} can not be empty`;
   }
 
   if (validity.patternMismatch) {
     errors++;
-  }
-
-  if (agreePP.checked == "") {
-    //Accept conditions and privacy required
-    document.getElementById("acceptRequired").innerHTML =
-      "You must agree to Terms & Conditions and Privacy Policy";
-    errors++;
+    document.getElementById(
+      `${input.id}__Required`
+    ).innerHTML = `${input.placeholder} is invalid`;
   }
 }
 
-//Function that goes though all inputs and check for errors using checkValidity()
-function checkAll() {
+function checkAllInputs() {
   errors = [];
 
-  let inputs = document.querySelectorAll("input");
-
   for (let input of inputs) {
-    checkValidity(input);
-  }
-
-  if (errors.length == 0 || agreePP.checked != "") {
-    document.getElementById("errorsInfo").innerHTML = "";
+    checkInputValidity(input);
   }
 }
 
-//FUNCTIONS ON "CREATE ACCOUNT" BUTTON CLICK (lines 320-362)
-//*All fields are filled correctly, terms&conditions acceptedЕ -> messages "Congrats, account created"
-function addSuccess() {
-  if (errors.length == 0 && agreePP.checked != "") {
-    document.getElementById(
-      "successMessage"
-    ).innerHTML = `Congratulations, ${userFirstName.value}!<br>Your new account has been successfully created!`;
-  }
-}
+// 2 - FORM SENDING
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  checkAllInputs();
+  sendForm();
+});
 
-//*Not all fields are filled correctly, terms&conditions not acceptedЕ -> messages "Check if everything is filled correctly"
-function addFailure() {
-  if (errors.length != 0 || agreePP.checked == "") {
-    document.getElementById("errorsInfo").innerHTML =
-      "Please make sure all fields are filled in correctly";
-  } else {
-    document.getElementById("successMessage").innerHTML = "";
-    document.getElementById("errorsInfo").innerHTML = "";
-  }
-}
-
-//*Field is not filled correctly -> delete class 'valid', add class 'error', message under 'field is required'
-//*Field is OK -> clear warning message
-function addRequired() {
-  let inputs = document.querySelectorAll("input");
-
-  inputs.forEach(function (input) {
-    if (input.value == "") {
-      input.classList.remove("input_valid");
-      input.classList.add("input_error");
-      document.getElementById(`${input.id}__Required`).innerHTML =
-        input.placeholder + ` is required`;
-    }
-  });
-
-  //*'you need to agree with terms&conditions' message
-  if (agreePP.checked == "") {
-    document.getElementById("acceptRequired").innerHTML =
-      "You must agree to Terms & Conditions and Privacy Policy";
-  } else {
-    document.getElementById("acceptRequired").innerHTML = "";
-  }
-}
-
-//FORM SENDING
-//1-Check if subscribed to newsletter
-document
-  .querySelector("#signupNewsletter")
-  .addEventListener("click", function () {
-    if (agreeNL.checked == "") {
-      agreeNL.value = "no";
-    } else {
-      agreeNL.value = "yes";
-    }
-  });
-
-//2-form sending
 function sendForm() {
   let user = {
-    firstname: userFirstName.value,
-    lastname: userLastName.value,
-    email: userEmail.value,
-    password: userPassword.value,
-    address: userAddress.value,
-    postalCode: userPostalCode.value,
-    city: userCity.value,
-    country: userCountry.value,
-    phone: userPhone.value,
-    newsletter: agreeNL.value,
+    firstname: form.elements.firstName.value,
+    lastname: form.elements.lastName.value,
+    email: form.elements.email.value,
+    password: form.elements.password.value,
+    address: form.elements.address.value,
+    postalCode: form.elements.postalCode.value,
+    city: form.elements.city.value,
+    country: form.elements.country.value,
+    phone: form.elements.phone.value,
+    newsletter: form.elements.signupNewsletter.checked == "" ? "no" : "yes",
   };
 
-  if (errors == 0) {
+  if (errors == 0 && form.elements.acceptConditions.checked != "") {
     fetch("https://httpbin.org/post", {
       method: "POST",
       body: JSON.stringify(user),
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
-        "X-Content-Type-Options": "nosniff",
       },
     })
-      .then((response) => response.json())
-      .catch((error) => console.log(error));
-
-    clearForm();
+      .then(() => {
+        document.getElementById(
+          "successMessage"
+        ).innerHTML = `Congratulations, ${user.firstname}!<br>Your new account has been successfully created!`;
+        document.getElementById("errorsInfo").innerHTML = "";
+      })
+      .then(() => {
+        clearForm();
+        setTimeout(() => {
+          document.getElementById("successMessage").innerHTML = "";
+        }, "10000");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        document.getElementById("errorsInfo").innerHTML =
+          "An error has occurred. Please try again later!";
+      });
   }
 }
 
-//3-form clearing after sending
+// 4 - FORM CLEARING
 function clearForm() {
-  let inputs = document.querySelectorAll("input");
-
   inputs.forEach(function (input) {
     input.value = "";
     input.classList.remove("input_valid");
     input.classList.remove("filled");
     input.classList.remove("input_error");
   });
+
+  form.elements.signupNewsletter.checked = "";
 }
+
+// 5 - FORM RESET
+form.addEventListener("reset", function () {
+  clearForm();
+
+  document.getElementById("errorsInfo").innerHTML = "";
+  document.getElementById("successMessage").innerHTML = "";
+
+  document
+    .querySelectorAll(".form__required")
+    .forEach((element) => (element.innerHTML = ""));
+});
+
+// 6 - INPUT DECORATION
+//  * green check symbol if input is filled & valid;
+//  * red color and warning message if input is invalid;
+
+let emailRegex =
+  /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,14})$/;
+let passwordRegex =
+  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/; //8-15 characters, one uppercase letter, one lowercase letter, one numeric digit, and one special character
+let namesRegex =
+  /^[-a-zàáâäåæçèéêëìíîïñòóôöùúûüA-ZÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖÙÚÛÜ0-9.'\s]+$/; //latin characters, digits, spaces, hyphens, single quotes, uncommon letters
+let postalCodeRegex = /^[-A-Za-z0-9\s]+$/; //latin characters, digits, spaces, hyphens
+let countryRegex = /^[-a-zA-Z\s]+$/; //latin characters, spaces, hyphens
+let phoneRegex = /^[0-9+]{1,}[0-9\-.()\s]{3,29}$/; //digits, spaces, hyphens, dots, parentheses
+
+for (const input of inputs) {
+  if (input.type != "checkbox")
+    input.addEventListener("input", function () {
+      if (input.value != "") {
+        input.classList.add("filled");
+        document.getElementById(`${input.id}__Required`).innerHTML = "";
+      } else {
+        input.classList.remove("filled");
+        input.classList.remove("input_valid");
+        document.getElementById(
+          `${input.id}__Required`
+        ).innerHTML = `${input.placeholder} is invalid!`;
+      }
+
+      if (
+        (input.type == "email" && emailRegex.test(input.value)) ||
+        (input.type == "password" && passwordRegex.test(input.value)) ||
+        (input.type == "tel" && phoneRegex.test(input.value)) ||
+        (input.type == "text" &&
+          input.id != "userPostalCode" &&
+          input.id != "userCountry" &&
+          namesRegex.test(input.value)) ||
+        (input.id == "userPostalCode" && postalCodeRegex.test(input.value)) ||
+        (input.id == "userCountry" && countryRegex.test(input.value))
+      ) {
+        input.classList.add("input_valid");
+        document.getElementById(`${input.id}__Required`).innerHTML = "";
+      } else {
+        input.classList.remove("input_valid");
+        document.getElementById(
+          `${input.id}__Required`
+        ).innerHTML = `${input.placeholder} is invalid!`;
+      }
+    });
+}
+
+// 7 - AGREE TO PRIVACY & CONDITIONS
+document
+  .querySelector("#acceptConditions")
+  .addEventListener("change", function addAccept() {
+    if (form.elements.acceptConditions.checked == "") {
+      document.getElementById("acceptRequired").innerHTML =
+        "You must agree to the Terms & Conditions and Privacy Policy.";
+    } else {
+      document.getElementById("acceptRequired").innerHTML = "";
+    }
+  });
+
+// 8 - INPUT TEXT TRANSFORMATION
+form.elements.email.addEventListener("change", function () {
+  form.elements.email.value = form.elements.email.value.trim().toLowerCase();
+});
+
+form.elements.firstName.addEventListener("change", function () {
+  form.elements.firstName.value = capitalizeNames(
+    form.elements.firstName.value
+  );
+});
+
+form.elements.lastName.addEventListener("change", function () {
+  form.elements.lastName.value = capitalizeNames(form.elements.lastName.value);
+});
+
+form.elements.address.addEventListener("change", function () {
+  form.elements.address.value = capitalizeNames(form.elements.address.value);
+});
+
+form.elements.postalCode.addEventListener("change", function () {
+  form.elements.postalCode.value = form.elements.postalCode.value
+    .trim()
+    .toUpperCase();
+});
+
+form.elements.city.addEventListener("change", function () {
+  const cityParts = form.elements.city.value.trim().toLowerCase().split(" ");
+
+  const cityUpper = [];
+  for (const part of cityParts) {
+    cityUpper.push(part[0].toUpperCase() + part.slice(1));
+  }
+
+  const city = cityUpper.join(" ");
+  const cityIndex = city.lastIndexOf("-") + 1;
+
+  form.elements.city.value =
+    city.slice(0, cityIndex) +
+    city[cityIndex].toUpperCase() +
+    city.slice(cityIndex + 1);
+});
+
+form.elements.phone.addEventListener("change", function () {
+  form.elements.phone.value = form.elements.phone.value.trim();
+});
+
+form.elements.country.addEventListener("change", function () {
+  const country = capitalizeNames(form.elements.country.value)
+    .replaceAll(" And ", " and ")
+    .replaceAll(" Of ", " of ")
+    .replaceAll(" The ", " the ");
+  form.elements.country.value = country;
+});
+
+const capitalizeNames = function (name) {
+  const namesInit = name.trim().toLowerCase().split("-");
+  let namesUpper = [];
+
+  for (const n of namesInit) {
+    namesUpper.push(n[0].toUpperCase() + n.slice(1));
+  }
+
+  namesUpper = namesUpper.join("-").split(" ");
+
+  let names = [];
+
+  for (const n of namesUpper) {
+    names.push(n[0].toUpperCase() + n.slice(1));
+  }
+
+  return names.join(" ");
+};

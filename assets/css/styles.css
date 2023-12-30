@@ -51,14 +51,15 @@ body {
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.1em;
-  text-align: left;
+  text-align: center;
   text-transform: uppercase;
   margin: 42px 0px 12px 0px;
 }
 
 .form__info {
   color: #23262f;
-  margin: 42px 0px 12px 0px;
+  margin: 12px 0px;
+  text-align: right;
 }
 
 .form__item {
@@ -182,14 +183,17 @@ p {
   transform: scale(1);
 }
 
-.newsletter__subtitle {
+.form__subtitle_newsletter {
   margin-top: 54px;
+  text-align: left;
 }
 
 .form__button {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 40px;
+  min-width: 180px;
   background-color: #23262f;
   border: none;
   color: #ffffff;
@@ -198,7 +202,6 @@ p {
   padding: 0 3rem;
   cursor: pointer;
   transition: background-color 0.5s ease 0s;
-  margin: 48px 0px 48px 0px;
 }
 
 .form__button:hover {
@@ -212,6 +215,13 @@ p {
   top: 3px;
   color: #23262f;
   border: solid 1px #23262f;
+}
+
+.form__buttons {
+  gap: 1.5rem;
+  margin: 48px 0px 48px 0px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .form__item_position-center {
@@ -241,6 +251,10 @@ p {
     flex-direction: column;
   }
 
+  .form__title {
+    margin: 44px 0px 0px 0px;
+  }
+
   .form__item {
     width: 100%;
   }
@@ -250,16 +264,20 @@ p {
     font-style: normal;
     font-weight: 400;
     letter-spacing: 0.1em;
-    text-align: left;
     text-transform: uppercase;
     margin: 24px 0px 6px 0px;
+  }
+
+  .form__buttons {
+    margin: 32px 0px;
+    gap: 1.5rem;
   }
 
   .form__required {
     margin: 12px 0px 12px 0px;
   }
 
-  .newsletter__subtitle {
+  .form__subtitle_newsletter {
     margin-top: 44px;
   }
 }
