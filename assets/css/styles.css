@@ -1,4 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap");
+@font-face {
+  font-family: "DidactGothic-Regular";
+  src: url("../fonts/DidactGothic-Regular.woff2") format("woff2"),
+    url("../fonts/DidactGothic-Regular.woff") format("woff"),
+    url("../fonts/DidactGothic-Regular.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 html,
 body {
@@ -7,7 +15,7 @@ body {
   font-size: 13px;
   color: #23262f;
   background-color: #ffffff;
-  font-family: "Didact Gothic", sans-serif;
+  font-family: "DidactGothic-Regular";
 }
 
 .wrapper {
@@ -43,7 +51,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .form__subtitle {
@@ -65,7 +73,6 @@ body {
 .form__item {
   width: 48%;
   margin: 0px 0px 12px 0px;
-  align-self: flex-start;
   position: relative;
 }
 
@@ -257,6 +264,7 @@ p {
 
   .form__item {
     width: 100%;
+    margin: 0px 0px 6px 0px;
   }
 
   .form__subtitle {

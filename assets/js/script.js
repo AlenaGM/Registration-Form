@@ -1,7 +1,7 @@
 const form = document.forms.regForm;
 
 let inputs = document.querySelectorAll("input");
-let errors = [];
+let errors;
 
 // 1 - FORM VALIDATION
 function checkInputValidity(input) {
@@ -11,14 +11,14 @@ function checkInputValidity(input) {
     errors++;
     document.getElementById(
       `${input.id}__Required`
-    ).innerHTML = `${input.placeholder} can not be empty`;
+    ).textContent = `${input.placeholder} can not be empty`;
   }
 
   if (validity.patternMismatch) {
     errors++;
     document.getElementById(
       `${input.id}__Required`
-    ).innerHTML = `${input.placeholder} is invalid`;
+    ).textContent = `${input.placeholder} is invalid`;
   }
 }
 
@@ -51,29 +51,31 @@ function sendForm() {
     newsletter: form.elements.signupNewsletter.checked == "" ? "no" : "yes",
   };
 
+  const request = new Request("https://httpbin.org/post", {
+    method: "POST",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: JSON.stringify(user),
+  });
+
   if (errors == 0 && form.elements.acceptConditions.checked != "") {
-    fetch("https://httpbin.org/post", {
-      method: "POST",
-      body: JSON.stringify(user),
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-    })
-      .then(() => {
-        document.getElementById(
-          "successMessage"
-        ).innerHTML = `Congratulations, ${user.firstname}!<br>Your new account has been successfully created!`;
-        document.getElementById("errorsInfo").innerHTML = "";
-      })
-      .then(() => {
-        clearForm();
-        setTimeout(() => {
-          document.getElementById("successMessage").innerHTML = "";
-        }, "10000");
+    fetch(request)
+      .then((response) => {
+        if (response.status === 200) {
+          document.getElementById(
+            "successMessage"
+          ).textContent = `Congratulations, ${user.firstname}!<br>Your new account has been successfully created!`;
+          document.getElementById("errorsInfo").textContent = "";
+          clearForm();
+          setTimeout(() => {
+            document.getElementById("successMessage").textContent = "";
+          }, "10000");
+        }
       })
       .catch((error) => {
         console.log(error.message);
-        document.getElementById("errorsInfo").innerHTML =
+        document.getElementById("errorsInfo").textContent =
           "An error has occurred. Please try again later!";
       });
   }
@@ -95,12 +97,12 @@ function clearForm() {
 form.addEventListener("reset", function () {
   clearForm();
 
-  document.getElementById("errorsInfo").innerHTML = "";
-  document.getElementById("successMessage").innerHTML = "";
+  document.getElementById("errorsInfo").textContent = "";
+  document.getElementById("successMessage").textContent = "";
 
   document
     .querySelectorAll(".form__required")
-    .forEach((element) => (element.innerHTML = ""));
+    .forEach((element) => (element.textContent = ""));
 });
 
 // 6 - INPUT DECORATION
@@ -120,16 +122,9 @@ let phoneRegex = /^[0-9+]{1,}[0-9\-.()\s]{3,29}$/; //digits, spaces, hyphens, do
 for (const input of inputs) {
   if (input.type != "checkbox")
     input.addEventListener("input", function () {
-      if (input.value != "") {
-        input.classList.add("filled");
-        document.getElementById(`${input.id}__Required`).innerHTML = "";
-      } else {
-        input.classList.remove("filled");
-        input.classList.remove("input_valid");
-        document.getElementById(
-          `${input.id}__Required`
-        ).innerHTML = `${input.placeholder} is invalid!`;
-      }
+      input.value != ""
+        ? input.classList.add("filled")
+        : input.classList.remove("filled");
 
       if (
         (input.type == "email" && emailRegex.test(input.value)) ||
@@ -143,12 +138,12 @@ for (const input of inputs) {
         (input.id == "userCountry" && countryRegex.test(input.value))
       ) {
         input.classList.add("input_valid");
-        document.getElementById(`${input.id}__Required`).innerHTML = "";
+        document.getElementById(`${input.id}__Required`).textContent = "";
       } else {
         input.classList.remove("input_valid");
         document.getElementById(
           `${input.id}__Required`
-        ).innerHTML = `${input.placeholder} is invalid!`;
+        ).textContent = `${input.placeholder} is invalid!`;
       }
     });
 }
@@ -158,10 +153,10 @@ document
   .querySelector("#acceptConditions")
   .addEventListener("change", function addAccept() {
     if (form.elements.acceptConditions.checked == "") {
-      document.getElementById("acceptRequired").innerHTML =
+      document.getElementById("acceptRequired").textContent =
         "You must agree to the Terms & Conditions and Privacy Policy.";
     } else {
-      document.getElementById("acceptRequired").innerHTML = "";
+      document.getElementById("acceptRequired").textContent = "";
     }
   });
 
