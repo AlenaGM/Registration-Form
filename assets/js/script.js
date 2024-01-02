@@ -9,6 +9,7 @@ function checkInputValidity(input) {
 
   if (validity.valueMissing) {
     errors++;
+    input.classList.add("input_error");
     document.getElementById(
       `${input.id}__Required`
     ).textContent = `${input.placeholder} can not be empty`;
@@ -16,6 +17,7 @@ function checkInputValidity(input) {
 
   if (validity.patternMismatch) {
     errors++;
+    input.classList.add("input_error");
     document.getElementById(
       `${input.id}__Required`
     ).textContent = `${input.placeholder} is invalid`;
@@ -138,9 +140,11 @@ for (const input of inputs) {
         (input.id == "userCountry" && countryRegex.test(input.value))
       ) {
         input.classList.add("input_valid");
+        input.classList.remove("input_error");
         document.getElementById(`${input.id}__Required`).textContent = "";
       } else {
         input.classList.remove("input_valid");
+        input.classList.add("input_error");
         document.getElementById(
           `${input.id}__Required`
         ).textContent = `${input.placeholder} is invalid!`;
