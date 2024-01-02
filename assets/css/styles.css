@@ -90,7 +90,7 @@ body {
 
 .input_valid {
   border-bottom: solid 1px #05a660;
-  background: url(./assets/img/check.svg) 100% 95%/13px no-repeat;
+  background: url(../img/check.svg) 100% 95%/13px no-repeat;
   transition: all 0.4s ease 0s;
 }
 
