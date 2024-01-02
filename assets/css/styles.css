@@ -13,7 +13,7 @@ body {
   font-family: "DidactGothic-Regular";
   font-size: 13px;
   line-height: 140%;
-  color: #23262f;
+  color: #000000;
   background-color: #ffffff;
 }
 
@@ -80,9 +80,9 @@ body {
   padding: 24px 0px 2px;
   background-color: #ffffff;
   border: none;
-  border-bottom: solid 1px #87898e;
+  border-bottom: solid 1px #74767c;
   transition: all 0.5s ease 0s;
-  color: #23262f;
+  color: #000000;
 }
 
 .input_error {
@@ -112,17 +112,17 @@ body {
 .form__input:focus + .form__label {
   transform: translate(0px, -21px);
   font-size: 11px;
-  color: #87898e;
+  color: #74767c;
 }
 
 .filled + .form__label {
   transform: translate(0px, -21px);
   font-size: 11px;
-  color: #87898e;
+  color: #74767c;
 }
 
 p {
-  color: #87898e;
+  color: #74767c;
   margin: 8px 0px;
 }
 
@@ -136,7 +136,7 @@ p {
 }
 
 .checkbox__label {
-  color: #87898e;
+  color: #74767c;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -145,7 +145,7 @@ p {
 }
 
 .checkbox__label a {
-  color: #87898e;
+  color: #74767c;
   padding: 0px 5px;
 }
 
@@ -159,7 +159,7 @@ p {
   flex: 0 0 8px;
   height: 8px;
   background-color: #ffffff;
-  border: solid 1px #87898e;
+  border: solid 1px #74767c;
   margin: 5px 9px 0px 0px;
 }
 
@@ -170,7 +170,7 @@ p {
   position: absolute;
   top: 0px;
   left: 0px;
-  background-color: #23262f;
+  background-color: #000000;
   transform: scale(0);
   transition: all 0.3s 0s;
 }
@@ -181,7 +181,7 @@ p {
 
 .checkbox__input:checked + .checkbox__label,
 .checkbox__input:checked + .checkbox__label a {
-  color: #23262f;
+  color: #000000;
   transform: scale(1);
 }
 
@@ -204,7 +204,7 @@ p {
   justify-content: center;
   height: 40px;
   min-width: 180px;
-  background-color: #23262f;
+  background-color: #000000;
   border: none;
   color: #ffffff;
   text-transform: uppercase;
@@ -216,15 +216,15 @@ p {
 
 .form__button:hover {
   background-color: transparent;
-  color: #23262f;
-  border: solid 1px #23262f;
+  color: #000000;
+  border: solid 1px #000000;
 }
 
 .form__button:active {
   background-color: transparent;
   top: 3px;
-  color: #23262f;
-  border: solid 1px #23262f;
+  color: #000000;
+  border: solid 1px #000000;
 }
 
 #errorsInfo {
