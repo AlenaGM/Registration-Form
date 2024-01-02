@@ -147,7 +147,7 @@ for (const input of inputs) {
         input.classList.add("input_error");
         document.getElementById(
           `${input.id}__Required`
-        ).textContent = `${input.placeholder} is invalid!`;
+        ).textContent = `${input.placeholder} is invalid`;
       }
     });
 }
