@@ -67,11 +67,11 @@ function sendForm() {
         if (response.status === 200) {
           document.getElementById(
             "successMessage"
-          ).textContent = `Congratulations, ${user.firstname}!<br>Your new account has been successfully created!`;
+          ).innerHTML = `Congratulations, ${user.firstname}!<br>Your new account has been successfully created!`;
           document.getElementById("errorsInfo").textContent = "";
           clearForm();
           setTimeout(() => {
-            document.getElementById("successMessage").textContent = "";
+            document.getElementById("successMessage").innerHTML = "";
           }, "10000");
         }
       })
@@ -220,12 +220,12 @@ form.elements.country.addEventListener("change", function () {
 
 const capitalizeNames = function (name) {
   const namesInit = name.trim().toLowerCase().split("-");
+
   let namesUpper = [];
 
   for (const n of namesInit) {
     namesUpper.push(n[0].toUpperCase() + n.slice(1));
   }
-
   namesUpper = namesUpper.join("-").split(" ");
 
   let names = [];
